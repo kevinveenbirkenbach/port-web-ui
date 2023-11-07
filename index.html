@@ -25,6 +25,14 @@
       .header h1 {
         position: relative;
       }
+      .equal-height {
+        display: flex;
+        flex: 1;
+      }
+      
+      .card {
+        flex: 1; /* Stellt sicher, dass die Karten die ganze Höhe ihrer Container ausfüllen */
+      }
     </style>
   </header>
   <body>
@@ -36,29 +44,66 @@
         <p></p>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col equal-height">
           <div class="card">
             <div class="card-body">
               <div class="card-img-top">
                 <i class="fa-solid fa-users fa-10x"></i>
               </div>
               <hr />
-              <h3 class="card-title">Agile Coaching</h3>
-              <p class="card-text">Coaching for companies and institutions</p>
-              <a href="https://www.agile-coach.world" class="btn btn-light stretched-link">Go to www.agile-coach.world</a>
+              <h3 class="card-title">Agile Coach</h3>
+              <p class="card-text">I'm helping you to deliver faster and to improve the value</p>
+              <ul>
+                <li>Process Optimation</li>
+                <li>Team Improvement</li>
+                <li>Bla</li>
+                <li>Blö</li>
+                <li>Blö</li>
+              </ul>
+              <hr />
+              <a href="https://www.agile-coach.world" class="btn btn-light stretched-link"><i class="fa-solid fa-globe"></i> www.agile-coach.world</a>
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col equal-height">
           <div class="card">
             <div class="card-body">
               <div class="card-img-top">
                 <i class="fa-solid fa-user fa-10x"></i>
               </div>
               <hr />
-              <h3 class="card-title">Universal Coaching</h3>
+              <h3 class="card-title">Personal Coach</h3>
               <p class="card-text">Interdisciplinary coaching for individuals and institutions</p>
-              <a href="https://www.universal-coach.world" class="btn btn-light stretched-link">Go to www.universal-coach.world</a>
+              <hr />
+              <a href="https://www.coachandconsult.world" class="btn btn-light stretched-link"><i class="fa-solid fa-globe"></i> www.coachandconsult.world</a>
+            </div>
+          </div>
+        </div>
+        <div class="col equal-height">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-img-top">
+                <i class="fa-solid fa-sailboat fa-10x"></i>
+              </div>
+              <hr />
+              <h3 class="card-title">Yachtmaster</h3>
+              <p class="card-text">I coach you how to sail, plan passages and navigate your sailing veciles</p>
+              <hr />
+              <a href="https://www.yachtmaster.world" class="btn btn-light stretched-link"><i class="fa-solid fa-globe"></i> www.yachtmaster.world</a>
+            </div>
+          </div>
+        </div>
+        <div class="col equal-height">
+          <div class="card">
+            <div class="card-body">
+              <div class="card-img-top">
+                <i class="fa-solid fa-computer fa-10x"></i>
+              </div>
+              <hr />
+              <h3 class="card-title">IT Consultant</h3>
+              <p class="card-text">Interdisciplinary coaching for individuals and institutions</p>
+              <hr />
+              <a href="https://www.mittelstand.world" class="btn btn-light stretched-link"><i class="fa-solid fa-globe"></i> www.mittelstand.world</a>
             </div>
           </div>
         </div>
