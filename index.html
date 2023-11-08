@@ -29,17 +29,33 @@
         display: flex;
         flex: 1;
       }
-      @media (min-width: 1200px) { /* Breite anpassen, ab wann Karten nebeneinander sein sollen */
-        .card-container {
-          display: flex;
-          flex-wrap: nowrap;
-          overflow-x: auto;
-        }
-        .card {
-          flex: 0 0 auto; /* Verhindert, dass Karten schrumpfen oder wachsen */
-          /* flex: 1; /* Stellt sicher, dass die Karten die ganze Höhe ihrer Container ausfüllen */
-          width: 18rem; /* Breite der Karten */
-        }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Zentriert die Inhalte horizontal */
+        text-align: center; /* Zentriert den Text */
+      }
+
+      .card-icon {
+        display: flex;
+        justify-content: center; /* Zentriert das Icon horizontal */
+      }
+      
+      .card-text,
+      .card ul {
+        text-align: left; /* Stellt sicher, dass der Text linksbündig ist */
+      }
+
+      .card{
+        flex: 1; /* Stellt sicher, dass die Karten die ganze Höhe ihrer Container ausfüllen */
+      }
+
+      h3.card-title{
+        font-size: 1.3em;
+      }
+
+      .card .stretched-link{
+        font-size: 0.7em;
       }
     </style>
   </header>
@@ -51,8 +67,8 @@
         <h2>Consulting and Coaching Services</h2>
         <p></p>
       </div>
-      <div class="row card-container">
-        <div class="col equal-height">
+      <div class="row">
+        <div class="col-md-6 col-lg-1 equal-height mt-2 mt-lg-0">
           <div class="card h-100 d-flex flex-column">
             <div class="card-body d-flex flex-column">
               <div class="card-img-top">
@@ -74,7 +90,7 @@
             </div>
           </div>
         </div>
-        <div class="col equal-height">
+        <div class="col-md-6 col-lg-1 equal-height mt-2 mt-lg-0">
           <div class="card h-100 d-flex flex-column">
             <div class="card-body d-flex flex-column">
               <div class="card-img-top">
@@ -96,7 +112,7 @@
             </div>
           </div>
         </div>
-        <div class="col equal-height">
+        <div class="col-md-6 col-lg-1 equal-height mt-2 mt-lg-0">
           <div class="card h-100 d-flex flex-column">
             <div class="card-body d-flex flex-column">
               <div class="card-img-top">
@@ -118,11 +134,11 @@
             </div>
           </div>
         </div>
-        <div class="col equal-height">
+        <div class="col-md-6 col-lg-1 equal-height mt-2 mt-lg-0">
           <div class="card h-100 d-flex flex-column">
             <div class="card-body d-flex flex-column">
               <div class="card-img-top">
-                <i class="fa-solid fa-computer fa-10x"></i>
+                <i class="fa-solid fa-user-astronaut fa-10x"></i>
               </div>
               <hr />
               <h3 class="card-title">Expedition Adviser</h3>
@@ -140,7 +156,7 @@
             </div>
           </div>
         </div>
-        <div class="col equal-height">
+        <div class="col-md-6 col-lg-1 equal-height mt-2 mt-lg-0">
           <div class="card h-100 d-flex flex-column">
             <div class="card-body d-flex flex-column">
               <div class="card-img-top">
