@@ -56,7 +56,7 @@ def reload_config_in_dev():
 
 @app.route('/')
 def index():
-    return render_template("pages/index.html.j2", cards=config_data.get("cards", []), networks=config_data.get("networks", []), company=config_data["company"])
+    return render_template("pages/index.html.j2", cards=config_data.get("cards", []), networks=config_data.get("networks", []), company=config_data["company"], navigation=config_data["navigation"])
 
 @app.route('/imprint')
 def imprint():

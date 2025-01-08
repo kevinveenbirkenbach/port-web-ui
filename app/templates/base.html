@@ -20,7 +20,9 @@
               <img src="{{company.logo}}" alt="logo"/>
               <h1>{{company.titel}}</h1>
               <h2>{{company.subtitel}}</h2>
+              {% include "navigation.html.j2" %}
             </header>
+            
 
             {% block content %}{% endblock %}
 
