@@ -189,7 +189,68 @@
                         "href": "https://s.veen.world/naturejournal"
                         }
                     ]
-                    }
+                    },
+                    {
+                        "name": "Contact",
+                        "description": "Get in touch",
+                        "icon_class": "fa-solid fa-envelope",
+                        "href": null,
+                        "subitems": [
+                            {
+                            "name": "Email",
+                            "description": "Send me an email",
+                            "icon_class": "fa-solid fa-envelope",
+                            "href": "kevin@veen.world",
+                            "href_praefix": "mailto",
+                            "subitems": []
+                            },
+                            {
+                            "name": "Matrix",
+                            "description": "Chat with me on Matrix",
+                            "icon_class": "fa-solid fa-cubes",
+                            "popup": true,
+                            "address": "@kevinveenbirkenbach:veen.world"
+                            },
+                            {
+                            "name": "Mobile",
+                            "description": "Call me",
+                            "icon_class": "fa-solid fa-phone",
+                            "href": "+491781798023",
+                            "href_praefix": "tel",
+                            "subitems": []
+                            },
+                            {
+                            "name": "PGP",
+                            "description": "Access my PGP key",
+                            "icon_class": "fa-solid fa-key",
+                            "href": "https://s.veen.world/pgp",
+                            "subitems": []
+                            },
+                            {
+                            "name": "Signal",
+                            "description": "Message me on Signal",
+                            "icon_class": "fa-brands fa-signal-messenger",
+                            "popup": true,
+                            "href": "+491781798023",
+                            "subitems": []
+                            },
+                            {
+                            "name": "Telegram",
+                            "description": "Message me on Telegram",
+                            "icon_class": "fa-brands fa-telegram",
+                            "target":"_blank",
+                            "href": "https://t.me/kevinveenbirkenbach",
+                            "subitems": []
+                            },
+                            {
+                            "name": "WhatsApp",
+                            "description": "Chat with me on WhatsApp",
+                            "icon_class": "fa-brands fa-whatsapp",
+                            "href": "https://wa.me/491781798023",
+                            "subitems": []
+                            }
+                        ]
+                        }
                 
                 
         ],
@@ -239,6 +300,28 @@
                         "icon_class": "bi bi-linkedin",
                         "href": "https://www.linkedin.com/in/kevinveenbirkenbach",
                         "subitems": []
+                        }
+                    ]
+                },
+                {
+                    "name": "Sports",
+                    "description": "My sport activities",
+                    "icon_class": "fa-solid fa-running",
+                    "href": null,
+                    "subitems": [
+                        {
+                            "name": "Garmin",
+                            "description": "My Garmin activities",
+                            "icon_class": "fa-solid fa-person-running",
+                            "href": "https://s.veen.world/garmin",
+                            "subitems": []
+                        },
+                        {
+                            "name": "Eversports",
+                            "description": "My Eversports sessions",
+                            "icon_class": "fa-solid fa-dumbbell",
+                            "href": "https://s.veen.world/eversports",
+                            "subitems": []
                         }
                     ]
                 },
@@ -363,67 +446,6 @@
             "description": "Access my cloud storage",
             "icon_class": "fa-solid fa-cloud",
             "href": "https://cloud.veen.world/",
-            "subitems": []
-            }
-        ]
-        },
-        {
-        "name": "Contact",
-        "description": "Get in touch",
-        "icon_class": "fa-solid fa-envelope",
-        "href": null,
-        "subitems": [
-            {
-            "name": "Email",
-            "description": "Send me an email",
-            "icon_class": "fa-solid fa-envelope",
-            "href": "kevin@veen.world",
-            "href_praefix": "mailto",
-            "subitems": []
-            },
-            {
-            "name": "Matrix",
-            "description": "Chat with me on Matrix",
-            "icon_class": "fa-solid fa-cubes",
-            "popup": true,
-            "address": "@kevinveenbirkenbach:veen.world"
-            },
-            {
-            "name": "Mobile",
-            "description": "Call me",
-            "icon_class": "fa-solid fa-phone",
-            "href": "+491781798023",
-            "href_praefix": "tel",
-            "subitems": []
-            },
-            {
-            "name": "PGP",
-            "description": "Access my PGP key",
-            "icon_class": "fa-solid fa-key",
-            "href": "https://s.veen.world/pgp",
-            "subitems": []
-            },
-            {
-            "name": "Signal",
-            "description": "Message me on Signal",
-            "icon_class": "fa-brands fa-signal-messenger",
-            "popup": true,
-            "href": "+491781798023",
-            "subitems": []
-            },
-            {
-            "name": "Telegram",
-            "description": "Message me on Telegram",
-            "icon_class": "fa-brands fa-telegram",
-            "target":"_blank",
-            "href": "https://t.me/kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "WhatsApp",
-            "description": "Chat with me on WhatsApp",
-            "icon_class": "fa-brands fa-whatsapp",
-            "href": "https://wa.me/491781798023",
             "subitems": []
             }
         ]
