@@ -58,13 +58,5 @@ def reload_config_in_dev():
 def index():
     return render_template("pages/index.html.j2", cards=config_data.get("cards", []), networks=config_data.get("networks", []), company=config_data["company"], navigation=config_data["navigation"])
 
-@app.route('/imprint')
-def imprint():
-    return render_template('pages/imprint.html.j2')
-
-@app.route('/agb')
-def agb():
-    return render_template('pages/agb.html.j2')
-
 if __name__ == "__main__":
     app.run(debug=(FLASK_ENV == "development"), host="0.0.0.0", port=5000)

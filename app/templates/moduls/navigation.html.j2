@@ -1,12 +1,12 @@
 <!-- Template for Subitems -->
 {% macro render_subitems(subitems) %}
     {% for subitem in subitems %}
-        {% if subitems.subitems %}
+        {% if subitem.subitems %}
             <li class="dropdown-submenu">
                 <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-submenu">
                     {{ render_subitems(subitem.subitems) }}
                 </ul>
             </li>
@@ -48,10 +48,10 @@
                     {% else %}
                         <!-- Dropdown Menu -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" data-bs-toggle="tooltip" title="{{ item.description }}" aria-expanded="false">
-                                <i class="{{ item.icon_class }}"></i> {{ item.name }}
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" data-bs-display="dynamic" data-popper-placement="top" title="{{ item.description }}" aria-expanded="false">
+                                <i class="{{ item.icon_class }}" data-bs-toggle="tooltip"></i> {{ item.name }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ loop.index }}">
+                            <ul class="dropdown-menu dropdown-menu-{{menu_type}}" aria-labelledby="navbarDropdown{{ loop.index }}">
                                 {{ render_subitems(item.subitems) }}
                             </ul>
                         </li>

@@ -186,8 +186,7 @@
                         "name": "Nature",
                         "description": "Explore my nature logs",
                         "icon_class": "fa-solid fa-tree",
-                        "href": "https://s.veen.world/naturejournal",
-                        "subitems": []
+                        "href": "https://s.veen.world/naturejournal"
                         }
                     ]
                     }
@@ -197,9 +196,10 @@
         "footer":
         [
             {
-                "name": "Third Party Plattforms",
+                "name": "External Accounts",
                 "description" : "Me on other plattforms",
-                "subitems:":[
+                "icon_class" : "fa-solid fa-external-link-alt",
+                "subitems":[
             {
             "name": "Meta",
             "description": "Social and developer networks",
@@ -219,8 +219,30 @@
                 "icon_class": "fa-brands fa-facebook",
                 "href": "https://www.facebook.com/kevinveenbirkenbach",
                 "subitems": []
+                }
+            ]
+            },
+            {
+                "name": "Carreer Profiles",
+                "icon_class": "fa-solid fa-user-tie",
+                "subitems": [
+                    {
+                        "name": "XING",
+                        "description": "Visit my XING profile",
+                        "icon_class": "bi bi-building",
+                        "href": "https://www.xing.com/profile/Kevin_VeenBirkenbach",
+                        "subitems": []
+                        },
+                        {
+                        "name": "LinkedIn",
+                        "description": "Connect on LinkedIn",
+                        "icon_class": "bi bi-linkedin",
+                        "href": "https://www.linkedin.com/in/kevinveenbirkenbach",
+                        "subitems": []
+                        }
+                    ]
                 },
-                {
+            {
                 "name": "Duolingo",
                 "description": "Learn with me on Duolingo",
                 "icon_class": "fa-solid fa-language",
@@ -233,14 +255,20 @@
                 "icon_class": "fa-brands fa-spotify",
                 "href": "https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty",
                 "subitems": []
+                },
+                {
+                    "name": "Patreon",
+                    "description": "Support me on Patreon",
+                    "icon_class": "fa-brands fa-patreon",
+                    "href": "https://patreon.com/kevinveenbirkenbach",
+                    "subitems": []
                 }
             ]
-            },
-            {
+        },
+        {
             "name": "Community",
             "description": "My presence in the Fediverse",
-            "icon_class": "fa-brands fa-mastodon",
-            "href": null,
+            "icon_class": "fa-solid fa-users",
             "subitems": [
                 
                 {
@@ -256,18 +284,10 @@
                     "icon_class": "fa-solid fa-envelope-open-text",
                     "href": "https://newsletter.veen.world/subscription/form",
                     "subitems": []
-                    },
-                    {
-                    "name": "Patreon",
-                    "description": "Support me on Patreon",
-                    "icon_class": "fa-brands fa-patreon",
-                    "href": "https://patreon.com/kevinveenbirkenbach",
-                    "subitems": []
-                }
+                    }
+                    
             ]
-            }
-            ]
-        },
+            },
         {
         "name": "Work Hub",
         "description": "Curated collection of self hosted tools for work, organization, and learning.",
@@ -347,26 +367,6 @@
             }
         ]
         },
-        {
-            "name": "Carreer Profiles",
-            "icon_class": "fa-solid fa-user-tie",
-            "subitems": [
-                {
-                    "name": "XING",
-                    "description": "Visit my XING profile",
-                    "icon_class": "bi bi-building",
-                    "href": "https://www.xing.com/profile/Kevin_VeenBirkenbach",
-                    "subitems": []
-                    },
-                    {
-                    "name": "LinkedIn",
-                    "description": "Connect on LinkedIn",
-                    "icon_class": "bi bi-linkedin",
-                    "href": "https://www.linkedin.com/in/kevinveenbirkenbach",
-                    "subitems": []
-                    }
-                ]
-            },
         {
         "name": "Contact",
         "description": "Get in touch",

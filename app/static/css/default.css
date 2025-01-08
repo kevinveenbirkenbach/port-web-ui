@@ -66,18 +66,34 @@ h3.footer-title{
   padding: 0px;
 }
 
+.dropdown-menu {
+  position: absolute !important;
+}
+
+.dropdown-menu-footer {
+  position: absolute !important;
+  top: auto !important;
+  bottom: 100%; /* Positioniert das Menü über dem Auslöser */
+  transform: translateY(-10px); /* Optional: Sanfter Abstand */
+}
+
 .dropdown-submenu {
   position: relative;
   list-style: none;
 }
 
-.dropdown-submenu > .dropdown-menu {
-    top: 0;
-    left: 100%;
-    margin-top: -0.5rem;
-}
-
 .navbar-nav {
   padding: 0;
   margin: 0;
+}
+/* Stellt sicher, dass Submenüs korrekt positioniert sind */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+  position: absolute;
+  top: 0;
+  left: 100%; /* Positioniert das Submenü rechts vom Hauptmenü */
+  margin-top: -1px;
 }
