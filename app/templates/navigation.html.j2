@@ -1,30 +1,30 @@
-    <!-- Template for Subitems -->
-    {% macro render_subitems(subitems) %}
-        {% for subitem in subitems %}
-            {% if subitems.subitems %}
-                <li class="dropdown-submenu">
-                    <a class="dropdown-item dropdown-toggle" href="#">
-                        <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
-                    </a>
-                    <ul class="dropdown-menu">
-                        {{ render_subitems(subitem.subitems) }}
-                    </ul>
-                </li>
-            {% elif subitem.popup %}
-                <li>
-                    <a class="dropdown-item" onclick='openDynamicPopup({{subitem|tojson|safe}})''>
-                        <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
-                    </a>
-                </li>
-            {% else %}
-                <li>
-                    <a class="dropdown-item" href="{{ subitem.href }}" {% if subitem.target %} target="{{subitem.target}}" {% endif %}>
-                        <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
-                    </a>
-                </li>
-            {% endif %}
-        {% endfor %}
-    {% endmacro %}
+<!-- Template for Subitems -->
+{% macro render_subitems(subitems) %}
+    {% for subitem in subitems %}
+        {% if subitems.subitems %}
+            <li class="dropdown-submenu">
+                <a class="dropdown-item dropdown-toggle" href="#">
+                    <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
+                </a>
+                <ul class="dropdown-menu">
+                    {{ render_subitems(subitem.subitems) }}
+                </ul>
+            </li>
+        {% elif subitem.popup %}
+            <li>
+                <a class="dropdown-item" onclick='openDynamicPopup({{subitem|tojson|safe}})''>
+                    <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
+                </a>
+            </li>
+        {% else %}
+            <li>
+                <a class="dropdown-item" href="{{ subitem.href }}" {% if subitem.target %} target="{{subitem.target}}" {% endif %}>
+                    <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
+                </a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endmacro %}
 
  <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -36,7 +36,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav {% if menu == 'top' %}ms-auto{% endif %}">
                 {% for item in navigation %}
                     {% if item.href %}
                         <!-- Single Item -->
@@ -61,46 +61,3 @@
         </div>
     </div>
 </nav>
-
-    <!-- Universal Modal Structure -->
-<div class="modal fade" id="dynamicModal" tabindex="-1" aria-labelledby="dynamicModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="dynamicModalLabel"></h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="input-group">
-          <input type="text" id="dynamicModalContent" class="form-control" readonly>
-          <button class="btn btn-outline-secondary" type="button" id="dynamicCopyButton">Copy</button>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Script for Dynamic Modal -->
-<script>
-  function openDynamicPopup(subitem) {
-    // Set modal title and content
-    document.getElementById('dynamicModalLabel').innerText = subitem.description;
-    const modalContent = document.getElementById('dynamicModalContent');
-    modalContent.value = subitem.address;
-
-    // Add copy functionality
-    document.getElementById('dynamicCopyButton').addEventListener('click', function () {
-      modalContent.select();
-      navigator.clipboard.writeText(modalContent.value)
-        .then(() => alert('Content copied to clipboard!'))
-        .catch(() => alert('Failed to copy content.'));
-    });
-
-    // Show the modal
-    const modal = new bootstrap.Modal(document.getElementById('dynamicModal'));
-    modal.show();
-  }
-</script>
