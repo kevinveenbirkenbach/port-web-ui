@@ -3,7 +3,7 @@
     {% for subitem in subitems %}
         {% if subitems.subitems %}
             <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#">
+                <a class="dropdown-item dropdown-toggle" href="#" data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
                 </a>
                 <ul class="dropdown-menu">
@@ -12,13 +12,13 @@
             </li>
         {% elif subitem.popup %}
             <li>
-                <a class="dropdown-item" onclick='openDynamicPopup({{subitem|tojson|safe}})''>
+                <a class="dropdown-item" onclick='openDynamicPopup({{subitem|tojson|safe}})' data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
                 </a>
             </li>
         {% else %}
             <li>
-                <a class="dropdown-item" href="{{ subitem.href }}" {% if subitem.target %} target="{{subitem.target}}" {% endif %}>
+                <a class="dropdown-item" href="{{ subitem.href }}" target="{{ subitem.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon_class }}"></i> {{ subitem.name }}
                 </a>
             </li>
@@ -41,14 +41,14 @@
                     {% if item.href %}
                         <!-- Single Item -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ item.href }}">
+                            <a class="nav-link" href="{{ item.href }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
                                 <i class="{{ item.icon_class }}"></i> {{ item.name }}
                             </a>
                         </li>
                     {% else %}
                         <!-- Dropdown Menu -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" data-bs-toggle="tooltip" title="{{ item.description }}" aria-expanded="false">
                                 <i class="{{ item.icon_class }}"></i> {{ item.name }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ loop.index }}">

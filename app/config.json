@@ -130,6 +130,7 @@
                 },
                 {"name": "Code",
                 "icon_class": "fa-solid fa-laptop-code",
+                "description": "Check out my Code",
                 "subitems": [
                     {
                         "name": "Github",
