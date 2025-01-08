@@ -1,0 +1,112 @@
+{
+    "cards": [
+        {
+            "icon": "https://cloud.veen.world/s/logo_agile_coach_512x512/download",
+            "title": "Agile Coach",
+            "text": "I lead agile transformations and improve team dynamics through Scrum, DevOps, and Agile Coaching. My goal is to enhance collaboration and efficiency in organizations, ensuring agile principles are effectively implemented for sustainable success.",
+            "link": "https://www.agile-coach.world",
+            "link_text": "www.agile-coach.world"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_personal_coach_512x512/download",
+            "title": "Personal Coach",
+            "text": "Offering personalized coaching for growth and development, I utilize a blend of hypnotherapy, mediation, and holistic techniques. My approach is tailored to help you achieve personal and professional milestones, fostering holistic well-being.",
+            "link": "https://www.personalcoach.berlin",
+            "link_text": "www.personalcoach.berlin"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_yachtmaster_512x512/download",
+            "title": "Yachtmaster",
+            "text": "As a Yachtmaster, I provide comprehensive sailing education, yacht delivery, and voyage planning services. Whether you're learning to sail or need an experienced skipper, my expertise ensures a safe and enjoyable experience on the water.",
+            "link": "https://www.yachtmaster.world",
+            "link_text": "www.yachtmaster.world"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_polymath_512x512/download",
+            "title": "Polymath",
+            "text": "I support the evaluation and execution of complex cross-domain projects, offering insights across land, sea, sky, and digital realms. My expertise helps clients navigate and succeed in multifaceted environments with strategic precision.",
+            "link": "https://www.crossdomain.consulting/",
+            "link_text": "www.crossdomain.consulting"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_cybermaster_512x512/download",
+            "title": "Cybermaster",
+            "text": "Specializing in open-source IT solutions for German SMBs, I focus on automation, security, and reliability. My services are designed to create robust infrastructures that streamline operations and safeguard digital assets.",
+            "link": "https://www.cybermaster.space",
+            "link_text": "www.cybermaster.space"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_prompt_master_512x512/download",
+            "title": "Prompt Engineer",
+            "text": "Leveraging AI's power, I specialize in crafting custom prompts and creative content for AI-driven applications. My services are aimed at businesses, creatives, and researchers looking to harness AI technology for innovation, efficiency, and exploring new possibilities.",
+            "link": "https://promptmaster.nexus",
+            "link_text": "www.promptmaster.nexus"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_mediator_512x512/download",
+            "title": "Mediator",
+            "text": "Specializing in resolving interpersonal and business conflicts with empathy and neutrality, I facilitate open communication to achieve lasting agreements and strengthen relationships. My mediation services are designed for individuals, teams, and organizations to foster a harmonious and productive environment.",
+            "link": "https://www.mediator.veen.world",
+            "link_text": "www.mediator.veen.world"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_hypnotherapist_512x512/download",
+            "title": "Hypnotherapist",
+            "text": "As a certified Hypnotherapist, I offer tailored sessions to address mental and emotional challenges through hypnosis. My approach helps unlock the subconscious to overcome negative beliefs and stress, empowering you to activate self-healing and embrace positive life changes.",
+            "link": "https://www.hypno.veen.world",
+            "link_text": "www.hypno.veen.world"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_skydiver_512x512/download",
+            "title": "Aerospace Consultant",
+            "text": "As an Aerospace Consultant with aviation credentials, including a Sport Pilot License for Parachutes, and a Restricted Radiotelephony and Operator's Certificate I deliver expert consulting services. Currently training for my Private Pilot License, I specialize in guiding clients through aviation regulations, safety standards, and operational efficiency.",
+            "link": null,
+            "link_text": "Website under construction"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_hunter_512x512/download",
+            "title": "Wildlife Expert",
+            "text": "As a certified hunter and wildlife coach, I offer educational programs, nature walks, survival trainings, and photo expeditions, merging ecological knowledge with nature respect. My goal is to foster sustainable conservation and enhance appreciation for the natural world through responsible practices.",
+            "link": null,
+            "link_text": "Website under construction"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_diver_512x512/download",
+            "title": "Master Diver",
+            "text": "As a certified master diver with trainings in various specialties, I offer diving instruction, underwater photography, and guided dive tours. My experience ensures safe and enriching underwater adventures, highlighting marine conservation and the wonders of aquatic ecosystems.",
+            "link": null,
+            "link_text": "Website under construction"
+        },
+        {
+            "icon": "https://cloud.veen.world/s/logo_massage_therapist_512x512/download",
+            "title": "Massage Therapist",
+            "text": "Certified in Tantra Massage, I offer unique full-body rituals to awaken senses and harmonize body and mind. My sessions, a blend of ancient Tantra and modern relaxation, focus on energy flow, personal growth, and spiritual awakening.",
+            "link": null,
+            "link_text": "Website under construction"
+        }
+
+    ],
+    "networks": [
+      {
+        "name": "GitHub",
+        "icon": "bi bi-github",
+        "link": "https://github.com/kevinveenbirkenbach"
+      },
+      {
+        "name": "Instagram",
+        "icon": "fa-brands fa-instagram",
+        "link": "https://www.instagram.com/kevinveenbirkenbach/"
+      }
+    ],
+    "company": {
+        "titel": "Kevin Veen-Birkenbach",
+        "subtitel": "Consulting and Coaching Solutions",
+        "logo": "https://cloud.veen.world/s/logo_face_512x512/download",
+        "address": {
+            "street": "Afrikanische Straße 43",
+            "postal_code": "DE-13351",
+            "city": "Berlin",
+            "country": "Germany"
+        }
+    }
+  }

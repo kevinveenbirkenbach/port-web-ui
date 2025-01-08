@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+    {% for card in cards %}
+        {% include "card.html.j2" %}
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col">
+        <h3>Networks</h3>
+        <ul>
+            {% for network in networks %}
+                <li>
+                    <a href="{{ network.link }}">
+                        <i class="{{ network.icon }}"></i> {{ network.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

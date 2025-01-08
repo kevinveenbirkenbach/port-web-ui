@@ -1,0 +1,13 @@
+<div class="card-column col-lg-3 col-md-6 col-12">
+    <div class="card h-100 d-flex flex-column">
+        <div class="card-body d-flex flex-column">
+            <div class="card-img-top">
+                <img src="{{ card.icon }}" alt="{{ card.title }}" style="width: 100px; height: auto;">
+            </div>
+            <hr />
+            <h3 class="card-title">{{ card.title }}</h3>
+            <p class="card-text">{{ card.text }}</p>
+            <a href="{{ card.link }}" class="mt-auto btn btn-light stretched-link" ><i class="fa-solid fa-globe"></i> {{ card.link_text }}</a>
+        </div>
+    </div>
+</div>

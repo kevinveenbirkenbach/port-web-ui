@@ -1,0 +1,67 @@
+a {
+    text-decoration: none;
+    color: #000000;
+  }
+  .header img {
+    float: right;
+    width: 100px;
+    height: 100px;
+  }
+
+  .header h1 {
+    position: relative;
+  }
+  .equal-height {
+    display: flex;
+    flex: 1;
+  }
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert die Inhalte horizontal */
+    text-align: center; /* Zentriert den Text */
+  }
+
+  .card-icon {
+    display: flex;
+    justify-content: center; /* Zentriert das Icon horizontal */
+  }
+  
+  .card-text,
+  .card ul {
+    text-align: left; /* Stellt sicher, dass der Text linksbündig ist */
+  }
+
+  .card{
+    flex: 1; /* Stellt sicher, dass die Karten die ganze Höhe ihrer Container ausfüllen */
+    border-width: 3px;
+    /*border-color: #000000;*/
+  }
+
+  h3.card-title{
+    font-size: 1.3em;
+  }
+
+  .card .stretched-link{
+    font-size: 0.7em;
+  }
+
+  .card-column{
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  h3.footer-title{
+    font-size: 1.3em;
+  }
+
+  .footer {
+    margin-top: 12px;
+    text-align: center;
+    font-size:  0.7em;
+  }
+
+  .footer p, h3{
+    margin: 0px;
+    padding: 0px;
+  }
