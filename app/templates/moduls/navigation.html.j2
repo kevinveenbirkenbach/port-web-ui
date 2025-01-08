@@ -36,8 +36,8 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav {% if menu == 'top' %}ms-auto{% endif %}">
-                {% for item in navigation %}
+            <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %}">
+                {% for item in navigation[menu_type] %}
                     {% if item.href %}
                         <!-- Single Item -->
                         <li class="nav-item">

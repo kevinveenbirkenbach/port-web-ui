@@ -86,18 +86,6 @@
         }
 
     ],
-    "networks": [
-      {
-        "name": "GitHub",
-        "icon": "bi bi-github",
-        "link": "https://github.com/kevinveenbirkenbach"
-      },
-      {
-        "name": "Instagram",
-        "icon": "fa-brands fa-instagram",
-        "link": "https://www.instagram.com/kevinveenbirkenbach/"
-      }
-    ],
     "company": {
         "titel": "Kevin Veen-Birkenbach",
         "subtitel": "Consulting and Coaching Solutions",
@@ -107,41 +95,117 @@
             "postal_code": "DE-13351",
             "city": "Berlin",
             "country": "Germany"
-        }
+        },
+        "imprint_url": "https://s.veen.world/imprint"
     },
-    "navigation": [
+    "navigation": {
+        "header":[
+            {
+                "name": "Microblog",
+                "description": "Read my microblogs",
+                "icon_class": "fa-brands fa-mastodon",
+                "href": "https://microblog.veen.world/@kevinveenbirkenbach",
+                "subitems": []
+                },
+                {
+                "name": "Pictures",
+                "description": "View my photo gallery",
+                "icon_class": "fa-solid fa-camera",
+                "href": "https://picture.veen.world/kevinveenbirkenbach",
+                "subitems": []
+                },
+                {
+                "name": "Videos",
+                "description": "Watch my videos",
+                "icon_class": "fa-solid fa-video",
+                "href": "https://video.veen.world/a/kevinveenbirkenbach",
+                "subitems": []
+                },
+                {
+                "name": "Blog",
+                "description": "Read my blog",
+                "icon_class": "fa-solid fa-blog",
+                "href": "https://blog.veen.world",
+                "subitems": []
+                },
+                {"name": "Code",
+                "icon_class": "fa-solid fa-laptop-code",
+                "subitems": [
+                    {
+                        "name": "Github",
+                        "description": "View my GitHub profile",
+                        "icon_class": "bi bi-github",
+                        "href": "https://github.com/kevinveenbirkenbach",
+                        "subitems": []
+                        },
+                        {
+                            "name": "Gitea",
+                            "description": "Explore my code repositories",
+                            "icon_class": "fa-solid fa-code",
+                            "href": "https://git.veen.world/kevinveenbirkenbach",
+                            "subitems": []
+                            }
+                    ]
+                },
+                {
+                    "name": "Logbooks",
+                    "description": "My activity logs",
+                    "icon_class": "fa-solid fa-book",
+                    "href": null,
+                    "subitems": [
+                        {
+                        "name": "Skydiver",
+                        "description": "View my skydiving logs",
+                        "icon_class": "fa-solid fa-parachute-box",
+                        "href": "https://s.veen.world/skydiverlog",
+                        "subitems": []
+                        },
+                        {
+                        "name": "Skipper",
+                        "description": "See my sailing records",
+                        "icon_class": "fa-solid fa-sailboat",
+                        "href": "https://s.veen.world/meilenbuch",
+                        "subitems": []
+                        },
+                        {
+                        "name": "Diver",
+                        "description": "Check my diving logs",
+                        "icon_class": "fa-solid fa-fish",
+                        "href": "https://s.veen.world/diverlog",
+                        "subitems": []
+                        },
+                        {
+                        "name": "Pilot",
+                        "description": "Review my flight logs",
+                        "icon_class": "fa-solid fa-plane",
+                        "href": "https://s.veen.world/pilotlog",
+                        "subitems": []
+                        },
+                        {
+                        "name": "Nature",
+                        "description": "Explore my nature logs",
+                        "icon_class": "fa-solid fa-tree",
+                        "href": "https://s.veen.world/naturejournal",
+                        "subitems": []
+                        }
+                    ]
+                    }
+                
+                
+        ],
+        "footer":
+        [
         {
-        "name": "Networks",
+        "name": "Social Media",
         "description": "Social and developer networks",
         "icon_class": "fa-solid fa-network-wired",
         "href": null,
         "subitems": [
             {
-            "name": "GitHub",
-            "description": "View my GitHub profile",
-            "icon_class": "bi bi-github",
-            "href": "https://github.com/kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
             "name": "Instagram",
             "description": "Follow me on Instagram",
             "icon_class": "fa-brands fa-instagram",
             "href": "https://www.instagram.com/kevinveenbirkenbach/",
-            "subitems": []
-            },
-            {
-            "name": "XING",
-            "description": "Visit my XING profile",
-            "icon_class": "bi bi-building",
-            "href": "https://www.xing.com/profile/Kevin_VeenBirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "LinkedIn",
-            "description": "Connect on LinkedIn",
-            "icon_class": "bi bi-linkedin",
-            "href": "https://www.linkedin.com/in/kevinveenbirkenbach",
             "subitems": []
             },
             {
@@ -168,127 +232,50 @@
         ]
         },
         {
-        "name": "Fediverse",
+        "name": "Community",
         "description": "My presence in the Fediverse",
         "icon_class": "fa-brands fa-mastodon",
         "href": null,
         "subitems": [
-            {
-            "name": "Microblog",
-            "description": "Read my microblogs",
-            "icon_class": "fa-brands fa-mastodon",
-            "href": "https://microblog.veen.world/@kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "Pictures",
-            "description": "View my photo gallery",
-            "icon_class": "fa-solid fa-camera",
-            "href": "https://picture.veen.world/kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "Videos",
-            "description": "Watch my videos",
-            "icon_class": "fa-solid fa-video",
-            "href": "https://video.veen.world/a/kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "Blog",
-            "description": "Read my blog",
-            "icon_class": "fa-solid fa-blog",
-            "href": "https://blog.veen.world",
-            "subitems": []
-            },
-            {
-            "name": "Code",
-            "description": "Explore my code repositories",
-            "icon_class": "fa-solid fa-code",
-            "href": "https://git.veen.world/kevinveenbirkenbach",
-            "subitems": []
-            },
+            
             {
             "name": "Forum",
             "description": "Join the discussion",
             "icon_class": "fa-brands fa-discourse",
             "href": "https://forum.veen.world/u/kevinveenbirkenbach",
             "subitems": []
-            }
+            },
+            {
+                "name": "Newsletter",
+                "description": "Subscribe to my newsletter",
+                "icon_class": "fa-solid fa-envelope-open-text",
+                "href": "https://newsletter.veen.world/subscription/form",
+                "subitems": []
+                },
+                {
+                "name": "Patreon",
+                "description": "Support me on Patreon",
+                "icon_class": "fa-brands fa-patreon",
+                "href": "https://patreon.com/kevinveenbirkenbach",
+                "subitems": []
+             }
         ]
         },
         {
-        "name": "Engagement",
-        "description": "Opportunities to interact",
-        "icon_class": "fa-solid fa-handshake",
+        "name": "Work Hub",
+        "description": "Curated collection of self hosted tools for work, organization, and learning.",
+        "icon_class": "fa-solid fa-toolbox",
         "href": null,
         "subitems": [
             {
-            "name": "Newsletter",
-            "description": "Subscribe to my newsletter",
-            "icon_class": "fa-solid fa-envelope-open-text",
-            "href": "https://newsletter.veen.world/subscription/form",
-            "subitems": []
-            },
-            {
-            "name": "Summits",
-            "description": "Join live events",
-            "icon_class": "fa-solid fa-video",
-            "href": "https://meet.veen.world/",
-            "subitems": []
-            },
-            {
-            "name": "Mail",
-            "description": "Send me a mail",
-            "icon_class": "fa-solid fa-envelope",
-            "href": "https://mail.veen.world/",
-            "subitems": []
-            },
-            {
-            "name": "Academy",
-            "description": "Learn with my academy",
-            "icon_class": "fa-solid fa-graduation-cap",
-            "href": "https://academy.veen.world/",
-            "subitems": []
-            },
-            {
-            "name": "Chat",
-            "description": "Chat with me",
-            "icon_class": "fa-solid fa-comment",
-            "href": "https://element.veen.world/",
-            "subitems": []
-            },
-            {
-            "name": "Links",
-            "description": "Find my curated links",
-            "icon_class": "bi bi-link",
-            "href": "https://s.veen.world/admin/",
-            "subitems": []
-            },
-            {
-            "name": "Patreon",
-            "description": "Support me on Patreon",
-            "icon_class": "fa-brands fa-patreon",
-            "href": "https://patreon.com/kevinveenbirkenbach",
-            "subitems": []
-            }
-        ]
-        },
-        {
-        "name": "Workflow",
-        "description": "My tools and projects",
-        "icon_class": "fa-solid fa-briefcase",
-        "href": null,
-        "subitems": [
-            {
-            "name": "Projects",
+            "name": "Open Project",
             "description": "Explore my projects",
             "icon_class": "fa-solid fa-chart-line",
             "href": "https://project.veen.world/",
             "subitems": []
             },
             {
-            "name": "Kanban",
+            "name": "Taiga",
             "description": "View my Kanban board",
             "icon_class": "bi bi-clipboard2-check-fill",
             "href": "https://kanban.veen.world/",
@@ -309,57 +296,70 @@
             "subitems": []
             },
             {
-            "name": "Cloud",
+            "name": "Elements",
+            "description": "Chat with me",
+            "icon_class": "fa-solid fa-comment",
+            "href": "https://element.veen.world/",
+            "subitems": []
+            },
+            {
+            "name": "Big Blue Button",
+            "description": "Join live events",
+            "icon_class": "fa-solid fa-video",
+            "href": "https://meet.veen.world/",
+            "subitems": []
+            },
+            {
+            "name": "Mailu",
+            "description": "Send me a mail",
+            "icon_class": "fa-solid fa-envelope",
+            "href": "https://mail.veen.world/",
+            "subitems": []
+            },
+            {
+            "name": "Moodel",
+            "description": "Learn with my academy",
+            "icon_class": "fa-solid fa-graduation-cap",
+            "href": "https://academy.veen.world/",
+            "subitems": []
+            },
+            
+            {
+            "name": "Yourls",
+            "description": "Find my curated links",
+            "icon_class": "bi bi-link",
+            "href": "https://s.veen.world/admin/",
+            "subitems": []
+            },
+            {
+            "name": "Nextcloud",
             "description": "Access my cloud storage",
             "icon_class": "fa-solid fa-cloud",
-            "href": "https://cloud.veen.world/u/kevinveenbirkenbach",
+            "href": "https://cloud.veen.world/",
             "subitems": []
             }
         ]
         },
         {
-        "name": "Logbooks",
-        "description": "My activity logs",
-        "icon_class": "fa-solid fa-book",
-        "href": null,
-        "subitems": [
-            {
-            "name": "Skydiver",
-            "description": "View my skydiving logs",
-            "icon_class": "fa-solid fa-parachute-box",
-            "href": "https://s.veen.world/skydiverlog",
-            "subitems": []
+            "name": "Carreer Profiles",
+            "icon_class": "fa-solid fa-user-tie",
+            "subitems": [
+                {
+                    "name": "XING",
+                    "description": "Visit my XING profile",
+                    "icon_class": "bi bi-building",
+                    "href": "https://www.xing.com/profile/Kevin_VeenBirkenbach",
+                    "subitems": []
+                    },
+                    {
+                    "name": "LinkedIn",
+                    "description": "Connect on LinkedIn",
+                    "icon_class": "bi bi-linkedin",
+                    "href": "https://www.linkedin.com/in/kevinveenbirkenbach",
+                    "subitems": []
+                    }
+                ]
             },
-            {
-            "name": "Skipper",
-            "description": "See my sailing records",
-            "icon_class": "fa-solid fa-sailboat",
-            "href": "https://s.veen.world/meilenbuch",
-            "subitems": []
-            },
-            {
-            "name": "Diver",
-            "description": "Check my diving logs",
-            "icon_class": "fa-solid fa-fish",
-            "href": "https://s.veen.world/diverlog",
-            "subitems": []
-            },
-            {
-            "name": "Pilot",
-            "description": "Review my flight logs",
-            "icon_class": "fa-solid fa-plane",
-            "href": "https://s.veen.world/pilotlog",
-            "subitems": []
-            },
-            {
-            "name": "Nature",
-            "description": "Explore my nature logs",
-            "icon_class": "fa-solid fa-tree",
-            "href": "https://s.veen.world/naturejournal",
-            "subitems": []
-            }
-        ]
-        },
         {
         "name": "Contact",
         "description": "Get in touch",
@@ -420,6 +420,11 @@
             "subitems": []
             }
         ]
+        },
+        {
+            "name":"Imprint",
+            "icon_class":"fa-solid fa-scale-balanced",
+            "href":"https://s.veen.world/imprint"
         }
-    ]    
+    ]    }
   }

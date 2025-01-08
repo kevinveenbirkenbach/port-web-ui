@@ -20,23 +20,24 @@
               <img src="{{company.logo}}" alt="logo"/>
               <h1>{{company.titel}}</h1>
               <h2>{{company.subtitel}}</h2>
+              <br />
             </header>
-            {% set menu = "top" %}
-            {% include "navigation.html.j2"%}
+            {% set menu_type = "header" %}
+            {% include "moduls/navigation.html.j2"%}
             {% block content %}{% endblock %}
-            {% set menu = "bottom" %}
-            {% include "navigation.html.j2" %}
+            {% set menu_type = "footer" %}
+            {% include "moduls/navigation.html.j2" %}
             <footer class="footer">
                 <div itemscope itemtype="http://schema.org/LocalBusiness" class="small">
                     <p itemprop="name">{{ company.titel }} <br />
                     {{ company.subtitel }}</p>
                     <span><i class="fa-solid fa-location-dot"></i> {{ company.address.values() | join(", ") }}</span>
-                    <p><a href="/imprint"><i class="fa-solid fa-scale-balanced"></i> Imprint</a></p>
+                    <p><a href="{{company.imprint_url}}"><i class="fa-solid fa-scale-balanced"></i> Imprint</a></p>
                 </div>
             </footer>
         </div>
         <!-- Include modal -->
-        {% include "modal.html.j2" %}
+        {% include "moduls/modal.html.j2" %}
         <script src="{{ url_for('static', filename='js/dynamic-modal.js') }}"></script>
     </body>
 </html>

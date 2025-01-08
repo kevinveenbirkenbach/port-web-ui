@@ -1,9 +1,9 @@
-{% extends "base.html" %}
+{% extends "moduls/base.html.j2" %}
 
 {% block content %}
 <div class="row">
     {% for card in cards %}
-        {% include "card.html.j2" %}
+        {% include "moduls/card.html.j2" %}
     {% endfor %}
 </div>
 {% endblock %}
