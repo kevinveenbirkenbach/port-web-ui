@@ -196,71 +196,77 @@
         ],
         "footer":
         [
-        {
-        "name": "Social Media",
-        "description": "Social and developer networks",
-        "icon_class": "fa-solid fa-network-wired",
-        "href": null,
-        "subitems": [
             {
-            "name": "Instagram",
-            "description": "Follow me on Instagram",
-            "icon_class": "fa-brands fa-instagram",
-            "href": "https://www.instagram.com/kevinveenbirkenbach/",
-            "subitems": []
-            },
+                "name": "Third Party Plattforms",
+                "description" : "Me on other plattforms",
+                "subitems:":[
             {
-            "name": "Facebook",
-            "description": "Like my Facebook page",
-            "icon_class": "fa-brands fa-facebook",
-            "href": "https://www.facebook.com/kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "Duolingo",
-            "description": "Learn with me on Duolingo",
-            "icon_class": "fa-solid fa-language",
-            "href": "https://www.duolingo.com/profile/kevinbirkenbach",
-            "subitems": []
-            },
-            {
-            "name": "Spotify",
-            "description": "Listen to my playlists",
-            "icon_class": "fa-brands fa-spotify",
-            "href": "https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty",
-            "subitems": []
-            }
-        ]
-        },
-        {
-        "name": "Community",
-        "description": "My presence in the Fediverse",
-        "icon_class": "fa-brands fa-mastodon",
-        "href": null,
-        "subitems": [
-            
-            {
-            "name": "Forum",
-            "description": "Join the discussion",
-            "icon_class": "fa-brands fa-discourse",
-            "href": "https://forum.veen.world/u/kevinveenbirkenbach",
-            "subitems": []
-            },
-            {
-                "name": "Newsletter",
-                "description": "Subscribe to my newsletter",
-                "icon_class": "fa-solid fa-envelope-open-text",
-                "href": "https://newsletter.veen.world/subscription/form",
+            "name": "Meta",
+            "description": "Social and developer networks",
+            "icon_class": "fa-brands fa-meta",
+            "href": null,
+            "subitems": [
+                {
+                "name": "Instagram",
+                "description": "Follow me on Instagram",
+                "icon_class": "fa-brands fa-instagram",
+                "href": "https://www.instagram.com/kevinveenbirkenbach/",
                 "subitems": []
                 },
                 {
-                "name": "Patreon",
-                "description": "Support me on Patreon",
-                "icon_class": "fa-brands fa-patreon",
-                "href": "https://patreon.com/kevinveenbirkenbach",
+                "name": "Facebook",
+                "description": "Like my Facebook page",
+                "icon_class": "fa-brands fa-facebook",
+                "href": "https://www.facebook.com/kevinveenbirkenbach",
                 "subitems": []
-             }
-        ]
+                },
+                {
+                "name": "Duolingo",
+                "description": "Learn with me on Duolingo",
+                "icon_class": "fa-solid fa-language",
+                "href": "https://www.duolingo.com/profile/kevinbirkenbach",
+                "subitems": []
+                },
+                {
+                "name": "Spotify",
+                "description": "Listen to my playlists",
+                "icon_class": "fa-brands fa-spotify",
+                "href": "https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty",
+                "subitems": []
+                }
+            ]
+            },
+            {
+            "name": "Community",
+            "description": "My presence in the Fediverse",
+            "icon_class": "fa-brands fa-mastodon",
+            "href": null,
+            "subitems": [
+                
+                {
+                "name": "Forum",
+                "description": "Join the discussion",
+                "icon_class": "fa-brands fa-discourse",
+                "href": "https://forum.veen.world/u/kevinveenbirkenbach",
+                "subitems": []
+                },
+                {
+                    "name": "Newsletter",
+                    "description": "Subscribe to my newsletter",
+                    "icon_class": "fa-solid fa-envelope-open-text",
+                    "href": "https://newsletter.veen.world/subscription/form",
+                    "subitems": []
+                    },
+                    {
+                    "name": "Patreon",
+                    "description": "Support me on Patreon",
+                    "icon_class": "fa-brands fa-patreon",
+                    "href": "https://patreon.com/kevinveenbirkenbach",
+                    "subitems": []
+                }
+            ]
+            }
+            ]
         },
         {
         "name": "Work Hub",
