@@ -20,9 +20,15 @@ class ConfigurationResolver:
         if isinstance(current_config, dict):
             for key, value in list(current_config.items()):
                 if key == "link":
-                    target = self._find_entry(root_config, value.lower())
-                    current_config.clear()
-                    current_config.update(target)
+                    try:
+                        target = self._find_entry(root_config, value.lower())
+                        current_config.clear()
+                        current_config.update(target)
+                    except Exception as e:
+                        raise ValueError(
+                            f"Error resolving link '{value}': {str(e)}. "
+                            f"Current path: {key}, Current config: {current_config}"
+                        )
                 else:
                     self._recursive_resolve(value, root_config)
         elif isinstance(current_config, list):
@@ -44,16 +50,25 @@ class ConfigurationResolver:
                     None
                 )
                 if found is None:
-                    raise ValueError(f"No matching entry for '{part}' in list.")
+                    raise ValueError(
+                        f"No matching entry for '{part}' in list. Path so far: {' > '.join(parts[:parts.index(part)+1])}. "
+                        f"Current list: {current}"
+                    )
                 current = found
             elif isinstance(current, dict):
                 # Case-insensitive dictionary lookup
                 key = next((k for k in current if k.lower() == part), None)
                 if key is None:
-                    raise KeyError(f"Key '{part}' not found.")
+                    raise KeyError(
+                        f"Key '{part}' not found in dictionary. Path so far: {' > '.join(parts[:parts.index(part)+1])}. "
+                        f"Current dictionary: {current}"
+                    )
                 current = current[key]
             else:
-                raise ValueError(f"Invalid path segment '{part}'. Current type is {type(current)}.")
+                raise ValueError(
+                    f"Invalid path segment '{part}'. Current type: {type(current)}. "
+                    f"Path so far: {' > '.join(parts[:parts.index(part)+1])}"
+                )
 
             # Navigate into `subitems` if present
             if isinstance(current, dict) and "subitems" in current:
