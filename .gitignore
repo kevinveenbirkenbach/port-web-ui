@@ -1,1 +1,2 @@
 app/static/cache/*
+app/__pycache__/

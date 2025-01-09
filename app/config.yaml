@@ -6,7 +6,7 @@ cards:
   text: I lead agile transformations and improve team dynamics through Scrum, DevOps,
     and Agile Coaching. My goal is to enhance collaboration and efficiency in organizations,
     ensuring agile principles are effectively implemented for sustainable success.
-  link: https://www.agile-coach.world
+  url: https://www.agile-coach.world
   link_text: www.agile-coach.world
 - icon: 
     source: https://cloud.veen.world/s/logo_personal_coach_512x512/download
@@ -14,7 +14,7 @@ cards:
   text: Offering personalized coaching for growth and development, I utilize a blend
     of hypnotherapy, mediation, and holistic techniques. My approach is tailored to
     help you achieve personal and professional milestones, fostering holistic well-being.
-  link: https://www.personalcoach.berlin
+  url: https://www.personalcoach.berlin
   link_text: www.personalcoach.berlin
 - icon: 
     source: https://cloud.veen.world/s/logo_yachtmaster_512x512/download
@@ -22,7 +22,7 @@ cards:
   text: As a Yachtmaster, I provide comprehensive sailing education, yacht delivery,
     and voyage planning services. Whether you're learning to sail or need an experienced
     skipper, my expertise ensures a safe and enjoyable experience on the water.
-  link: https://www.yachtmaster.world
+  url: https://www.yachtmaster.world
   link_text: www.yachtmaster.world
 - icon: 
     source: https://cloud.veen.world/s/logo_polymath_512x512/download
@@ -30,7 +30,7 @@ cards:
   text: I support the evaluation and execution of complex cross-domain projects, offering
     insights across land, sea, sky, and digital realms. My expertise helps clients
     navigate and succeed in multifaceted environments with strategic precision.
-  link: https://www.crossdomain.consulting/
+  url: https://www.crossdomain.consulting/
   link_text: www.crossdomain.consulting
 - icon: 
     source: https://cloud.veen.world/s/logo_cybermaster_512x512/download
@@ -38,7 +38,7 @@ cards:
   text: Specializing in open-source IT solutions for German SMBs, I focus on automation,
     security, and reliability. My services are designed to create robust infrastructures
     that streamline operations and safeguard digital assets.
-  link: https://www.cybermaster.space
+  url: https://www.cybermaster.space
   link_text: www.cybermaster.space
 - icon: 
     source: https://cloud.veen.world/s/logo_prompt_master_512x512/download
@@ -47,7 +47,7 @@ cards:
     content for AI-driven applications. My services are aimed at businesses, creatives,
     and researchers looking to harness AI technology for innovation, efficiency, and
     exploring new possibilities.
-  link: https://promptmaster.nexus
+  url: https://promptmaster.nexus
   link_text: www.promptmaster.nexus
 - icon: 
     source: https://cloud.veen.world/s/logo_mediator_512x512/download
@@ -56,7 +56,7 @@ cards:
     and neutrality, I facilitate open communication to achieve lasting agreements
     and strengthen relationships. My mediation services are designed for individuals,
     teams, and organizations to foster a harmonious and productive environment.
-  link: https://www.mediator.veen.world
+  url: https://www.mediator.veen.world
   link_text: www.mediator.veen.world
 - icon: 
     source: https://cloud.veen.world/s/logo_hypnotherapist_512x512/download
@@ -65,7 +65,7 @@ cards:
     and emotional challenges through hypnosis. My approach helps unlock the subconscious
     to overcome negative beliefs and stress, empowering you to activate self-healing
     and embrace positive life changes.
-  link: https://www.hypno.veen.world
+  url: https://www.hypno.veen.world
   link_text: www.hypno.veen.world
 - icon: 
     source: https://cloud.veen.world/s/logo_skydiver_512x512/download
@@ -75,7 +75,7 @@ cards:
     I deliver expert consulting services. Currently training for my Private Pilot
     License, I specialize in guiding clients through aviation regulations, safety
     standards, and operational efficiency.
-  link: 
+  url: 
   link_text: Website under construction
 - icon: 
     source: https://cloud.veen.world/s/logo_hunter_512x512/download
@@ -84,7 +84,7 @@ cards:
     walks, survival trainings, and photo expeditions, merging ecological knowledge
     with nature respect. My goal is to foster sustainable conservation and enhance
     appreciation for the natural world through responsible practices.
-  link: 
+  url: 
   link_text: Website under construction
 - icon: 
     source: https://cloud.veen.world/s/logo_diver_512x512/download
@@ -93,7 +93,7 @@ cards:
     diving instruction, underwater photography, and guided dive tours. My experience
     ensures safe and enriching underwater adventures, highlighting marine conservation
     and the wonders of aquatic ecosystems.
-  link: 
+  url: 
   link_text: Website under construction
 - icon: 
     source: https://cloud.veen.world/s/logo_massage_therapist_512x512/download
@@ -101,7 +101,7 @@ cards:
   text: Certified in Tantra Massage, I offer unique full-body rituals to awaken senses
     and harmonize body and mind. My sessions, a blend of ancient Tantra and modern
     relaxation, focus on energy flow, personal growth, and spiritual awakening.
-  link: 
+  url: 
   link_text: Website under construction
 company:
   titel: Kevin Veen-Birkenbach
@@ -235,6 +235,13 @@ navigation:
         class: fa-brands fa-facebook
         href: https://www.facebook.com/kevinveenbirkenbach
         subitems: []
+    - name: Communication
+      description: Social and developer networks
+      icon:
+        class: fa-brands fa-meta
+      href: 
+      subitems:
+        - link: navigation.header.contact.whatsapp
     - name: Carreer Profiles
       icon:
         class: fa-solid fa-user-tie
