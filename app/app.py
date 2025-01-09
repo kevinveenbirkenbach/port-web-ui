@@ -3,6 +3,8 @@ from flask import Flask, render_template
 import requests
 import hashlib
 import yaml
+from utils.configuration_resolver import ConfigurationResolver
+from pprint import pprint
 
 # Verzeichnis mit Dateien, die gelöscht werden sollen
 TEMP_DIR = "static/cache/"
@@ -30,7 +32,7 @@ def cache_file(file_url, cache_dir=TEMP_DIR):
     hash_object = hashlib.blake2s(file_url.encode('utf-8'), digest_size=8)
     hash_suffix = hash_object.hexdigest()
     
-    splitted_file_url = file_url.split("/");
+    splitted_file_url = file_url.split("/")
     
     if splitted_file_url[-1] == "download":
         # Erstelle den Dateinamen mit Hash
@@ -53,10 +55,16 @@ def cache_file(file_url, cache_dir=TEMP_DIR):
     return full_path
 
 def load_config(app):
+    """Load and resolve the configuration."""
     # Lade die Konfigurationsdatei
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
-    app.config.update(config)
+
+    # Resolve links in the configuration
+    resolver = ConfigurationResolver(config)
+    resolver.resolve_links()
+    # Update the app configuration
+    app.config.update(resolver.get_config())
 
 app = Flask(__name__)
 load_config(app)
@@ -68,6 +76,9 @@ FLASK_ENV = os.getenv("FLASK_ENV", "production")
 def reload_config_in_dev():
     if FLASK_ENV == "development":
         load_config(app)
+        print("DEVELOPMENT ENVIRONMENT")
+    else:
+        print("PRODUCTIVE ENVIRONMENT")
         
     # Cachen der Icons
     for card in app.config["cards"]:

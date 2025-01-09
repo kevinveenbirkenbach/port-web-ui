@@ -204,13 +204,11 @@ navigation:
         class: fa-brands fa-telegram
       target: _blank
       href: https://t.me/kevinveenbirkenbach
-      subitems: []
     - name: WhatsApp
       description: Chat with me on WhatsApp
       icon:
         class: fa-brands fa-whatsapp
       href: https://wa.me/491781798023
-      subitems: []
   footer:
   - name: External Accounts
     description: Me on other plattforms
@@ -226,22 +224,21 @@ navigation:
       - name: Instagram
         description: Follow me on Instagram
         icon:
-        class: fa-brands fa-instagram
+          class: fa-brands fa-instagram
         href: https://www.instagram.com/kevinveenbirkenbach/
-        subitems: []
       - name: Facebook
         description: Like my Facebook page
         icon:
-        class: fa-brands fa-facebook
+          class: fa-brands fa-facebook
         href: https://www.facebook.com/kevinveenbirkenbach
-        subitems: []
     - name: Communication
       description: Social and developer networks
       icon:
         class: fa-brands fa-meta
-      href: 
-      subitems:
+      subitems: 
         - link: navigation.header.contact.whatsapp
+        - link: navigation.header.contact.signal
+        - link: navigation.header.contact.telegram
     - name: Carreer Profiles
       icon:
         class: fa-solid fa-user-tie
@@ -249,13 +246,13 @@ navigation:
       - name: XING
         description: Visit my XING profile
         icon:
-        class: bi bi-building
+          class: bi bi-building
         href: https://www.xing.com/profile/Kevin_VeenBirkenbach
         subitems: []
       - name: LinkedIn
         description: Connect on LinkedIn
         icon:
-        class: bi bi-linkedin
+          class: bi bi-linkedin
         href: https://www.linkedin.com/in/kevinveenbirkenbach
         subitems: []
     - name: Sports
@@ -267,13 +264,13 @@ navigation:
       - name: Garmin
         description: My Garmin activities
         icon:
-        class: fa-solid fa-person-running
+          class: fa-solid fa-person-running
         href: https://s.veen.world/garmin
         subitems: []
       - name: Eversports
         description: My Eversports sessions
         icon:
-        class: fa-solid fa-dumbbell
+          class: fa-solid fa-dumbbell
         href: https://s.veen.world/eversports
         subitems: []
     - name: Duolingo

@@ -19,7 +19,11 @@
         {% else %}
             <li>
                 <a class="dropdown-item" href="{{ subitem.href }}" target="{{ subitem.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ subitem.description }}">
+                {% if subitem.icon is defined and subitem.icon.class is defined %}
                     <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
+                {% else %}
+                    <p>Fehlendes Icon im Subitem: {{ subitem }}</p>
+                {% endif %} 
                 </a>
             </li>
         {% endif %}

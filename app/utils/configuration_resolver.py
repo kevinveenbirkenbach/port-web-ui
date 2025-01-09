@@ -49,7 +49,12 @@ class ConfigurationResolver:
                     (item for item in current if isinstance(item, dict) and item.get("name", "").lower() == part),
                     None
                 )
-                if found is None:
+                if found:
+                    print(
+                        f"Matching entry for '{part}' in list. Path so far: {' > '.join(parts[:parts.index(part)+1])}. "
+                        f"Current list: {current}"
+                    )
+                else:
                     raise ValueError(
                         f"No matching entry for '{part}' in list. Path so far: {' > '.join(parts[:parts.index(part)+1])}. "
                         f"Current list: {current}"
@@ -71,7 +76,7 @@ class ConfigurationResolver:
                 )
 
             # Navigate into `subitems` if present
-            if isinstance(current, dict) and "subitems" in current:
+            if isinstance(current, dict) and ("subitems" in current and current["subitems"]):
                 current = current["subitems"]
 
         return current
