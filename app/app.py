@@ -5,54 +5,13 @@ import hashlib
 import yaml
 from utils.configuration_resolver import ConfigurationResolver
 from pprint import pprint
+from utils.cache_manager import CacheManager
 
-# Verzeichnis mit Dateien, die gelöscht werden sollen
-TEMP_DIR = "static/cache/"
+# Initialize the CacheManager
+cache_manager = CacheManager()
 
-def delete_temp_files():
-    if os.path.exists(TEMP_DIR):
-        for filename in os.listdir(TEMP_DIR):
-            file_path = os.path.join(TEMP_DIR, filename)
-            if os.path.isfile(file_path):
-                os.remove(file_path)
-                print(f"Gelöscht: {file_path}")
-    else:
-        os.makedirs(TEMP_DIR)  # Erstelle das Verzeichnis, falls es nicht existiert
-        print(f"Erstellt: {TEMP_DIR}")
-
-# Löschen der Dateien beim App-Start
-delete_temp_files()
-
-def cache_file(file_url, cache_dir=TEMP_DIR):
-    """Lädt ein Icon herunter und speichert es lokal, wenn es nicht existiert. Fügt einen Hash hinzu."""
-    # Erstelle das Verzeichnis, falls es nicht existiert
-    os.makedirs(cache_dir, exist_ok=True)
-    
-    # Generiere einen 8-Zeichen-Hash basierend auf der URL
-    hash_object = hashlib.blake2s(file_url.encode('utf-8'), digest_size=8)
-    hash_suffix = hash_object.hexdigest()
-    
-    splitted_file_url = file_url.split("/")
-    
-    if splitted_file_url[-1] == "download":
-        # Erstelle den Dateinamen mit Hash
-        base_name = splitted_file_url[-2]
-    else:
-        base_name = splitted_file_url[-1]
-    filename = f"{base_name}_{hash_suffix}.png"
-    full_path = os.path.join(cache_dir, filename)
-    
-    # Wenn die Datei existiert, überspringe den Download
-    if os.path.exists(full_path):
-        return full_path
-
-    # Lade die Datei herunter
-    response = requests.get(file_url, stream=True)
-    if response.status_code == 200:
-        with open(full_path, "wb") as f:
-            for chunk in response.iter_content(1024):
-                f.write(chunk)
-    return full_path
+# Clear cache on startup
+cache_manager.clear_cache()
 
 def load_config(app):
     """Load and resolve the configuration."""
@@ -80,12 +39,12 @@ def reload_config_in_dev():
     else:
         print("PRODUCTIVE ENVIRONMENT")
         
-    # Cachen der Icons
+    # Cache the icons
     for card in app.config["cards"]:
-        card["icon"]["cache"] = cache_file(card["icon"]["source"])
+        card["icon"]["cache"] = cache_manager.cache_file(card["icon"]["source"])
     
-    app.config["company"]["logo"]["cache"] = cache_file(app.config["company"]["logo"]["source"])
-    app.config["company"]["favicon"]["cache"] = cache_file(app.config["company"]["favicon"]["source"])
+    app.config["company"]["logo"]["cache"] = cache_manager.cache_file(app.config["company"]["logo"]["source"])
+    app.config["company"]["favicon"]["cache"] = cache_manager.cache_file(app.config["company"]["favicon"]["source"])
 
 @app.route('/')
 def index():
