@@ -2,11 +2,11 @@
 {% macro render_subitems(subitems) %}
     {% for subitem in subitems %}
         {% if subitem.subitems %}
-            <li class="dropdown-submenu">
-                <a class="dropdown-item dropdown-toggle" href="#" id="submenu-{{ loop.index }}" data-bs-toggle="collapse" data-bs-target="#submenu-content-{{menu_type}}-{{ loop.index }}" aria-expanded="false" title="{{ subitem.description }}">
+            <li class="dropdown-submenu position-relative">
+                <a class="dropdown-item dropdown-toggle" href="#" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
                 </a>
-                <ul class="dropdown-menu collapse" id="submenu-content-{{menu_type}}-{{ loop.index }}">
+                <ul class="dropdown-menu">
                     {{ render_subitems(subitem.subitems) }}
                 </ul>
             </li>
@@ -29,7 +29,6 @@
         {% endif %}
     {% endfor %}
 {% endmacro %}
-
 
  <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
