@@ -5,60 +5,60 @@ function openDynamicPopup(subitem) {
   // Setze den Titel mit Icon, falls vorhanden
   const modalTitle = document.getElementById('dynamicModalLabel');
   if (subitem.icon && subitem.icon.class) {
-      modalTitle.innerHTML = `<i class="${subitem.icon.class}"></i> ${subitem.name}`;
+    modalTitle.innerHTML = `<i class="${subitem.icon.class}"></i> ${subitem.name}`;
   } else {
-      modalTitle.innerText = subitem.name;
+    modalTitle.innerText = subitem.name;
   }
 
   // Setze den Identifier, falls vorhanden
   const identifierBox = document.getElementById('dynamicIdentifierBox');
   const modalContent = document.getElementById('dynamicModalContent');
   if (subitem.identifier) {
-      identifierBox.classList.remove('d-none');
-      modalContent.value = subitem.identifier;
+    identifierBox.classList.remove('d-none');
+    modalContent.value = subitem.identifier;
   } else {
-      identifierBox.classList.add('d-none');
-      modalContent.value = '';
+    identifierBox.classList.add('d-none');
+    modalContent.value = '';
+  }
+
+  // Konfiguriere die Warnbox mit Markdown
+  const warningBox = document.getElementById('dynamicModalWarning');
+  if (subitem.warning) {
+    warningBox.classList.remove('d-none');
+    document.getElementById('dynamicModalWarningText').innerHTML = marked.parse(subitem.warning);
+  } else {
+    warningBox.classList.add('d-none');
+  }
+
+  // Konfiguriere die Infobox mit Markdown
+  const infoBox = document.getElementById('dynamicModalInfo');
+  if (subitem.info) {
+    infoBox.classList.remove('d-none');
+    document.getElementById('dynamicModalInfoText').innerHTML = marked.parse(subitem.info);
+  } else {
+    infoBox.classList.add('d-none');
   }
 
   // Zeige die Beschreibung, falls keine URL vorhanden ist
   const descriptionText = document.getElementById('dynamicDescriptionText');
   if (!subitem.url && subitem.description) {
-      descriptionText.classList.remove('d-none');
-      descriptionText.innerText = subitem.description;
+    descriptionText.classList.remove('d-none');
+    descriptionText.innerText = subitem.description;
   } else {
-      descriptionText.classList.add('d-none');
-      descriptionText.innerText = '';
-  }
-
-  // Konfiguriere die Warnbox
-  const warningBox = document.getElementById('dynamicModalWarning');
-  if (subitem.warning) {
-      warningBox.classList.remove('d-none');
-      document.getElementById('dynamicModalWarningText').innerText = subitem.warning;
-  } else {
-      warningBox.classList.add('d-none');
-  }
-
-  // Konfiguriere die Infobox
-  const infoBox = document.getElementById('dynamicModalInfo');
-  if (subitem.info) {
-      infoBox.classList.remove('d-none');
-      document.getElementById('dynamicModalInfoText').innerText = subitem.info;
-  } else {
-      infoBox.classList.add('d-none');
+    descriptionText.classList.add('d-none');
+    descriptionText.innerText = '';
   }
 
   // Konfiguriere den Link oder die Beschreibung
   const linkBox = document.getElementById('dynamicModalLink');
   const linkHref = document.getElementById('dynamicModalLinkHref');
   if (subitem.url) {
-      linkBox.classList.remove('d-none');
-      linkHref.href = subitem.url;
-      linkHref.innerText = subitem.description || "Open Link";
+    linkBox.classList.remove('d-none');
+    linkHref.href = subitem.url;
+    linkHref.innerText = subitem.description || "Open Link";
   } else {
-      linkBox.classList.add('d-none');
-      linkHref.href = '#';
+    linkBox.classList.add('d-none');
+    linkHref.href = '#';
   }
 
   // Konfiguriere die Alternativen
@@ -66,28 +66,28 @@ function openDynamicPopup(subitem) {
   const alternativesList = document.getElementById('dynamicAlternativesList');
   alternativesList.innerHTML = ''; // Clear existing alternatives
   if (subitem.alternatives && subitem.alternatives.length > 0) {
-      alternativesSection.classList.remove('d-none');
-      subitem.alternatives.forEach(alt => {
-          const listItem = document.createElement('li');
-          listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-          listItem.innerHTML = `
-            <span>
-              <i class="${alt.icon.class}"></i> ${alt.name}
-            </span>
-            <button class="btn btn-outline-secondary btn-sm" onclick='openDynamicPopup(${JSON.stringify(alt)})'>Open</button>
-          `;
-          alternativesList.appendChild(listItem);
-      });
+    alternativesSection.classList.remove('d-none');
+    subitem.alternatives.forEach(alt => {
+      const listItem = document.createElement('li');
+      listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+      listItem.innerHTML = `
+        <span>
+          <i class="${alt.icon.class}"></i> ${alt.name}
+        </span>
+        <button class="btn btn-outline-secondary btn-sm" onclick='openDynamicPopup(${JSON.stringify(alt)})'>Open</button>
+      `;
+      alternativesList.appendChild(listItem);
+    });
   } else {
-      alternativesSection.classList.add('d-none');
+    alternativesSection.classList.add('d-none');
   }
 
   // Kopierfunktion für den Identifier
   document.getElementById('dynamicCopyButton').addEventListener('click', function () {
-      modalContent.select();
-      navigator.clipboard.writeText(modalContent.value).then(() => {
-          alert('Identifier copied to clipboard!');
-      });
+    modalContent.select();
+    navigator.clipboard.writeText(modalContent.value).then(() => {
+      alert('Identifier copied to clipboard!');
+    });
   });
 
   // Modal anzeigen

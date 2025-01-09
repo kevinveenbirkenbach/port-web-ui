@@ -6,26 +6,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <!-- Warnbox, falls vorhanden -->
+        <!-- Warnbox mit Markdown -->
         <div id="dynamicModalWarning" class="alert alert-warning d-none" role="alert">
-          <i class="fa-solid fa-triangle-exclamation"></i> <span id="dynamicModalWarningText"></span>
+          <h5><i class="fa-solid fa-triangle-exclamation"></i> Warning </h5><span id="dynamicModalWarningText"></span>
         </div>
-        <!-- Infobox, falls vorhanden -->
+        <!-- Infobox mit Markdown -->
         <div id="dynamicModalInfo" class="alert alert-info d-none" role="alert">
-          <i class="fa-solid fa-circle-info"></i> <span id="dynamicModalInfoText"></span>
+          <h5><i class="fa-solid fa-circle-info"></i> Information</h5><span id="dynamicModalInfoText"></span>
         </div>
-        <!-- Description text, falls vorhanden -->
+        <!-- Description text -->
         <div id="dynamicDescriptionText" class="mt-2 d-none"></div>
         <!-- Eingabebox für Identifier -->
         <div id="dynamicIdentifierBox" class="input-group mt-2 d-none">
           <input type="text" id="dynamicModalContent" class="form-control" readonly>
           <button class="btn btn-outline-secondary" type="button" id="dynamicCopyButton">Copy</button>
         </div>
-        <!-- Link, falls vorhanden -->
+        <!-- Link -->
         <div id="dynamicModalLink" class="mt-3 d-none">
           <a href="#" target="_blank" class="btn btn-primary w-100" id="dynamicModalLinkHref"></a>
         </div>
-        <!-- Alternativen, falls vorhanden -->
+        <!-- Alternativen -->
         <div id="dynamicAlternativesSection" class="mt-4 d-none">
           <h6>Alternatives:</h6>
           <ul class="list-group" id="dynamicAlternativesList"></ul>

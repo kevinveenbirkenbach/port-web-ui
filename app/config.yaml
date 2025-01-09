@@ -170,11 +170,26 @@ navigation:
         class: fa-solid fa-envelope
       url: mailto:kevin@veen.world
       identifier: kevin@veen.world
+      alternatives:
+        - link: navigation.header.contact.matrix
     - name: Matrix
       description: Chat with me on Matrix
       icon:
         class: fa-solid fa-cubes
       identifier: "@kevinveenbirkenbach:veen.world"
+      info: |
+        #### Why Use Matrix?
+        Matrix is a secure, decentralized communication platform that ensures privacy and control over your data. Learn more about [Matrix](https://matrix.org/).
+
+        #### Privacy and Security
+        End-to-end encryption keeps your conversations private and secure.
+
+        #### Decentralized and Open
+        Matrix's federated network means you can host your own server or use any provider while staying connected.
+
+        #### A Movement for Digital Freedom
+        By using Matrix, you support open, transparent, and secure communication.
+
     - name: Mobile
       description: Call me
       icon:
@@ -183,10 +198,24 @@ navigation:
       identifier: "+491781798023"
       target: _top
     - name: Encrypted Email (PGP)
-      description: Access my PGP key
+      description: Download my PGP key
       icon:
         class: fa-solid fa-key
       url: https://s.veen.world/pgp
+      identifier: kevin@veen.world
+      info: |
+        #### Why Use PGP?
+        PGP ensures your email content stays private, protecting against surveillance, data breaches, and unauthorized access.
+
+        #### Protect Your Privacy
+        In an age of mass data collection, PGP empowers you to communicate securely and assert control over your information. For insights on protecting your digital rights, visit the [Electronic Frontier Foundation (EFF)](https://www.eff.org/).
+
+        #### Build Trust
+        Encrypting emails demonstrates a commitment to privacy and security, fostering trust in professional and personal communication.
+
+        #### Stand for Security
+        Using PGP is more than a tool—it's a statement about valuing freedom, privacy, and the security of digital communication. Explore the principles of secure communication with [privacy guides](https://privacyguides.org/).
+
     - name: Signal
       description: Message me on Signal
       icon:
@@ -211,9 +240,13 @@ navigation:
         class: fa-brands fa-whatsapp
       url: https://wa.me/491781798023
       identifier: "+491781798023"
-      warning: Whatsapp is not hosted by me!
+      warning: |
+        ⚠️ **Caution with Meta Services**  
+        Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.  
+        📌 **Recommendation:** Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
       alternatives:
         - link: navigation.header.contact.matrix
+
   footer:
   - name: External Accounts
     description: Me on other plattforms
