@@ -1,4 +1,7 @@
 function openDynamicPopup(subitem) {
+  // Schließe alle offenen Modals
+  closeAllModals();
+
   // Setze den Titel
   document.getElementById('dynamicModalLabel').innerText = subitem.description;
 
@@ -75,4 +78,23 @@ function openDynamicPopup(subitem) {
   // Modal anzeigen
   const modal = new bootstrap.Modal(document.getElementById('dynamicModal'));
   modal.show();
+}
+
+function closeAllModals() {
+  const modals = document.querySelectorAll('.modal.show'); // Alle offenen Modals finden
+  modals.forEach(modal => {
+      const modalInstance = bootstrap.Modal.getInstance(modal);
+      if (modalInstance) {
+          modalInstance.hide(); // Modal ausblenden
+      }
+  });
+
+  // Entferne die "modal-backdrop"-Elemente
+  const backdrops = document.querySelectorAll('.modal-backdrop');
+  backdrops.forEach(backdrop => backdrop.remove());
+
+  // Entferne die Klasse, die den Hintergrund ausgraut
+  document.body.classList.remove('modal-open');
+  document.body.style.overflow = '';
+  document.body.style.paddingRight = '';
 }
