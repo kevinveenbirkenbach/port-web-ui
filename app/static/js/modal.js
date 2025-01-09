@@ -74,8 +74,9 @@ function openDynamicPopup(subitem) {
         <span>
           <i class="${alt.icon.class}"></i> ${alt.name}
         </span>
-        <button class="btn btn-outline-secondary btn-sm" onclick='openDynamicPopup(${JSON.stringify(alt)})'>Open</button>
+        <button class="btn btn-outline-secondary btn-sm">Open</button>
       `;
+      listItem.querySelector('button').addEventListener('click', () => openDynamicPopup(alt));
       alternativesList.appendChild(listItem);
     });
   } else {
@@ -83,12 +84,13 @@ function openDynamicPopup(subitem) {
   }
 
   // Kopierfunktion für den Identifier
-  document.getElementById('dynamicCopyButton').addEventListener('click', function () {
+  const copyButton = document.getElementById('dynamicCopyButton');
+  copyButton.onclick = () => {
     modalContent.select();
     navigator.clipboard.writeText(modalContent.value).then(() => {
       alert('Identifier copied to clipboard!');
     });
-  });
+  };
 
   // Modal anzeigen
   const modal = new bootstrap.Modal(document.getElementById('dynamicModal'));
