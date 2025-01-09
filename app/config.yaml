@@ -181,6 +181,7 @@ navigation:
         class: fa-solid fa-phone
       url: "tel:+491781798023"
       identifier: "+491781798023"
+      target: _top
     - name: Encrypted Email (PGP)
       description: Access my PGP key
       icon:

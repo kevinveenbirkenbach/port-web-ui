@@ -2,8 +2,13 @@ function openDynamicPopup(subitem) {
   // Schließe alle offenen Modals
   closeAllModals();
 
-  // Setze den Titel
-  document.getElementById('dynamicModalLabel').innerText = subitem.name;
+  // Setze den Titel mit Icon, falls vorhanden
+  const modalTitle = document.getElementById('dynamicModalLabel');
+  if (subitem.icon && subitem.icon.class) {
+      modalTitle.innerHTML = `<i class="${subitem.icon.class}"></i> ${subitem.name}`;
+  } else {
+      modalTitle.innerText = subitem.name;
+  }
 
   // Setze den Identifier, falls vorhanden
   const identifierBox = document.getElementById('dynamicIdentifierBox');
@@ -14,6 +19,16 @@ function openDynamicPopup(subitem) {
   } else {
       identifierBox.classList.add('d-none');
       modalContent.value = '';
+  }
+
+  // Zeige die Beschreibung, falls keine URL vorhanden ist
+  const descriptionText = document.getElementById('dynamicDescriptionText');
+  if (!subitem.url && subitem.description) {
+      descriptionText.classList.remove('d-none');
+      descriptionText.innerText = subitem.description;
+  } else {
+      descriptionText.classList.add('d-none');
+      descriptionText.innerText = '';
   }
 
   // Konfiguriere die Warnbox
@@ -47,9 +62,11 @@ function openDynamicPopup(subitem) {
   }
 
   // Konfiguriere die Alternativen
+  const alternativesSection = document.getElementById('dynamicAlternativesSection');
   const alternativesList = document.getElementById('dynamicAlternativesList');
   alternativesList.innerHTML = ''; // Clear existing alternatives
   if (subitem.alternatives && subitem.alternatives.length > 0) {
+      alternativesSection.classList.remove('d-none');
       subitem.alternatives.forEach(alt => {
           const listItem = document.createElement('li');
           listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
@@ -62,10 +79,7 @@ function openDynamicPopup(subitem) {
           alternativesList.appendChild(listItem);
       });
   } else {
-      const noAltItem = document.createElement('li');
-      noAltItem.classList.add('list-group-item');
-      noAltItem.innerText = 'No alternatives available.';
-      alternativesList.appendChild(noAltItem);
+      alternativesSection.classList.add('d-none');
   }
 
   // Kopierfunktion für den Identifier
