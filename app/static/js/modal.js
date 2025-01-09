@@ -43,8 +43,6 @@ function openDynamicPopup(subitem) {
   document.getElementById('dynamicCopyButton').addEventListener('click', function () {
       modalContent.select();
       navigator.clipboard.writeText(modalContent.value)
-          .then(() => alert('Content copied to clipboard!'))
-          .catch(() => alert('Failed to copy content.'));
   });
 
   // Modal anzeigen
