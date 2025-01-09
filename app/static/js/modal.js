@@ -3,10 +3,13 @@ function openDynamicPopup(subitem) {
   document.getElementById('dynamicModalLabel').innerText = subitem.description;
 
   // Setze den Identifier, falls vorhanden
+  const identifierBox = document.getElementById('dynamicIdentifierBox');
   const modalContent = document.getElementById('dynamicModalContent');
   if (subitem.identifier) {
+      identifierBox.classList.remove('d-none');
       modalContent.value = subitem.identifier;
   } else {
+      identifierBox.classList.add('d-none');
       modalContent.value = '';
   }
 
@@ -39,10 +42,34 @@ function openDynamicPopup(subitem) {
       linkHref.href = '#';
   }
 
+  // Konfiguriere die Alternativen
+  const alternativesList = document.getElementById('dynamicAlternativesList');
+  alternativesList.innerHTML = ''; // Clear existing alternatives
+  if (subitem.alternatives && subitem.alternatives.length > 0) {
+      subitem.alternatives.forEach(alt => {
+          const listItem = document.createElement('li');
+          listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+          listItem.innerHTML = `
+            <span>
+              <i class="${alt.icon.class}"></i> ${alt.name}
+            </span>
+            <button class="btn btn-outline-secondary btn-sm" onclick='openDynamicPopup(${JSON.stringify(alt)})'>Open</button>
+          `;
+          alternativesList.appendChild(listItem);
+      });
+  } else {
+      const noAltItem = document.createElement('li');
+      noAltItem.classList.add('list-group-item');
+      noAltItem.innerText = 'No alternatives available.';
+      alternativesList.appendChild(noAltItem);
+  }
+
   // Kopierfunktion für den Identifier
   document.getElementById('dynamicCopyButton').addEventListener('click', function () {
       modalContent.select();
-      navigator.clipboard.writeText(modalContent.value)
+      navigator.clipboard.writeText(modalContent.value).then(() => {
+          alert('Identifier copied to clipboard!');
+      });
   });
 
   // Modal anzeigen

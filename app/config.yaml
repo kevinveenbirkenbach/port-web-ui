@@ -193,7 +193,7 @@ navigation:
       identifier: "+491781798023"
       warning: Signal is not hosted by me!
       alternatives:
-        link: navigation.header.contact.matrix
+        - link: navigation.header.contact.matrix
     - name: Telegram
       description: Message me on Telegram
       icon:
@@ -203,7 +203,7 @@ navigation:
       identifier: kevinveenbirkenbach
       warning: Telegram is not hosted by me!
       alternatives:
-        link: navigation.header.contact.matrix
+        - link: navigation.header.contact.matrix
     - name: WhatsApp
       description: Chat with me on WhatsApp
       icon:
@@ -212,7 +212,7 @@ navigation:
       identifier: "+491781798023"
       warning: Whatsapp is not hosted by me!
       alternatives:
-        link: navigation.header.contact.matrix
+        - link: navigation.header.contact.matrix
   footer:
   - name: External Accounts
     description: Me on other plattforms
