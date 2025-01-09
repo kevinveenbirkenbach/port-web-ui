@@ -10,7 +10,7 @@
                     {{ render_subitems(subitem.subitems) }}
                 </ul>
             </li>
-        {% elif subitem.popup %}
+        {% elif subitem.identifier %}
             <li>
                 <a class="dropdown-item" onclick='openDynamicPopup({{ subitem|tojson|safe }})' data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
@@ -18,7 +18,7 @@
             </li>
         {% else %}
             <li>
-                <a class="dropdown-item" href="{{ subitem.href }}" target="{{ subitem.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ subitem.description }}">
+                <a class="dropdown-item" href="{{ subitem.url }}" target="{{ subitem.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     {% if subitem.icon is defined and subitem.icon.class is defined %}
                         <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
                     {% else %}
@@ -42,10 +42,10 @@
         <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
             <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %}">
                 {% for item in navigation[menu_type] %}
-                    {% if item.href %}
+                    {% if item.url %}
                         <!-- Single Item -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ item.href }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
+                            <a class="nav-link" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
                                 <i class="{{ item.icon.class }}"></i> {{ item.name }}
                             </a>
                         </li>

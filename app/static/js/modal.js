@@ -2,7 +2,7 @@ function openDynamicPopup(subitem) {
     // Set modal title and content
     document.getElementById('dynamicModalLabel').innerText = subitem.description;
     const modalContent = document.getElementById('dynamicModalContent');
-    modalContent.value = subitem.address;
+    modalContent.value = subitem.identifier;
 
     // Add copy functionality
     document.getElementById('dynamicCopyButton').addEventListener('click', function () {
