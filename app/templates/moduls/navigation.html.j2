@@ -3,32 +3,33 @@
     {% for subitem in subitems %}
         {% if subitem.subitems %}
             <li class="dropdown-submenu">
-                <a class="dropdown-item" title="{{ subitem.description }}">
+                <a class="dropdown-item dropdown-toggle" href="#" id="submenu-{{ loop.index }}" data-bs-toggle="collapse" data-bs-target="#submenu-content-{{menu_type}}-{{ loop.index }}" aria-expanded="false" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
                 </a>
-                <ul class="dropdown-submenu">
+                <ul class="dropdown-menu collapse" id="submenu-content-{{menu_type}}-{{ loop.index }}">
                     {{ render_subitems(subitem.subitems) }}
                 </ul>
             </li>
         {% elif subitem.popup %}
             <li>
-                <a class="dropdown-item" onclick='openDynamicPopup({{subitem|tojson|safe}})' data-bs-toggle="tooltip" title="{{ subitem.description }}">
+                <a class="dropdown-item" onclick='openDynamicPopup({{ subitem|tojson|safe }})' data-bs-toggle="tooltip" title="{{ subitem.description }}">
                     <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
                 </a>
             </li>
         {% else %}
             <li>
                 <a class="dropdown-item" href="{{ subitem.href }}" target="{{ subitem.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ subitem.description }}">
-                {% if subitem.icon is defined and subitem.icon.class is defined %}
-                    <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
-                {% else %}
-                    <p>Fehlendes Icon im Subitem: {{ subitem }}</p>
-                {% endif %} 
+                    {% if subitem.icon is defined and subitem.icon.class is defined %}
+                        <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
+                    {% else %}
+                        <p>Fehlendes Icon im Subitem: {{ subitem }}</p>
+                    {% endif %}
                 </a>
             </li>
         {% endif %}
     {% endfor %}
 {% endmacro %}
+
 
  <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
