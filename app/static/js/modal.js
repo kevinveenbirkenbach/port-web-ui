@@ -3,7 +3,7 @@ function openDynamicPopup(subitem) {
   closeAllModals();
 
   // Setze den Titel
-  document.getElementById('dynamicModalLabel').innerText = subitem.description;
+  document.getElementById('dynamicModalLabel').innerText = subitem.name;
 
   // Setze den Identifier, falls vorhanden
   const identifierBox = document.getElementById('dynamicIdentifierBox');
@@ -34,12 +34,13 @@ function openDynamicPopup(subitem) {
       infoBox.classList.add('d-none');
   }
 
-  // Konfiguriere den Link
+  // Konfiguriere den Link oder die Beschreibung
   const linkBox = document.getElementById('dynamicModalLink');
   const linkHref = document.getElementById('dynamicModalLinkHref');
   if (subitem.url) {
       linkBox.classList.remove('d-none');
       linkHref.href = subitem.url;
+      linkHref.innerText = subitem.description || "Open Link";
   } else {
       linkBox.classList.add('d-none');
       linkHref.href = '#';
