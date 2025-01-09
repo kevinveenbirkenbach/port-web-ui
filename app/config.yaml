@@ -120,249 +120,299 @@ navigation:
   header:
   - name: Microblog
     description: Read my microblogs
-    icon_class: fa-brands fa-mastodon
+    icon:
+        class: fa-brands fa-mastodon
     href: https://microblog.veen.world/@kevinveenbirkenbach
     subitems: []
   - name: Pictures
     description: View my photo gallery
-    icon_class: fa-solid fa-camera
+    icon:
+        class: fa-solid fa-camera
     href: https://picture.veen.world/kevinveenbirkenbach
     subitems: []
   - name: Videos
     description: Watch my videos
-    icon_class: fa-solid fa-video
+    icon:
+        class: fa-solid fa-video
     href: https://video.veen.world/a/kevinveenbirkenbach
     subitems: []
   - name: Blog
     description: Read my blog
-    icon_class: fa-solid fa-blog
+    icon:
+        class: fa-solid fa-blog
     href: https://blog.veen.world
     subitems: []
   - name: Code
-    icon_class: fa-solid fa-laptop-code
+    icon:
+        class: fa-solid fa-laptop-code
     description: Check out my Code
     subitems:
     - name: Github
       description: View my GitHub profile
-      icon_class: bi bi-github
+      icon:
+        class: bi bi-github
       href: https://github.com/kevinveenbirkenbach
       subitems: []
     - name: Gitea
       description: Explore my code repositories
-      icon_class: fa-solid fa-code
+      icon:
+        class: fa-solid fa-code
       href: https://git.veen.world/kevinveenbirkenbach
       subitems: []
   - name: Contact
     description: Get in touch
-    icon_class: fa-solid fa-envelope
+    icon:
+        class: fa-solid fa-envelope
     href: 
     subitems:
     - name: Email
       description: Send me an email
-      icon_class: fa-solid fa-envelope
+      icon:
+        class: fa-solid fa-envelope
       href: kevin@veen.world
       href_praefix: mailto
       subitems: []
     - name: Matrix
       description: Chat with me on Matrix
-      icon_class: fa-solid fa-cubes
+      icon:
+        class: fa-solid fa-cubes
       popup: true
       address: "@kevinveenbirkenbach:veen.world"
     - name: Mobile
       description: Call me
-      icon_class: fa-solid fa-phone
+      icon:
+        class: fa-solid fa-phone
       href: "+491781798023"
       href_praefix: tel
       subitems: []
     - name: PGP
       description: Access my PGP key
-      icon_class: fa-solid fa-key
+      icon:
+        class: fa-solid fa-key
       href: https://s.veen.world/pgp
       subitems: []
     - name: Signal
       description: Message me on Signal
-      icon_class: fa-brands fa-signal-messenger
+      icon:
+        class: fa-brands fa-signal-messenger
       popup: true
       href: "+491781798023"
       subitems: []
     - name: Telegram
       description: Message me on Telegram
-      icon_class: fa-brands fa-telegram
+      icon:
+        class: fa-brands fa-telegram
       target: _blank
       href: https://t.me/kevinveenbirkenbach
       subitems: []
     - name: WhatsApp
       description: Chat with me on WhatsApp
-      icon_class: fa-brands fa-whatsapp
+      icon:
+        class: fa-brands fa-whatsapp
       href: https://wa.me/491781798023
       subitems: []
   footer:
   - name: External Accounts
     description: Me on other plattforms
-    icon_class: fa-solid fa-external-link-alt
+    icon:
+        class: fa-solid fa-external-link-alt
     subitems:
     - name: Meta
       description: Social and developer networks
-      icon_class: fa-brands fa-meta
+      icon:
+        class: fa-brands fa-meta
       href: 
       subitems:
       - name: Instagram
         description: Follow me on Instagram
-        icon_class: fa-brands fa-instagram
+        icon:
+        class: fa-brands fa-instagram
         href: https://www.instagram.com/kevinveenbirkenbach/
         subitems: []
       - name: Facebook
         description: Like my Facebook page
-        icon_class: fa-brands fa-facebook
+        icon:
+        class: fa-brands fa-facebook
         href: https://www.facebook.com/kevinveenbirkenbach
         subitems: []
     - name: Carreer Profiles
-      icon_class: fa-solid fa-user-tie
+      icon:
+        class: fa-solid fa-user-tie
       subitems:
       - name: XING
         description: Visit my XING profile
-        icon_class: bi bi-building
+        icon:
+        class: bi bi-building
         href: https://www.xing.com/profile/Kevin_VeenBirkenbach
         subitems: []
       - name: LinkedIn
         description: Connect on LinkedIn
-        icon_class: bi bi-linkedin
+        icon:
+        class: bi bi-linkedin
         href: https://www.linkedin.com/in/kevinveenbirkenbach
         subitems: []
     - name: Sports
       description: My sport activities
-      icon_class: fa-solid fa-running
+      icon:
+        class: fa-solid fa-running
       href: 
       subitems:
       - name: Garmin
         description: My Garmin activities
-        icon_class: fa-solid fa-person-running
+        icon:
+        class: fa-solid fa-person-running
         href: https://s.veen.world/garmin
         subitems: []
       - name: Eversports
         description: My Eversports sessions
-        icon_class: fa-solid fa-dumbbell
+        icon:
+        class: fa-solid fa-dumbbell
         href: https://s.veen.world/eversports
         subitems: []
     - name: Duolingo
       description: Learn with me on Duolingo
-      icon_class: fa-solid fa-language
+      icon:
+        class: fa-solid fa-language
       href: https://www.duolingo.com/profile/kevinbirkenbach
       subitems: []
     - name: Spotify
       description: Listen to my playlists
-      icon_class: fa-brands fa-spotify
+      icon:
+        class: fa-brands fa-spotify
       href: https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty
       subitems: []
     - name: Patreon
       description: Support me on Patreon
-      icon_class: fa-brands fa-patreon
+      icon:
+        class: fa-brands fa-patreon
       href: https://patreon.com/kevinveenbirkenbach
       subitems: []
   - name: Community
     description: My presence in the Fediverse
-    icon_class: fa-solid fa-users
+    icon:
+        class: fa-solid fa-users
     subitems:
     - name: Forum
       description: Join the discussion
-      icon_class: fa-brands fa-discourse
+      icon:
+        class: fa-brands fa-discourse
       href: https://forum.veen.world/u/kevinveenbirkenbach
       subitems: []
     - name: Newsletter
       description: Subscribe to my newsletter
-      icon_class: fa-solid fa-envelope-open-text
+      icon:
+        class: fa-solid fa-envelope-open-text
       href: https://newsletter.veen.world/subscription/form
       subitems: []
   - name: Work Hub
     description: Curated collection of self hosted tools for work, organization, and
       learning.
-    icon_class: fa-solid fa-toolbox
+    icon:
+        class: fa-solid fa-toolbox
     href: 
     subitems:
     - name: Open Project
       description: Explore my projects
-      icon_class: fa-solid fa-chart-line
+      icon:
+        class: fa-solid fa-chart-line
       href: https://project.veen.world/
       subitems: []
     - name: Taiga
       description: View my Kanban board
-      icon_class: bi bi-clipboard2-check-fill
+      icon:
+        class: bi bi-clipboard2-check-fill
       href: https://kanban.veen.world/
       subitems: []
     - name: Matomo
       description: Analyze with Matomo
-      icon_class: fa-solid fa-chart-simple
+      icon:
+        class: fa-solid fa-chart-simple
       href: https://matomo.veen.world/
       subitems: []
     - name: Baserow
       description: Organize with Baserow
-      icon_class: fa-solid fa-table
+      icon:
+        class: fa-solid fa-table
       href: https://baserow.veen.world/
       subitems: []
     - name: Elements
       description: Chat with me
-      icon_class: fa-solid fa-comment
+      icon:
+        class: fa-solid fa-comment
       href: https://element.veen.world/
       subitems: []
     - name: Big Blue Button
       description: Join live events
-      icon_class: fa-solid fa-video
+      icon:
+        class: fa-solid fa-video
       href: https://meet.veen.world/
       subitems: []
     - name: Mailu
       description: Send me a mail
-      icon_class: fa-solid fa-envelope
+      icon:
+        class: fa-solid fa-envelope
       href: https://mail.veen.world/
       subitems: []
     - name: Moodel
       description: Learn with my academy
-      icon_class: fa-solid fa-graduation-cap
+      icon:
+        class: fa-solid fa-graduation-cap
       href: https://academy.veen.world/
       subitems: []
     - name: Yourls
       description: Find my curated links
-      icon_class: bi bi-link
+      icon:
+        class: bi bi-link
       href: https://s.veen.world/admin/
       subitems: []
     - name: Nextcloud
       description: Access my cloud storage
-      icon_class: fa-solid fa-cloud
+      icon:
+        class: fa-solid fa-cloud
       href: https://cloud.veen.world/
       subitems: []
   - name: Logbooks
     description: My activity logs
-    icon_class: fa-solid fa-book
+    icon:
+        class: fa-solid fa-book
     href: 
     subitems:
     - name: Skydiver
       description: View my skydiving logs
-      icon_class: fa-solid fa-parachute-box
+      icon:
+        class: fa-solid fa-parachute-box
       href: https://s.veen.world/skydiverlog
       subitems: []
     - name: Skipper
       description: See my sailing records
-      icon_class: fa-solid fa-sailboat
+      icon:
+        class: fa-solid fa-sailboat
       href: https://s.veen.world/meilenbuch
       subitems: []
     - name: Diver
       description: Check my diving logs
-      icon_class: fa-solid fa-fish
+      icon:
+        class: fa-solid fa-fish
       href: https://s.veen.world/diverlog
       subitems: []
     - name: Pilot
       description: Review my flight logs
-      icon_class: fa-solid fa-plane
+      icon:
+        class: fa-solid fa-plane
       href: https://s.veen.world/pilotlog
       subitems: []
     - name: Nature
       description: Explore my nature logs
-      icon_class: fa-solid fa-tree
+      icon:
+        class: fa-solid fa-tree
       href: https://s.veen.world/naturejournal
   - name: Vita
     description: View my CV and professional background
-    icon_class: fa-solid fa-file-lines
+    icon:
+        class: fa-solid fa-file-lines
     href: https://s.veen.world/lebenslauf
     subitems: []
   - name: Imprint
-    icon_class: fa-solid fa-scale-balanced
+    icon:
+        class: fa-solid fa-scale-balanced
     href: https://s.veen.world/imprint

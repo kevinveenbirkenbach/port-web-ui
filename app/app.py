@@ -66,6 +66,9 @@ FLASK_ENV = os.getenv("FLASK_ENV", "production")
     
 @app.before_request
 def reload_config_in_dev():
+    if FLASK_ENV == "development":
+        load_config(app)
+        
     # Cachen der Icons
     for card in app.config["cards"]:
         card["icon"]["cache"] = cache_file(card["icon"]["source"])
