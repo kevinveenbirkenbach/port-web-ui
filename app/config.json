@@ -147,49 +147,7 @@
                             "subitems": []
                             }
                     ]
-                },
-                {
-                    "name": "Logbooks",
-                    "description": "My activity logs",
-                    "icon_class": "fa-solid fa-book",
-                    "href": null,
-                    "subitems": [
-                        {
-                        "name": "Skydiver",
-                        "description": "View my skydiving logs",
-                        "icon_class": "fa-solid fa-parachute-box",
-                        "href": "https://s.veen.world/skydiverlog",
-                        "subitems": []
-                        },
-                        {
-                        "name": "Skipper",
-                        "description": "See my sailing records",
-                        "icon_class": "fa-solid fa-sailboat",
-                        "href": "https://s.veen.world/meilenbuch",
-                        "subitems": []
-                        },
-                        {
-                        "name": "Diver",
-                        "description": "Check my diving logs",
-                        "icon_class": "fa-solid fa-fish",
-                        "href": "https://s.veen.world/diverlog",
-                        "subitems": []
-                        },
-                        {
-                        "name": "Pilot",
-                        "description": "Review my flight logs",
-                        "icon_class": "fa-solid fa-plane",
-                        "href": "https://s.veen.world/pilotlog",
-                        "subitems": []
-                        },
-                        {
-                        "name": "Nature",
-                        "description": "Explore my nature logs",
-                        "icon_class": "fa-solid fa-tree",
-                        "href": "https://s.veen.world/naturejournal"
-                        }
-                    ]
-                    },
+                },            
                     {
                         "name": "Contact",
                         "description": "Get in touch",
@@ -450,6 +408,55 @@
             }
         ]
         },
+        {
+            "name": "Logbooks",
+            "description": "My activity logs",
+            "icon_class": "fa-solid fa-book",
+            "href": null,
+            "subitems": [
+                {
+                "name": "Skydiver",
+                "description": "View my skydiving logs",
+                "icon_class": "fa-solid fa-parachute-box",
+                "href": "https://s.veen.world/skydiverlog",
+                "subitems": []
+                },
+                {
+                "name": "Skipper",
+                "description": "See my sailing records",
+                "icon_class": "fa-solid fa-sailboat",
+                "href": "https://s.veen.world/meilenbuch",
+                "subitems": []
+                },
+                {
+                "name": "Diver",
+                "description": "Check my diving logs",
+                "icon_class": "fa-solid fa-fish",
+                "href": "https://s.veen.world/diverlog",
+                "subitems": []
+                },
+                {
+                "name": "Pilot",
+                "description": "Review my flight logs",
+                "icon_class": "fa-solid fa-plane",
+                "href": "https://s.veen.world/pilotlog",
+                "subitems": []
+                },
+                {
+                "name": "Nature",
+                "description": "Explore my nature logs",
+                "icon_class": "fa-solid fa-tree",
+                "href": "https://s.veen.world/naturejournal"
+                }
+            ]
+            },
+            {
+                "name": "Vita",
+                "description": "View my CV and professional background",
+                "icon_class": "fa-solid fa-file-lines",
+                "href": "https://s.veen.world/lebenslauf",
+                "subitems": []
+            },        
         {
             "name":"Imprint",
             "icon_class":"fa-solid fa-scale-balanced",

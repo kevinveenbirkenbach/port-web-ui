@@ -82,6 +82,15 @@ h3.footer-title{
   list-style: none;
 }
 
+.navbar, .card {
+  border-radius: 5px; /* Runde Ecken */
+  border: 1px solid #ccc; /* Optionale Rahmenfarbe */
+  padding: 10px; /* Optionaler Abstand innen */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Optionale Schatteneffekte */
+  color: #000000 !important;
+  background-color: #f9f9f9;
+}
+
 .navbar-nav {
   padding: 0;
   margin: 0;
