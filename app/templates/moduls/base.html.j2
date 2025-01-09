@@ -3,7 +3,7 @@
     <head>
         <title>{{company.titel}}</title>
         <meta charset="utf-8" >
-        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link rel="icon" type="image/x-icon" href="{{company.favicon.cache}}">
         <!-- Bootstrap CSS only -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
         <!-- Bootstrap JavaScript Bundle with Popper -->
@@ -17,7 +17,7 @@
     <body>
         <div class="container">
             <header class="header">
-              <img src="{{company.logo}}" alt="logo"/>
+              <img src="{{company.logo.cache}}" alt="logo"/>
               <h1>{{company.titel}}</h1>
               <h2>{{company.subtitel}}</h2>
               <br />

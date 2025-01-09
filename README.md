@@ -1,9 +1,35 @@
-# homepage.veen.world
+# Landingpage
 
-docker build -t flask-app .
-
-docker run -d -p 5000:5000 --name landingpage flask-app
+## Access
 
 http://127.0.0.1:5000
 
-sudo docker run -d -p 5000:5000 --name landingpage -v $(pwd)/app/:/app -e FLASK_APP=app.py -e FLASK_ENV=development flask-app
+
+## Administrate Docker
+### Stop and Destroy
+```bash 
+docker stop landingpage
+docker rm landingpage
+```
+
+### Build
+```bash
+docker build -t application-landingpage .
+```
+
+### Run
+
+#### Development
+```bash
+sudo docker run -d -p 5000:5000 --name landingpage -v $(pwd)/app/:/app -e FLASK_APP=app.py -e FLASK_ENV=development application-landingpage
+```
+
+#### Production
+```bash
+docker run -d -p 5000:5000 --name landingpage application-landingpage
+```
+
+### Debug
+```bash
+docker logs -f landingpage
+```

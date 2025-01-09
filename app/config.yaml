@@ -1,0 +1,368 @@
+---
+cards:
+- icon: 
+    source: https://cloud.veen.world/s/logo_agile_coach_512x512/download
+  title: Agile Coach
+  text: I lead agile transformations and improve team dynamics through Scrum, DevOps,
+    and Agile Coaching. My goal is to enhance collaboration and efficiency in organizations,
+    ensuring agile principles are effectively implemented for sustainable success.
+  link: https://www.agile-coach.world
+  link_text: www.agile-coach.world
+- icon: 
+    source: https://cloud.veen.world/s/logo_personal_coach_512x512/download
+  title: Personal Coach
+  text: Offering personalized coaching for growth and development, I utilize a blend
+    of hypnotherapy, mediation, and holistic techniques. My approach is tailored to
+    help you achieve personal and professional milestones, fostering holistic well-being.
+  link: https://www.personalcoach.berlin
+  link_text: www.personalcoach.berlin
+- icon: 
+    source: https://cloud.veen.world/s/logo_yachtmaster_512x512/download
+  title: Yachtmaster
+  text: As a Yachtmaster, I provide comprehensive sailing education, yacht delivery,
+    and voyage planning services. Whether you're learning to sail or need an experienced
+    skipper, my expertise ensures a safe and enjoyable experience on the water.
+  link: https://www.yachtmaster.world
+  link_text: www.yachtmaster.world
+- icon: 
+    source: https://cloud.veen.world/s/logo_polymath_512x512/download
+  title: Polymath
+  text: I support the evaluation and execution of complex cross-domain projects, offering
+    insights across land, sea, sky, and digital realms. My expertise helps clients
+    navigate and succeed in multifaceted environments with strategic precision.
+  link: https://www.crossdomain.consulting/
+  link_text: www.crossdomain.consulting
+- icon: 
+    source: https://cloud.veen.world/s/logo_cybermaster_512x512/download
+  title: Cybermaster
+  text: Specializing in open-source IT solutions for German SMBs, I focus on automation,
+    security, and reliability. My services are designed to create robust infrastructures
+    that streamline operations and safeguard digital assets.
+  link: https://www.cybermaster.space
+  link_text: www.cybermaster.space
+- icon: 
+    source: https://cloud.veen.world/s/logo_prompt_master_512x512/download
+  title: Prompt Engineer
+  text: Leveraging AI's power, I specialize in crafting custom prompts and creative
+    content for AI-driven applications. My services are aimed at businesses, creatives,
+    and researchers looking to harness AI technology for innovation, efficiency, and
+    exploring new possibilities.
+  link: https://promptmaster.nexus
+  link_text: www.promptmaster.nexus
+- icon: 
+    source: https://cloud.veen.world/s/logo_mediator_512x512/download
+  title: Mediator
+  text: Specializing in resolving interpersonal and business conflicts with empathy
+    and neutrality, I facilitate open communication to achieve lasting agreements
+    and strengthen relationships. My mediation services are designed for individuals,
+    teams, and organizations to foster a harmonious and productive environment.
+  link: https://www.mediator.veen.world
+  link_text: www.mediator.veen.world
+- icon: 
+    source: https://cloud.veen.world/s/logo_hypnotherapist_512x512/download
+  title: Hypnotherapist
+  text: As a certified Hypnotherapist, I offer tailored sessions to address mental
+    and emotional challenges through hypnosis. My approach helps unlock the subconscious
+    to overcome negative beliefs and stress, empowering you to activate self-healing
+    and embrace positive life changes.
+  link: https://www.hypno.veen.world
+  link_text: www.hypno.veen.world
+- icon: 
+    source: https://cloud.veen.world/s/logo_skydiver_512x512/download
+  title: Aerospace Consultant
+  text: As an Aerospace Consultant with aviation credentials, including a Sport Pilot
+    License for Parachutes, and a Restricted Radiotelephony and Operator's Certificate
+    I deliver expert consulting services. Currently training for my Private Pilot
+    License, I specialize in guiding clients through aviation regulations, safety
+    standards, and operational efficiency.
+  link: 
+  link_text: Website under construction
+- icon: 
+    source: https://cloud.veen.world/s/logo_hunter_512x512/download
+  title: Wildlife Expert
+  text: As a certified hunter and wildlife coach, I offer educational programs, nature
+    walks, survival trainings, and photo expeditions, merging ecological knowledge
+    with nature respect. My goal is to foster sustainable conservation and enhance
+    appreciation for the natural world through responsible practices.
+  link: 
+  link_text: Website under construction
+- icon: 
+    source: https://cloud.veen.world/s/logo_diver_512x512/download
+  title: Master Diver
+  text: As a certified master diver with trainings in various specialties, I offer
+    diving instruction, underwater photography, and guided dive tours. My experience
+    ensures safe and enriching underwater adventures, highlighting marine conservation
+    and the wonders of aquatic ecosystems.
+  link: 
+  link_text: Website under construction
+- icon: 
+    source: https://cloud.veen.world/s/logo_massage_therapist_512x512/download
+  title: Massage Therapist
+  text: Certified in Tantra Massage, I offer unique full-body rituals to awaken senses
+    and harmonize body and mind. My sessions, a blend of ancient Tantra and modern
+    relaxation, focus on energy flow, personal growth, and spiritual awakening.
+  link: 
+  link_text: Website under construction
+company:
+  titel: Kevin Veen-Birkenbach
+  subtitel: Consulting and Coaching Solutions
+  logo:
+    source: https://cloud.veen.world/s/logo_face_512x512/download
+  favicon:
+    source: https://cloud.veen.world/s/veen_world_favicon/download
+  address:
+    street: Afrikanische Straße 43
+    postal_code: DE-13351
+    city: Berlin
+    country: Germany
+  imprint_url: https://s.veen.world/imprint
+navigation:
+  header:
+  - name: Microblog
+    description: Read my microblogs
+    icon_class: fa-brands fa-mastodon
+    href: https://microblog.veen.world/@kevinveenbirkenbach
+    subitems: []
+  - name: Pictures
+    description: View my photo gallery
+    icon_class: fa-solid fa-camera
+    href: https://picture.veen.world/kevinveenbirkenbach
+    subitems: []
+  - name: Videos
+    description: Watch my videos
+    icon_class: fa-solid fa-video
+    href: https://video.veen.world/a/kevinveenbirkenbach
+    subitems: []
+  - name: Blog
+    description: Read my blog
+    icon_class: fa-solid fa-blog
+    href: https://blog.veen.world
+    subitems: []
+  - name: Code
+    icon_class: fa-solid fa-laptop-code
+    description: Check out my Code
+    subitems:
+    - name: Github
+      description: View my GitHub profile
+      icon_class: bi bi-github
+      href: https://github.com/kevinveenbirkenbach
+      subitems: []
+    - name: Gitea
+      description: Explore my code repositories
+      icon_class: fa-solid fa-code
+      href: https://git.veen.world/kevinveenbirkenbach
+      subitems: []
+  - name: Contact
+    description: Get in touch
+    icon_class: fa-solid fa-envelope
+    href: 
+    subitems:
+    - name: Email
+      description: Send me an email
+      icon_class: fa-solid fa-envelope
+      href: kevin@veen.world
+      href_praefix: mailto
+      subitems: []
+    - name: Matrix
+      description: Chat with me on Matrix
+      icon_class: fa-solid fa-cubes
+      popup: true
+      address: "@kevinveenbirkenbach:veen.world"
+    - name: Mobile
+      description: Call me
+      icon_class: fa-solid fa-phone
+      href: "+491781798023"
+      href_praefix: tel
+      subitems: []
+    - name: PGP
+      description: Access my PGP key
+      icon_class: fa-solid fa-key
+      href: https://s.veen.world/pgp
+      subitems: []
+    - name: Signal
+      description: Message me on Signal
+      icon_class: fa-brands fa-signal-messenger
+      popup: true
+      href: "+491781798023"
+      subitems: []
+    - name: Telegram
+      description: Message me on Telegram
+      icon_class: fa-brands fa-telegram
+      target: _blank
+      href: https://t.me/kevinveenbirkenbach
+      subitems: []
+    - name: WhatsApp
+      description: Chat with me on WhatsApp
+      icon_class: fa-brands fa-whatsapp
+      href: https://wa.me/491781798023
+      subitems: []
+  footer:
+  - name: External Accounts
+    description: Me on other plattforms
+    icon_class: fa-solid fa-external-link-alt
+    subitems:
+    - name: Meta
+      description: Social and developer networks
+      icon_class: fa-brands fa-meta
+      href: 
+      subitems:
+      - name: Instagram
+        description: Follow me on Instagram
+        icon_class: fa-brands fa-instagram
+        href: https://www.instagram.com/kevinveenbirkenbach/
+        subitems: []
+      - name: Facebook
+        description: Like my Facebook page
+        icon_class: fa-brands fa-facebook
+        href: https://www.facebook.com/kevinveenbirkenbach
+        subitems: []
+    - name: Carreer Profiles
+      icon_class: fa-solid fa-user-tie
+      subitems:
+      - name: XING
+        description: Visit my XING profile
+        icon_class: bi bi-building
+        href: https://www.xing.com/profile/Kevin_VeenBirkenbach
+        subitems: []
+      - name: LinkedIn
+        description: Connect on LinkedIn
+        icon_class: bi bi-linkedin
+        href: https://www.linkedin.com/in/kevinveenbirkenbach
+        subitems: []
+    - name: Sports
+      description: My sport activities
+      icon_class: fa-solid fa-running
+      href: 
+      subitems:
+      - name: Garmin
+        description: My Garmin activities
+        icon_class: fa-solid fa-person-running
+        href: https://s.veen.world/garmin
+        subitems: []
+      - name: Eversports
+        description: My Eversports sessions
+        icon_class: fa-solid fa-dumbbell
+        href: https://s.veen.world/eversports
+        subitems: []
+    - name: Duolingo
+      description: Learn with me on Duolingo
+      icon_class: fa-solid fa-language
+      href: https://www.duolingo.com/profile/kevinbirkenbach
+      subitems: []
+    - name: Spotify
+      description: Listen to my playlists
+      icon_class: fa-brands fa-spotify
+      href: https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty
+      subitems: []
+    - name: Patreon
+      description: Support me on Patreon
+      icon_class: fa-brands fa-patreon
+      href: https://patreon.com/kevinveenbirkenbach
+      subitems: []
+  - name: Community
+    description: My presence in the Fediverse
+    icon_class: fa-solid fa-users
+    subitems:
+    - name: Forum
+      description: Join the discussion
+      icon_class: fa-brands fa-discourse
+      href: https://forum.veen.world/u/kevinveenbirkenbach
+      subitems: []
+    - name: Newsletter
+      description: Subscribe to my newsletter
+      icon_class: fa-solid fa-envelope-open-text
+      href: https://newsletter.veen.world/subscription/form
+      subitems: []
+  - name: Work Hub
+    description: Curated collection of self hosted tools for work, organization, and
+      learning.
+    icon_class: fa-solid fa-toolbox
+    href: 
+    subitems:
+    - name: Open Project
+      description: Explore my projects
+      icon_class: fa-solid fa-chart-line
+      href: https://project.veen.world/
+      subitems: []
+    - name: Taiga
+      description: View my Kanban board
+      icon_class: bi bi-clipboard2-check-fill
+      href: https://kanban.veen.world/
+      subitems: []
+    - name: Matomo
+      description: Analyze with Matomo
+      icon_class: fa-solid fa-chart-simple
+      href: https://matomo.veen.world/
+      subitems: []
+    - name: Baserow
+      description: Organize with Baserow
+      icon_class: fa-solid fa-table
+      href: https://baserow.veen.world/
+      subitems: []
+    - name: Elements
+      description: Chat with me
+      icon_class: fa-solid fa-comment
+      href: https://element.veen.world/
+      subitems: []
+    - name: Big Blue Button
+      description: Join live events
+      icon_class: fa-solid fa-video
+      href: https://meet.veen.world/
+      subitems: []
+    - name: Mailu
+      description: Send me a mail
+      icon_class: fa-solid fa-envelope
+      href: https://mail.veen.world/
+      subitems: []
+    - name: Moodel
+      description: Learn with my academy
+      icon_class: fa-solid fa-graduation-cap
+      href: https://academy.veen.world/
+      subitems: []
+    - name: Yourls
+      description: Find my curated links
+      icon_class: bi bi-link
+      href: https://s.veen.world/admin/
+      subitems: []
+    - name: Nextcloud
+      description: Access my cloud storage
+      icon_class: fa-solid fa-cloud
+      href: https://cloud.veen.world/
+      subitems: []
+  - name: Logbooks
+    description: My activity logs
+    icon_class: fa-solid fa-book
+    href: 
+    subitems:
+    - name: Skydiver
+      description: View my skydiving logs
+      icon_class: fa-solid fa-parachute-box
+      href: https://s.veen.world/skydiverlog
+      subitems: []
+    - name: Skipper
+      description: See my sailing records
+      icon_class: fa-solid fa-sailboat
+      href: https://s.veen.world/meilenbuch
+      subitems: []
+    - name: Diver
+      description: Check my diving logs
+      icon_class: fa-solid fa-fish
+      href: https://s.veen.world/diverlog
+      subitems: []
+    - name: Pilot
+      description: Review my flight logs
+      icon_class: fa-solid fa-plane
+      href: https://s.veen.world/pilotlog
+      subitems: []
+    - name: Nature
+      description: Explore my nature logs
+      icon_class: fa-solid fa-tree
+      href: https://s.veen.world/naturejournal
+  - name: Vita
+    description: View my CV and professional background
+    icon_class: fa-solid fa-file-lines
+    href: https://s.veen.world/lebenslauf
+    subitems: []
+  - name: Imprint
+    icon_class: fa-solid fa-scale-balanced
+    href: https://s.veen.world/imprint
