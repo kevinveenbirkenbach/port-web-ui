@@ -23,7 +23,6 @@ class CacheManager:
         """
         if not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir)
-            print(f"Created cache directory: {self.cache_dir}")
 
     def clear_cache(self):
         """
@@ -34,7 +33,6 @@ class CacheManager:
                 file_path = os.path.join(self.cache_dir, filename)
                 if os.path.isfile(file_path):
                     os.remove(file_path)
-                    print(f"Deleted: {file_path}")
 
     def cache_file(self, file_url):
         """
