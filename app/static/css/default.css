@@ -1,7 +1,10 @@
+/* General link styles */
 a {
   text-decoration: none;
   color: #000000;
 }
+
+/* Header styles */
 .header img {
   float: right;
   width: 100px;
@@ -11,61 +14,72 @@ a {
 .header h1 {
   position: relative;
 }
+
+/* Equal-height container using flexbox */
 .equal-height {
   display: flex;
   flex: 1;
 }
+
+/* Card styles */
+.card {
+  flex: 1; /* Ensures cards fill the height of their container */
+  border-radius: 5px; /* Rounded corners */
+  border: 1px solid #ccc; /* Optional border color */
+  padding: 10px; /* Inner spacing */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
+  color: #000000 !important;
+  background-color: #f9f9f9;
+}
+
 .card-body {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Zentriert die Inhalte horizontal */
-  text-align: center; /* Zentriert den Text */
+  align-items: center; /* Center content horizontally */
+  text-align: center; /* Center text alignment */
 }
 
 .card-icon {
   display: flex;
-  justify-content: center; /* Zentriert das Icon horizontal */
+  justify-content: center; /* Center the icon horizontally */
 }
 
 .card-text,
 .card ul {
-  text-align: left; /* Stellt sicher, dass der Text linksbündig ist */
+  text-align: left; /* Align text to the left */
 }
 
-.card{
-  flex: 1; /* Stellt sicher, dass die Karten die ganze Höhe ihrer Container ausfüllen */
-  border-width: 3px;
-  /*border-color: #000000;*/
-}
-
-h3.card-title{
-  font-size: 1.3em;
-}
-
-.card .stretched-link{
-  font-size: 0.7em;
-}
-
-.card-column{
+.card-column {
   padding-top: 12px;
   padding-bottom: 12px;
 }
 
-h3.footer-title{
+.card .stretched-link {
+  font-size: 0.7em;
+}
+
+h3.card-title {
   font-size: 1.3em;
 }
 
+/* Footer styles */
 .footer {
   margin-top: 12px;
   text-align: center;
-  font-size:  0.7em;
+  font-size: 0.7em;
 }
 
-.footer p, h3{
-  margin: 0px;
-  padding: 0px;
+.footer p,
+.footer h3 {
+  margin: 0;
+  padding: 0;
 }
 
+h3.footer-title {
+  font-size: 1.3em;
+}
+
+/* Dropdown menu styles */
 .dropdown-menu {
   position: absolute !important;
 }
@@ -73,40 +87,26 @@ h3.footer-title{
 .dropdown-menu-footer {
   position: absolute !important;
   top: auto !important;
-  bottom: 100%; /* Positioniert das Menü über dem Auslöser */
-  transform: translateY(-10px); /* Optional: Sanfter Abstand */
+  bottom: 100%; /* Positions the menu above the trigger */
+  transform: translateY(-10px); /* Optional spacing for smoother appearance */
 }
 
+/* Dropdown submenu styles */
 .dropdown-submenu {
   position: relative;
   list-style: none;
 }
 
-.navbar, .card {
-  border-radius: 5px; /* Runde Ecken */
-  border: 1px solid #ccc; /* Optionale Rahmenfarbe */
-  padding: 10px; /* Optionaler Abstand innen */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Optionale Schatteneffekte */
-  color: #000000 !important;
-  background-color: #f9f9f9;
-}
-
-.navbar-nav {
-  padding: 0;
-  margin: 0;
-}
-/* Stellt sicher, dass Submenüs korrekt positioniert sind */
-.dropdown-submenu {
-  position: relative;
-}
-
 .dropdown-submenu > .dropdown-menu {
   position: absolute;
   top: 0;
-  left: 100%; /* Positioniert das Submenü rechts vom Hauptmenü */
+  left: 100%; /* Default position: open to the right */
   margin-top: -1px;
+  z-index: 1050;
+  transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
 }
 
+/* Handle collapse behavior for dropdowns */
 .dropdown-menu.collapse {
   display: none;
 }
@@ -115,7 +115,7 @@ h3.footer-title{
   display: block;
 }
 
-/* Standardmäßig sind die Submenüs ausgeblendet */
+/* Ensure submenus are hidden by default */
 .dropdown-submenu .dropdown-menu {
   display: none;
   opacity: 0;
@@ -125,34 +125,19 @@ h3.footer-title{
   top: 0;
 }
 
-/* Beim Hover auf das Submenü-Element wird das Menü angezeigt */
+/* Show submenu on hover */
 .dropdown-submenu:hover > .dropdown-menu {
   display: block;
   opacity: 1;
-  z-index: 1050;
 }
 
-/* Um sicherzustellen, dass es nicht sofort verschwindet */
+/* Ensure submenu remains visible when hovered over */
 .dropdown-submenu:hover > .dropdown-menu:hover {
   display: block;
   opacity: 1;
 }
 
-
-.dropdown-submenu > .dropdown-menu {
-  position: absolute;
-  top: 0;
-  left: 100%; /* Standardmäßig rechts ausrichten */
-  margin-top: -1px;
-  z-index: 1050;
-  transition: opacity 0.3s ease-in-out;
-}
-
-.dropdown-submenu:hover > .dropdown-menu {
-  display: block;
-  opacity: 1;
-}
-
+/* Handle dynamic submenu positioning */
 .dropdown-submenu > .dropdown-menu[style*="right: 100%"] {
-  left: auto; /* Überschreibt die linke Position, wenn nach links geöffnet */
+  left: auto; /* Override left position for leftward opening */
 }
