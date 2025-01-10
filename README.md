@@ -1,7 +1,7 @@
 # Landingpage
 
 ## Access
-
+### Locale
 http://127.0.0.1:5000
 
 
@@ -19,12 +19,12 @@ docker build -t application-landingpage .
 
 ### Run
 
-#### Development
+#### Run Development Environment
 ```bash
-sudo docker run -d -p 5000:5000 --name landingpage -v $(pwd)/app/:/app -e FLASK_APP=app.py -e FLASK_ENV=development application-landingpage
+docker run -d -p 5000:5000 --name landingpage -v $(pwd)/app/:/app -e FLASK_APP=app.py -e FLASK_ENV=development application-landingpage
 ```
 
-#### Production
+#### Run Production Environment
 ```bash
 docker run -d -p 5000:5000 --name landingpage application-landingpage
 ```
@@ -33,3 +33,5 @@ docker run -d -p 5000:5000 --name landingpage application-landingpage
 ```bash
 docker logs -f landingpage
 ```
+## Author
+This software was created from [Kevin Veen-Birkenbach](https://www.veen.world/) with the help of [ChatGPT]()
