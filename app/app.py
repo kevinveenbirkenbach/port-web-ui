@@ -4,7 +4,6 @@ import requests
 import hashlib
 import yaml
 from utils.configuration_resolver import ConfigurationResolver
-from pprint import pprint
 from utils.cache_manager import CacheManager
 
 # Initialize the CacheManager
@@ -35,9 +34,6 @@ FLASK_ENV = os.getenv("FLASK_ENV", "production")
 def reload_config_in_dev():
     if FLASK_ENV == "development":
         load_config(app)
-        print("DEVELOPMENT ENVIRONMENT")
-    else:
-        print("PRODUCTIVE ENVIRONMENT")
         
     # Cache the icons
     for card in app.config["cards"]:
