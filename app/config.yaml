@@ -422,52 +422,56 @@ navigation:
         class: fa-solid fa-cloud
       url: https://cloud.veen.world/
       
-  - name: Logbooks
-    description: My activity logs
+  - name: About
+    description: All information about me
     icon:
-        class: fa-solid fa-book
-    url: 
+        class: fa-solid fa-user
     subitems:
-    - name: Skydiver
-      description: View my skydiving logs
+    - name: Logbooks
+      description: My activity logs
       icon:
-        class: fa-solid fa-parachute-box
-      url: https://s.veen.world/skydiverlog
+          class: fa-solid fa-book
+      subitems:
+      - name: Skydiver
+        description: View my skydiving logs
+        icon:
+          class: fa-solid fa-parachute-box
+        url: https://s.veen.world/skydiverlog
+        
+      - name: Skipper
+        description: See my sailing records
+        icon:
+          class: fa-solid fa-sailboat
+        url: https://s.veen.world/meilenbuch
+        
+      - name: Diver
+        description: Check my diving logs
+        icon:
+          class: fa-solid fa-fish
+        url: https://s.veen.world/diverlog
+        
+      - name: Pilot
+        description: Review my flight logs
+        icon:
+          class: fa-solid fa-plane
+        url: https://s.veen.world/pilotlog
+        
+      - name: Nature
+        description: Explore my nature logs
+        icon:
+          class: fa-solid fa-tree
+        url: https://s.veen.world/naturejournal
+    - name: Vita
+      description: View my CV
+      icon:
+          class: fa-solid fa-file-lines
+      url: https://s.veen.world/lebenslauf
+    - name: Certificates
+      description: View my certifications and degrees
+      icon:
+          class: fa-solid fa-graduation-cap
+      url: https://s.veen.world/lebenslauf
       
-    - name: Skipper
-      description: See my sailing records
-      icon:
-        class: fa-solid fa-sailboat
-      url: https://s.veen.world/meilenbuch
-      
-    - name: Diver
-      description: Check my diving logs
-      icon:
-        class: fa-solid fa-fish
-      url: https://s.veen.world/diverlog
-      
-    - name: Pilot
-      description: Review my flight logs
-      icon:
-        class: fa-solid fa-plane
-      url: https://s.veen.world/pilotlog
-      
-    - name: Nature
-      description: Explore my nature logs
-      icon:
-        class: fa-solid fa-tree
-      url: https://s.veen.world/naturejournal
-  - name: Vita
-    description: View my CV
-    icon:
-        class: fa-solid fa-file-lines
-    url: https://s.veen.world/lebenslauf
-  - name: Certificates
-    description: View my certifications and degrees
-    icon:
-        class: fa-solid fa-graduation-cap
-    url: https://s.veen.world/lebenslauf
-    
   - name: Imprint
     icon:
         class: fa-solid fa-scale-balanced
