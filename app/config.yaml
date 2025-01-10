@@ -1,9 +1,9 @@
 ---
 accounts:
   name: Accounts
-  description: Me on other plattforms
+  description: My Online Accounts
   icon:
-      class: fa-solid fa-external-link-alt
+      class: fa-solid fa-users
   subitems:
   - name: Meta
     description: Social and developer networks
@@ -16,6 +16,8 @@ accounts:
       icon:
         class: fa-brands fa-instagram
       url: https://www.instagram.com/kevinveenbirkenbach/
+      identifier: kevinveenbirkenbach
+      warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.
     - name: Facebook
       description: Like my Facebook page
       icon:
@@ -31,13 +33,13 @@ accounts:
       icon:
         class: bi bi-building
       url: https://www.xing.com/profile/Kevin_VeenBirkenbach
-      subitems: []
+      
     - name: LinkedIn
       description: Connect on LinkedIn
       icon:
         class: bi bi-linkedin
       url: https://www.linkedin.com/in/kevinveenbirkenbach
-      subitems: []
+      
   - name: Sports
     description: My sport activities
     icon:
@@ -49,31 +51,37 @@ accounts:
       icon:
         class: fa-solid fa-person-running
       url: https://s.veen.world/garmin
-      subitems: []
+      
     - name: Eversports
       description: My Eversports sessions
       icon:
         class: fa-solid fa-dumbbell
       url: https://s.veen.world/eversports
-      subitems: []
+      
   - name: Duolingo
     description: Learn with me on Duolingo
     icon:
       class: fa-solid fa-language
     url: https://www.duolingo.com/profile/kevinbirkenbach
-    subitems: []
+    
   - name: Spotify
     description: Listen to my playlists
     icon:
       class: fa-brands fa-spotify
     url: https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty
-    subitems: []
+    
   - name: Patreon
     description: Support me on Patreon
     icon:
       class: fa-brands fa-patreon
     url: https://patreon.com/kevinveenbirkenbach
-    subitems: []
+    
+  - name: Discourse
+    description: Follow me on Discourse
+    icon:
+      class: fa-brands fa-discourse
+    url: https://forum.veen.world/u/kevinveenbirkenbach
+    
 
 cards:
 - icon: 
@@ -199,25 +207,25 @@ navigation:
     icon:
         class: fa-brands fa-mastodon
     url: https://microblog.veen.world/@kevinveenbirkenbach
-    subitems: []
+    
   - name: Pictures
     description: View my photo gallery
     icon:
         class: fa-solid fa-camera
     url: https://picture.veen.world/kevinveenbirkenbach
-    subitems: []
+    
   - name: Videos
     description: Watch my videos
     icon:
         class: fa-solid fa-video
     url: https://video.veen.world/a/kevinveenbirkenbach
-    subitems: []
+    
   - name: Blog
     description: Read my blog
     icon:
         class: fa-solid fa-blog
     url: https://blog.veen.world
-    subitems: []
+    
   - name: Code
     icon:
         class: fa-solid fa-laptop-code
@@ -228,13 +236,13 @@ navigation:
       icon:
         class: bi bi-github
       url: https://github.com/kevinveenbirkenbach
-      subitems: []
+      
     - name: Gitea
       description: Explore my code repositories
       icon:
         class: fa-solid fa-code
       url: https://git.veen.world/kevinveenbirkenbach
-      subitems: []
+      
   - name: Contact
     description: Get in touch
     icon:
@@ -276,7 +284,7 @@ navigation:
     - name: Messenger
       description: Social and developer networks
       icon:
-        class: fa-brands fa-meta
+        class: fa-solid fa-comments
       subitems: 
       - name: Matrix
         description: Chat with me on Matrix
@@ -319,7 +327,6 @@ navigation:
           class: fa-brands fa-whatsapp
         url: https://wa.me/491781798023
         identifier: "+491781798023"
-        warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.  
         info: Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
         alternatives:
           - link: navigation.header.contact.messenger.matrix
@@ -328,90 +335,93 @@ navigation:
 
   footer:
   - link: accounts
-  - name: Community
-    description: My presence in the Fediverse
+  - name: Solution Hub
+    description: Curated collection of self hosted tools
     icon:
-        class: fa-solid fa-users
-    subitems:
-    - name: Forum
-      description: Join the discussion
-      icon:
-        class: fa-brands fa-discourse
-      url: https://forum.veen.world/u/kevinveenbirkenbach
-      subitems: []
-    - name: Newsletter
-      description: Subscribe to my newsletter
-      icon:
-        class: fa-solid fa-envelope-open-text
-      url: https://newsletter.veen.world/subscription/form
-      subitems: []
-  - name: Work Hub
-    description: Curated collection of self hosted tools for work, organization, and
-      learning.
-    icon:
-        class: fa-solid fa-toolbox
+        class: fa-solid fa-network-wired
     url: 
     subitems:
-    - name: Open Project
-      description: Explore my projects
+    - name: Community
+      description: Tools to manage the community
       icon:
-        class: fa-solid fa-chart-line
-      url: https://project.veen.world/
-      subitems: []
-    - name: Taiga
-      description: View my Kanban board
+          class: fa-solid fa-users
+      subitems:
+      - name: Forum
+        description: Join the discussion
+        icon:
+          class: fa-brands fa-discourse
+        url: https://forum.veen.world/
+      - name: Learning Platform
+        description: Learn with my academy
+        icon:
+          class: fa-solid fa-graduation-cap
+        url: https://academy.veen.world/
+      - name: Newsletter
+        description: Subscribe to my newsletter
+        icon:
+          class: fa-solid fa-envelope-open-text
+        url: https://newsletter.veen.world/subscription/form
+    - name: Project Management
+      description: Project Management Tools
       icon:
-        class: bi bi-clipboard2-check-fill
-      url: https://kanban.veen.world/
-      subitems: []
+          class: fa-solid fa-chart-line
+      subitems:
+      - name: Open Project
+        description: Explore my projects
+        icon:
+          class: fa-solid fa-tasks
+        url: https://project.veen.world/
+        
+      - name: Taiga
+        description: View my Kanban board
+        icon:
+          class: bi bi-clipboard2-check-fill
+        url: https://kanban.veen.world/
+        
     - name: Matomo
       description: Analyze with Matomo
       icon:
         class: fa-solid fa-chart-simple
       url: https://matomo.veen.world/
-      subitems: []
+      
     - name: Baserow
       description: Organize with Baserow
       icon:
         class: fa-solid fa-table
       url: https://baserow.veen.world/
-      subitems: []
-    - name: Elements
-      description: Chat with me
+    - name: Communication
       icon:
-        class: fa-solid fa-comment
-      url: https://element.veen.world/
-      subitems: []
-    - name: Big Blue Button
-      description: Join live events
-      icon:
-        class: fa-solid fa-video
-      url: https://meet.veen.world/
-      subitems: []
-    - name: Mailu
-      description: Send me a mail
-      icon:
-        class: fa-solid fa-envelope
-      url: https://mail.veen.world/
-      subitems: []
-    - name: Moodel
-      description: Learn with my academy
-      icon:
-        class: fa-solid fa-graduation-cap
-      url: https://academy.veen.world/
-      subitems: []
+        class: fa-solid fa-comments
+      subitems:
+      - name: Elements
+        description: Chat with me
+        icon:
+          class: fa-solid fa-comment
+        url: https://element.veen.world/
+        
+      - name: Big Blue Button
+        description: Join live events
+        icon:
+          class: fa-solid fa-video
+        url: https://meet.veen.world/
+        
+      - name: Mailu
+        description: Send me a mail
+        icon:
+          class: fa-solid fa-envelope
+        url: https://mail.veen.world/      
     - name: Yourls
       description: Find my curated links
       icon:
         class: bi bi-link
       url: https://s.veen.world/admin/
-      subitems: []
+      
     - name: Nextcloud
       description: Access my cloud storage
       icon:
         class: fa-solid fa-cloud
       url: https://cloud.veen.world/
-      subitems: []
+      
   - name: Logbooks
     description: My activity logs
     icon:
@@ -423,36 +433,41 @@ navigation:
       icon:
         class: fa-solid fa-parachute-box
       url: https://s.veen.world/skydiverlog
-      subitems: []
+      
     - name: Skipper
       description: See my sailing records
       icon:
         class: fa-solid fa-sailboat
       url: https://s.veen.world/meilenbuch
-      subitems: []
+      
     - name: Diver
       description: Check my diving logs
       icon:
         class: fa-solid fa-fish
       url: https://s.veen.world/diverlog
-      subitems: []
+      
     - name: Pilot
       description: Review my flight logs
       icon:
         class: fa-solid fa-plane
       url: https://s.veen.world/pilotlog
-      subitems: []
+      
     - name: Nature
       description: Explore my nature logs
       icon:
         class: fa-solid fa-tree
       url: https://s.veen.world/naturejournal
   - name: Vita
-    description: View my CV and professional background
+    description: View my CV
     icon:
         class: fa-solid fa-file-lines
     url: https://s.veen.world/lebenslauf
-    subitems: []
+  - name: Certificates
+    description: View my certifications and degrees
+    icon:
+        class: fa-solid fa-graduation-cap
+    url: https://s.veen.world/lebenslauf
+    
   - name: Imprint
     icon:
         class: fa-solid fa-scale-balanced
