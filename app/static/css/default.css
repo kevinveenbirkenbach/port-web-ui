@@ -22,7 +22,7 @@ a {
 }
 
 /* Card styles */
-.card {
+.navbar, .card {
   flex: 1; /* Ensures cards fill the height of their container */
   border-radius: 5px; /* Rounded corners */
   border: 1px solid #ccc; /* Optional border color */
