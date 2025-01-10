@@ -1,4 +1,80 @@
 ---
+accounts:
+  name: Accounts
+  description: Me on other plattforms
+  icon:
+      class: fa-solid fa-external-link-alt
+  subitems:
+  - name: Meta
+    description: Social and developer networks
+    icon:
+      class: fa-brands fa-meta
+    url: 
+    subitems:
+    - name: Instagram
+      description: Follow me on Instagram
+      icon:
+        class: fa-brands fa-instagram
+      url: https://www.instagram.com/kevinveenbirkenbach/
+    - name: Facebook
+      description: Like my Facebook page
+      icon:
+        class: fa-brands fa-facebook
+      url: https://www.facebook.com/kevinveenbirkenbach
+  - link: navigation.header.contact.messenger
+  - name: Carreer Profiles
+    icon:
+      class: fa-solid fa-user-tie
+    subitems:
+    - name: XING
+      description: Visit my XING profile
+      icon:
+        class: bi bi-building
+      url: https://www.xing.com/profile/Kevin_VeenBirkenbach
+      subitems: []
+    - name: LinkedIn
+      description: Connect on LinkedIn
+      icon:
+        class: bi bi-linkedin
+      url: https://www.linkedin.com/in/kevinveenbirkenbach
+      subitems: []
+  - name: Sports
+    description: My sport activities
+    icon:
+      class: fa-solid fa-running
+    url: 
+    subitems:
+    - name: Garmin
+      description: My Garmin activities
+      icon:
+        class: fa-solid fa-person-running
+      url: https://s.veen.world/garmin
+      subitems: []
+    - name: Eversports
+      description: My Eversports sessions
+      icon:
+        class: fa-solid fa-dumbbell
+      url: https://s.veen.world/eversports
+      subitems: []
+  - name: Duolingo
+    description: Learn with me on Duolingo
+    icon:
+      class: fa-solid fa-language
+    url: https://www.duolingo.com/profile/kevinbirkenbach
+    subitems: []
+  - name: Spotify
+    description: Listen to my playlists
+    icon:
+      class: fa-brands fa-spotify
+    url: https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty
+    subitems: []
+  - name: Patreon
+    description: Support me on Patreon
+    icon:
+      class: fa-brands fa-patreon
+    url: https://patreon.com/kevinveenbirkenbach
+    subitems: []
+
 cards:
 - icon: 
     source: https://cloud.veen.world/s/logo_agile_coach_512x512/download
@@ -251,80 +327,7 @@ navigation:
           - link: navigation.header.contact.messenger.telegram
 
   footer:
-  - name: Accounts
-    description: Me on other plattforms
-    icon:
-        class: fa-solid fa-external-link-alt
-    subitems:
-    - name: Meta
-      description: Social and developer networks
-      icon:
-        class: fa-brands fa-meta
-      url: 
-      subitems:
-      - name: Instagram
-        description: Follow me on Instagram
-        icon:
-          class: fa-brands fa-instagram
-        url: https://www.instagram.com/kevinveenbirkenbach/
-      - name: Facebook
-        description: Like my Facebook page
-        icon:
-          class: fa-brands fa-facebook
-        url: https://www.facebook.com/kevinveenbirkenbach
-    - link: navigation.header.contact.messenger
-    - name: Carreer Profiles
-      icon:
-        class: fa-solid fa-user-tie
-      subitems:
-      - name: XING
-        description: Visit my XING profile
-        icon:
-          class: bi bi-building
-        url: https://www.xing.com/profile/Kevin_VeenBirkenbach
-        subitems: []
-      - name: LinkedIn
-        description: Connect on LinkedIn
-        icon:
-          class: bi bi-linkedin
-        url: https://www.linkedin.com/in/kevinveenbirkenbach
-        subitems: []
-    - name: Sports
-      description: My sport activities
-      icon:
-        class: fa-solid fa-running
-      url: 
-      subitems:
-      - name: Garmin
-        description: My Garmin activities
-        icon:
-          class: fa-solid fa-person-running
-        url: https://s.veen.world/garmin
-        subitems: []
-      - name: Eversports
-        description: My Eversports sessions
-        icon:
-          class: fa-solid fa-dumbbell
-        url: https://s.veen.world/eversports
-        subitems: []
-    - name: Duolingo
-      description: Learn with me on Duolingo
-      icon:
-        class: fa-solid fa-language
-      url: https://www.duolingo.com/profile/kevinbirkenbach
-      subitems: []
-    - name: Spotify
-      description: Listen to my playlists
-      icon:
-        class: fa-brands fa-spotify
-      url: https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty
-      subitems: []
-    - name: Patreon
-      description: Support me on Patreon
-      icon:
-        class: fa-brands fa-patreon
-      url: https://patreon.com/kevinveenbirkenbach
-      subitems: []
+  - link: accounts
   - name: Community
     description: My presence in the Fediverse
     icon:

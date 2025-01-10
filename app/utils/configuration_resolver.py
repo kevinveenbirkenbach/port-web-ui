@@ -24,8 +24,7 @@ class ConfigurationResolver:
                     try:
                         target = self._find_entry(root_config, value.lower(), True)
                         if isinstance(target, list) and len(target) > 2:
-                            target = self._find_entry(root_config, value.lower(), False)
-                            
+                            target = self._find_entry(root_config, value.lower(), False)    
                         current_config.clear()
                         current_config.update(target)
                     except Exception as e: 
