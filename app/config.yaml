@@ -240,12 +240,12 @@ navigation:
         class: fa-brands fa-whatsapp
       url: https://wa.me/491781798023
       identifier: "+491781798023"
-      warning: |
-        ⚠️ **Caution with Meta Services**  
-        Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.  
-        📌 **Recommendation:** Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
+      warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.  
+      info: Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
       alternatives:
         - link: navigation.header.contact.matrix
+        - link: navigation.header.contact.signal
+        - link: navigation.header.contact.telegram
 
   footer:
   - name: External Accounts
