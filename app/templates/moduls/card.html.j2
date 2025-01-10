@@ -7,8 +7,8 @@
             <hr />
             <h3 class="card-title">{{ card.title }}</h3>
             <p class="card-text">{{ card.text }}</p>
-            {% if card.link %}
-                <a  href="{{ card.link }}" class="mt-auto btn btn-light stretched-link" ><i class="fa-solid fa-globe"></i> {{ card.link_text }}</a>
+            {% if card.url %}
+                <a  href="{{ card.url }}" class="mt-auto btn btn-light stretched-link" ><i class="fa-solid fa-globe"></i> {{ card.link_text }}</a>
             {% else %}
                 <i class="fa-solid fa-hourglass"></i> {{ card.link_text }}
             {% endif %}
