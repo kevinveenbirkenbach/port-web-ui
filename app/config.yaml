@@ -5,7 +5,52 @@ accounts:
   icon:
       class: fa-solid fa-users
   subitems:
-  - name: Meta
+  - name: Publications
+    description: My Publications
+    icon:
+        class: fas fa-newspaper
+    subitems:
+    - name: Microblog
+      description: Read my microblogs
+      icon:
+          class: fa-brands fa-mastodon
+      url: https://microblog.veen.world/@kevinveenbirkenbach
+      
+    - name: Pictures
+      description: View my photo gallery
+      icon:
+          class: fa-solid fa-camera
+      url: https://picture.veen.world/kevinveenbirkenbach
+      
+    - name: Videos
+      description: Watch my videos
+      icon:
+          class: fa-solid fa-video
+      url: https://video.veen.world/a/kevinveenbirkenbach
+      
+    - name: Blog
+      description: Read my blog
+      icon:
+          class: fa-solid fa-blog
+      url: https://blog.veen.world
+      
+    - name: Code
+      icon:
+          class: fa-solid fa-laptop-code
+      description: Check out my Code
+      subitems:
+      - name: Github
+        description: View my GitHub profile
+        icon:
+          class: bi bi-github
+        url: https://github.com/kevinveenbirkenbach
+        
+      - name: Gitea
+        description: Explore my code repositories
+        icon:
+          class: fa-solid fa-code
+        url: https://git.veen.world/kevinveenbirkenbach
+  - name: Social Media
     description: Social and developer networks
     icon:
       class: fa-brands fa-meta
@@ -201,48 +246,7 @@ company:
     country: Germany
   imprint_url: https://s.veen.world/imprint
 navigation:
-  header:
-  - name: Microblog
-    description: Read my microblogs
-    icon:
-        class: fa-brands fa-mastodon
-    url: https://microblog.veen.world/@kevinveenbirkenbach
-    
-  - name: Pictures
-    description: View my photo gallery
-    icon:
-        class: fa-solid fa-camera
-    url: https://picture.veen.world/kevinveenbirkenbach
-    
-  - name: Videos
-    description: Watch my videos
-    icon:
-        class: fa-solid fa-video
-    url: https://video.veen.world/a/kevinveenbirkenbach
-    
-  - name: Blog
-    description: Read my blog
-    icon:
-        class: fa-solid fa-blog
-    url: https://blog.veen.world
-    
-  - name: Code
-    icon:
-        class: fa-solid fa-laptop-code
-    description: Check out my Code
-    subitems:
-    - name: Github
-      description: View my GitHub profile
-      icon:
-        class: bi bi-github
-      url: https://github.com/kevinveenbirkenbach
-      
-    - name: Gitea
-      description: Explore my code repositories
-      icon:
-        class: fa-solid fa-code
-      url: https://git.veen.world/kevinveenbirkenbach
-      
+  header:      
   - name: Contact
     description: Get in touch
     icon:
@@ -252,10 +256,33 @@ navigation:
       description: Send me an email
       icon:
         class: fa-solid fa-envelope
-      url: mailto:kevin@veen.world
-      identifier: kevin@veen.world
-      alternatives:
-        - link: navigation.header.contact.messenger.matrix
+      subitems:
+      - name: Email
+        description: Send me an email
+        icon:
+          class: fa-solid fa-envelope
+        url: mailto:kevin@veen.world
+        identifier: kevin@veen.world
+        alternatives:
+          - link: navigation.header.contact.messenger.matrix
+      - name: Encrypted Email (PGP)
+        description: Download my PGP key
+        icon:
+          class: fa-solid fa-key
+        url: https://s.veen.world/pgp
+        identifier: kevin@veen.world
+        info: |
+          #### Why Use PGP?
+          PGP ensures your email content stays private, protecting against surveillance, data breaches, and unauthorized access.
+
+          #### Protect Your Privacy
+          In an age of mass data collection, PGP empowers you to communicate securely and assert control over your information. For insights on protecting your digital rights, visit the [Electronic Frontier Foundation (EFF)](https://www.eff.org/).
+
+          #### Build Trust
+          Encrypting emails demonstrates a commitment to privacy and security, fostering trust in professional and personal communication.
+
+          #### Stand for Security
+          Using PGP is more than a tool—it's a statement about valuing freedom, privacy, and the security of digital communication. Explore the principles of secure communication with [privacy guides](https://privacyguides.org/).
     - name: Mobile
       description: Call me
       icon:
@@ -263,24 +290,6 @@ navigation:
       url: "tel:+491781798023"
       identifier: "+491781798023"
       target: _top
-    - name: Encrypted Email (PGP)
-      description: Download my PGP key
-      icon:
-        class: fa-solid fa-key
-      url: https://s.veen.world/pgp
-      identifier: kevin@veen.world
-      info: |
-        #### Why Use PGP?
-        PGP ensures your email content stays private, protecting against surveillance, data breaches, and unauthorized access.
-
-        #### Protect Your Privacy
-        In an age of mass data collection, PGP empowers you to communicate securely and assert control over your information. For insights on protecting your digital rights, visit the [Electronic Frontier Foundation (EFF)](https://www.eff.org/).
-
-        #### Build Trust
-        Encrypting emails demonstrates a commitment to privacy and security, fostering trust in professional and personal communication.
-
-        #### Stand for Security
-        Using PGP is more than a tool—it's a statement about valuing freedom, privacy, and the security of digital communication. Explore the principles of secure communication with [privacy guides](https://privacyguides.org/).
     - name: Messenger
       description: Social and developer networks
       icon:
@@ -378,17 +387,6 @@ navigation:
           class: bi bi-clipboard2-check-fill
         url: https://kanban.veen.world/
         
-    - name: Matomo
-      description: Analyze with Matomo
-      icon:
-        class: fa-solid fa-chart-simple
-      url: https://matomo.veen.world/
-      
-    - name: Baserow
-      description: Organize with Baserow
-      icon:
-        class: fa-solid fa-table
-      url: https://baserow.veen.world/
     - name: Communication
       icon:
         class: fa-solid fa-comments
@@ -409,19 +407,34 @@ navigation:
         description: Send me a mail
         icon:
           class: fa-solid fa-envelope
-        url: https://mail.veen.world/      
-    - name: Yourls
-      description: Find my curated links
+        url: https://mail.veen.world/
+    - name: Tools
       icon:
-        class: bi bi-link
-      url: https://s.veen.world/admin/
-      
-    - name: Nextcloud
-      description: Access my cloud storage
-      icon:
-        class: fa-solid fa-cloud
-      url: https://cloud.veen.world/
-      
+        class: fas fa-tools
+      subitems:
+      - name: Matomo
+        description: Analyze with Matomo
+        icon:
+          class: fa-solid fa-chart-simple
+        url: https://matomo.veen.world/
+        
+      - name: Baserow
+        description: Organize with Baserow
+        icon:
+          class: fa-solid fa-table
+        url: https://baserow.veen.world/    
+      - name: Yourls
+        description: Find my curated links
+        icon:
+          class: bi bi-link
+        url: https://s.veen.world/admin/
+        
+      - name: Nextcloud
+        description: Access my cloud storage
+        icon:
+          class: fa-solid fa-cloud
+        url: https://cloud.veen.world/
+        
   - name: About
     description: All information about me
     icon:
@@ -471,6 +484,7 @@ navigation:
       icon:
           class: fa-solid fa-graduation-cap
       url: https://s.veen.world/lebenslauf
+    - link: accounts
       
   - name: Imprint
     icon:
