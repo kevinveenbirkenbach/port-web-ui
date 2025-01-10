@@ -137,3 +137,22 @@ h3.footer-title{
   display: block;
   opacity: 1;
 }
+
+
+.dropdown-submenu > .dropdown-menu {
+  position: absolute;
+  top: 0;
+  left: 100%; /* Standardmäßig rechts ausrichten */
+  margin-top: -1px;
+  z-index: 1050;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display: block;
+  opacity: 1;
+}
+
+.dropdown-submenu > .dropdown-menu[style*="right: 100%"] {
+  left: auto; /* Überschreibt die linke Position, wenn nach links geöffnet */
+}

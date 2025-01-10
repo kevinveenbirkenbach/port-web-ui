@@ -9,6 +9,19 @@ document.addEventListener('DOMContentLoaded', () => {
             clearTimeout(timeout);
             const menu = submenu.querySelector('.dropdown-menu');
             if (menu) {
+                // Dynamische Positionierung
+                const rect = menu.getBoundingClientRect();
+                const viewportWidth = window.innerWidth;
+
+                // Überprüfen, ob Platz nach rechts ist, sonst nach links öffnen
+                if (rect.right > viewportWidth) {
+                    menu.style.left = 'auto';
+                    menu.style.right = '100%';
+                } else {
+                    menu.style.left = '100%';
+                    menu.style.right = 'auto';
+                }
+
                 menu.style.display = 'block';
                 menu.style.opacity = '1';
             }
