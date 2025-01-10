@@ -171,25 +171,7 @@ navigation:
       url: mailto:kevin@veen.world
       identifier: kevin@veen.world
       alternatives:
-        - link: navigation.header.contact.matrix
-    - name: Matrix
-      description: Chat with me on Matrix
-      icon:
-        class: fa-solid fa-cubes
-      identifier: "@kevinveenbirkenbach:veen.world"
-      info: |
-        #### Why Use Matrix?
-        Matrix is a secure, decentralized communication platform that ensures privacy and control over your data. Learn more about [Matrix](https://matrix.org/).
-
-        #### Privacy and Security
-        End-to-end encryption keeps your conversations private and secure.
-
-        #### Decentralized and Open
-        Matrix's federated network means you can host your own server or use any provider while staying connected.
-
-        #### A Movement for Digital Freedom
-        By using Matrix, you support open, transparent, and secure communication.
-
+        - link: navigation.header.contact.messenger.matrix
     - name: Mobile
       description: Call me
       icon:
@@ -215,40 +197,61 @@ navigation:
 
         #### Stand for Security
         Using PGP is more than a tool—it's a statement about valuing freedom, privacy, and the security of digital communication. Explore the principles of secure communication with [privacy guides](https://privacyguides.org/).
+    - name: Messenger
+      description: Social and developer networks
+      icon:
+        class: fa-brands fa-meta
+      subitems: 
+      - name: Matrix
+        description: Chat with me on Matrix
+        icon:
+          class: fa-solid fa-cubes
+        identifier: "@kevinveenbirkenbach:veen.world"
+        info: |
+          #### Why Use Matrix?
+          Matrix is a secure, decentralized communication platform that ensures privacy and control over your data. Learn more about [Matrix](https://matrix.org/).
 
-    - name: Signal
-      description: Message me on Signal
-      icon:
-        class: fa-brands fa-signal-messenger
-      identifier: "+491781798023"
-      warning: Signal is not hosted by me!
-      alternatives:
-        - link: navigation.header.contact.matrix
-    - name: Telegram
-      description: Message me on Telegram
-      icon:
-        class: fa-brands fa-telegram
-      target: _blank
-      url: https://t.me/kevinveenbirkenbach
-      identifier: kevinveenbirkenbach
-      warning: Telegram is not hosted by me!
-      alternatives:
-        - link: navigation.header.contact.matrix
-    - name: WhatsApp
-      description: Chat with me on WhatsApp
-      icon:
-        class: fa-brands fa-whatsapp
-      url: https://wa.me/491781798023
-      identifier: "+491781798023"
-      warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.  
-      info: Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
-      alternatives:
-        - link: navigation.header.contact.matrix
-        - link: navigation.header.contact.signal
-        - link: navigation.header.contact.telegram
+          #### Privacy and Security
+          End-to-end encryption keeps your conversations private and secure.
+
+          #### Decentralized and Open
+          Matrix's federated network means you can host your own server or use any provider while staying connected.
+
+          #### A Movement for Digital Freedom
+          By using Matrix, you support open, transparent, and secure communication.
+      - name: Signal
+        description: Message me on Signal
+        icon:
+          class: fa-brands fa-signal-messenger
+        identifier: "+491781798023"
+        warning: Signal is not hosted by me!
+        alternatives:
+          - link: navigation.header.contact.messenger.matrix
+      - name: Telegram
+        description: Message me on Telegram
+        icon:
+          class: fa-brands fa-telegram
+        target: _blank
+        url: https://t.me/kevinveenbirkenbach
+        identifier: kevinveenbirkenbach
+        warning: Telegram is not hosted by me!
+        alternatives:
+          - link: navigation.header.contact.messenger.matrix
+      - name: WhatsApp
+        description: Chat with me on WhatsApp
+        icon:
+          class: fa-brands fa-whatsapp
+        url: https://wa.me/491781798023
+        identifier: "+491781798023"
+        warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.  
+        info: Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
+        alternatives:
+          - link: navigation.header.contact.messenger.matrix
+          - link: navigation.header.contact.messenger.signal
+          - link: navigation.header.contact.messenger.telegram
 
   footer:
-  - name: External Accounts
+  - name: Accounts
     description: Me on other plattforms
     icon:
         class: fa-solid fa-external-link-alt
@@ -269,14 +272,7 @@ navigation:
         icon:
           class: fa-brands fa-facebook
         url: https://www.facebook.com/kevinveenbirkenbach
-    - name: Communication
-      description: Social and developer networks
-      icon:
-        class: fa-brands fa-meta
-      subitems: 
-        - link: navigation.header.contact.whatsapp
-        - link: navigation.header.contact.signal
-        - link: navigation.header.contact.telegram
+    - link: navigation.header.contact.messenger
     - name: Carreer Profiles
       icon:
         class: fa-solid fa-user-tie

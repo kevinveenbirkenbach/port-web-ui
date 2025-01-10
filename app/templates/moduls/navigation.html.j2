@@ -4,7 +4,11 @@
         {% if subitem.subitems %}
             <li class="dropdown-submenu position-relative">
                 <a class="dropdown-item dropdown-toggle" href="#" title="{{ subitem.description }}">
-                    <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
+                    {% if subitem.icon is defined and subitem.icon.class is defined %}
+                        <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
+                    {% else %}
+                        <p>Missing icon in subitem: {{ subitem }}</p>
+                    {% endif %}
                 </a>
                 <ul class="dropdown-menu">
                     {{ render_subitems(subitem.subitems) }}
