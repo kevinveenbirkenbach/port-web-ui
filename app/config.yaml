@@ -441,7 +441,7 @@ navigation:
         class: fa-solid fa-user
     subitems:
     - name: Logbooks
-      description: My activity logs
+      description: Access my personal logbooks (diving, flying, sailing)
       icon:
           class: fa-solid fa-book
       subitems:
@@ -479,11 +479,26 @@ navigation:
       icon:
           class: fa-solid fa-file-lines
       url: https://s.veen.world/lebenslauf
-    - name: Certificates
-      description: View my certifications and degrees
+    - name: Credentials
+      description: Access my certifications, degrees, and professional records
       icon:
-          class: fa-solid fa-graduation-cap
-      url: https://s.veen.world/lebenslauf
+        class: fa-solid fa-id-card
+      subitems:
+        - name: Degrees
+          description: View my academic degrees
+          icon:
+            class: fa-solid fa-graduation-cap
+          url: https://s.veen.world/degrees
+        - name: Certificates
+          description: View my training and professional development records
+          icon:
+            class: fa-solid fa-certificate
+          url: https://s.veen.world/certificates
+        - name: Certifications
+          description: Browse all my certifications
+          icon:
+            class: fa-solid fa-scroll
+          url: https://s.veen.world/certifications
     - link: accounts
       
   - name: Imprint
