@@ -2,57 +2,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuItems = document.querySelectorAll('.nav-item.dropdown');
   const subMenuItems = document.querySelectorAll('.dropdown-submenu');
 
-  menuItems.forEach(item => {
-    let timeout;
+  function addMenuEventListeners(items, isTopLevel) {
+    items.forEach(item => {
+      let timeout;
 
-    // Öffnen beim Hovern
-    item.addEventListener('mouseenter', () => {
-      clearTimeout(timeout);
-      openMenu(item, true);
+      // Öffnen beim Hovern
+      item.addEventListener('mouseenter', () => {
+        clearTimeout(timeout);
+        openMenu(item, isTopLevel);
+      });
+
+      // Verzögertes Schließen beim Verlassen
+      item.addEventListener('mouseleave', () => {
+        timeout = setTimeout(() => closeMenu(item), 500);
+      });
+
+      // Öffnen und Position anpassen beim Klicken
+      item.addEventListener('click', (e) => {
+        e.preventDefault(); // Verhindert die Standardaktion
+        e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
+        if (item.classList.contains('open')) {
+          closeMenu(item);
+        } else {
+          openMenu(item, isTopLevel);
+        }
+      });
     });
+  }
 
-    // Verzögertes Schließen beim Verlassen
-    item.addEventListener('mouseleave', () => {
-      timeout = setTimeout(() => closeMenu(item), 500);
-    });
-
-    // Öffnen und Position anpassen beim Klicken
-    item.addEventListener('click', (e) => {
-      e.preventDefault(); // Verhindert die Standardaktion
-      e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
-      if (item.classList.contains('open')) {
-        closeMenu(item);
-      } else {
-        openMenu(item, true);
-      }
-    });
-  });
-
-  subMenuItems.forEach(item => {
-    let timeout;
-
-    // Öffnen beim Hovern
-    item.addEventListener('mouseenter', () => {
-      clearTimeout(timeout);
-      openMenu(item, false);
-    });
-
-    // Verzögertes Schließen beim Verlassen
-    item.addEventListener('mouseleave', () => {
-      timeout = setTimeout(() => closeMenu(item), 500);
-    });
-
-    // Öffnen und Position anpassen beim Klicken
-    item.addEventListener('click', (e) => {
-      e.preventDefault(); // Verhindert die Standardaktion
-      e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
-      if (item.classList.contains('open')) {
-        closeMenu(item);
-      } else {
-        openMenu(item, false);
-      }
-    });
-  });
+  addMenuEventListeners(menuItems, true);
+  addMenuEventListeners(subMenuItems, false);
 
   // Globale Klick-Listener, um Menüs zu schließen, wenn außerhalb geklickt wird
   document.addEventListener('click', () => {
@@ -114,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Öffnen nach oben, wenn unten kein Platz ist
       if (spaceBelow < rect.height && spaceAbove > rect.height) {
         submenu.style.top = 'auto';
-        submenu.style.bottom = `${parentRect.bottom - parentRect.top}px`;
+        submenu.style.bottom = `${parentRect.bottom - parentRect.top - rect.height}px`; // Höhe des Submenüs wird berücksichtigt
       } else {
         submenu.style.top = '0';
         submenu.style.bottom = 'auto';
