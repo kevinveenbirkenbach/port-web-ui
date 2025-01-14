@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isTopLevel) {
       // Top-Level-Menüs öffnen nur nach oben oder unten
       if (spaceBelow < rect.height && spaceAbove > rect.height) {
-        submenu.style.bottom = '100%';
+        submenu.style.bottom = `${window.innerHeight - parentRect.bottom}px`;
         submenu.style.top = 'auto';
       } else {
         submenu.style.top = `${parentRect.height}px`;
@@ -111,9 +111,14 @@ document.addEventListener('DOMContentLoaded', () => {
       submenu.style.left = prefersRight ? '100%' : 'auto';
       submenu.style.right = prefersRight ? 'auto' : '100%';
 
-      const prefersBelow = spaceBelow >= spaceAbove;
-      submenu.style.top = prefersBelow ? '0' : 'auto';
-      submenu.style.bottom = prefersBelow ? 'auto' : '100%';
+      // Öffnen nach oben, wenn unten kein Platz ist
+      if (spaceBelow < rect.height && spaceAbove > rect.height) {
+        submenu.style.top = 'auto';
+        submenu.style.bottom = `${parentRect.bottom - parentRect.top}px`;
+      } else {
+        submenu.style.top = '0';
+        submenu.style.bottom = 'auto';
+      }
     }
   }
 });
