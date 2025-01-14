@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
       function onMouseEnter() {
         clearTimeout(timeout);
         openMenu(item, isTopLevel);
+        refreshEventListeners();
       }
 
       function onMouseLeave() {
@@ -32,8 +33,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           openMenu(item, isTopLevel);
         }
+        refreshEventListeners();
       });
     });
+  }
+
+  function refreshEventListeners() {
+    const updatedMenuItems = document.querySelectorAll('.nav-item.dropdown');
+    const updatedSubMenuItems = document.querySelectorAll('.dropdown-submenu');
+    addMenuEventListeners(updatedMenuItems, true);
+    addMenuEventListeners(updatedSubMenuItems, false);
   }
 
   addMenuEventListeners(menuItems, true);
