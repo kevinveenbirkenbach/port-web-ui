@@ -3,7 +3,7 @@
     {% for subitem in subitems %}
         {% if subitem.subitems %}
             <li class="dropdown-submenu position-relative">
-                <a class="dropdown-item dropdown-toggle" href="#" title="{{ subitem.description }}">
+                <a class="dropdown-item dropdown-toggle" title="{{ subitem.description }}">
                     {% if subitem.icon is defined and subitem.icon.class is defined %}
                         <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
                     {% else %}
@@ -33,8 +33,7 @@
         {% endif %}
     {% endfor %}
 {% endmacro %}
-
- <!-- Navigation Bar -->
+<!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav{{menu_type}}" aria-controls="navbarNav{{menu_type}}" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,14 +52,14 @@
                     {% else %}
                         <!-- Dropdown Menu -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" data-bs-display="dynamic" data-popper-placement="top" title="{{ item.description }}" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {% if item.icon is defined and item.icon.class is defined %}
-                                    <i class="{{ item.icon.class }}" data-bs-toggle="tooltip"></i> {{ item.name }}
+                                    <i class="{{ item.icon.class }}"></i> {{ item.name }}
                                 {% else %}
                                     <p>Missing icon in item: {{ item }}</p>
                                 {% endif %}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-{{menu_type}}" aria-labelledby="navbarDropdown{{ loop.index }}">
+                            <ul class="dropdown-menu">
                                 {{ render_subitems(item.subitems) }}
                             </ul>
                         </li>

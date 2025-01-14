@@ -1,41 +1,53 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const dropdownSubmenus = document.querySelectorAll('.dropdown-submenu');
+  const menuItems = document.querySelectorAll('.nav-item.dropdown, .dropdown-submenu');
 
-    dropdownSubmenus.forEach(submenu => {
-        let timeout;
+  menuItems.forEach(item => {
+    let timeout;
 
-        // Zeige das Submenü beim Hover
-        submenu.addEventListener('mouseenter', () => {
-            clearTimeout(timeout);
-            const menu = submenu.querySelector('.dropdown-menu');
-            if (menu) {
-                // Dynamische Positionierung
-                const rect = menu.getBoundingClientRect();
-                const viewportWidth = window.innerWidth;
-
-                // Überprüfen, ob Platz nach rechts ist, sonst nach links öffnen
-                if (rect.right > viewportWidth) {
-                    menu.style.left = 'auto';
-                    menu.style.right = '100%';
-                } else {
-                    menu.style.left = '100%';
-                    menu.style.right = 'auto';
-                }
-
-                menu.style.display = 'block';
-                menu.style.opacity = '1';
-            }
-        });
-
-        // Verstecke das Submenü nach 0.5 Sekunden
-        submenu.addEventListener('mouseleave', () => {
-            const menu = submenu.querySelector('.dropdown-menu');
-            if (menu) {
-                timeout = setTimeout(() => {
-                    menu.style.display = 'none';
-                    menu.style.opacity = '0';
-                }, 500); // 0.5 Sekunden Verzögerung
-            }
-        });
+    // Öffnen beim Hovern
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(timeout);
+      openMenu(item);
     });
+
+    // Verzögertes Schließen beim Verlassen
+    item.addEventListener('mouseleave', () => {
+      timeout = setTimeout(() => closeMenu(item), 500);
+    });
+
+    // Offen lassen beim Klicken
+    item.addEventListener('click', (e) => {
+      e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
+      if (item.classList.contains('open')) {
+        closeMenu(item);
+      } else {
+        openMenu(item);
+      }
+    });
+  });
+
+  // Globale Klick-Listener, um Menüs zu schließen, wenn außerhalb geklickt wird
+  document.addEventListener('click', () => {
+    menuItems.forEach(item => closeMenu(item));
+  });
+
+  function openMenu(item) {
+    item.classList.add('open');
+    const submenu = item.querySelector('.dropdown-menu');
+    if (submenu) {
+      submenu.style.display = 'block';
+      submenu.style.opacity = '1';
+      submenu.style.visibility = 'visible';
+    }
+  }
+
+  function closeMenu(item) {
+    item.classList.remove('open');
+    const submenu = item.querySelector('.dropdown-menu');
+    if (submenu) {
+      submenu.style.display = 'none';
+      submenu.style.opacity = '0';
+      submenu.style.visibility = 'hidden';
+    }
+  }
 });

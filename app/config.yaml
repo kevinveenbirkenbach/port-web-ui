@@ -502,6 +502,7 @@ navigation:
     - link: accounts
       
   - name: Imprint
+    description: Check out the imprint information
     icon:
         class: fa-solid fa-scale-balanced
     url: https://s.veen.world/imprint
