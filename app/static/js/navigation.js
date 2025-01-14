@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isTopLevel) {
       // Top-Level-Menüs öffnen nur nach oben oder unten
       if (spaceBelow < rect.height && spaceAbove > rect.height) {
-        submenu.style.bottom = `${window.innerHeight - parentRect.bottom}px`;
+        submenu.style.bottom = `${window.innerHeight - parentRect.bottom - parentRect.height}px`;
         submenu.style.top = 'auto';
       } else {
         submenu.style.top = `${parentRect.height}px`;
