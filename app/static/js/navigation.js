@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
       function onMouseEnter() {
         clearTimeout(timeout);
         openMenu(item, isTopLevel);
-        refreshEventListeners();
       }
 
       function onMouseLeave() {
@@ -33,20 +32,18 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
           openMenu(item, isTopLevel);
         }
-        refreshEventListeners();
       });
     });
   }
 
-  function refreshEventListeners() {
+  function addAllMenuEventListeners() {
     const updatedMenuItems = document.querySelectorAll('.nav-item.dropdown');
     const updatedSubMenuItems = document.querySelectorAll('.dropdown-submenu');
     addMenuEventListeners(updatedMenuItems, true);
     addMenuEventListeners(updatedSubMenuItems, false);
   }
 
-  addMenuEventListeners(menuItems, true);
-  addMenuEventListeners(subMenuItems, false);
+  addAllMenuEventListeners();
 
   // Globale Klick-Listener, um Menüs zu schließen, wenn außerhalb geklickt wird
   document.addEventListener('click', () => {
@@ -57,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
     item.classList.add('open');
     const submenu = item.querySelector('.dropdown-menu');
     if (submenu) {
-      adjustMenuPosition(submenu, item, isTopLevel);
       submenu.style.display = 'block';
       submenu.style.opacity = '1';
       submenu.style.visibility = 'visible';
+      adjustMenuPosition(submenu, item, isTopLevel);
     }
   }
 
