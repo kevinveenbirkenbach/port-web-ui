@@ -3,7 +3,7 @@
     {% for subitem in subitems %}
         {% if subitem.subitems %}
             <li class="dropdown-submenu position-relative">
-                <a class="dropdown-item dropdown-toggle" title="{{ subitem.description }}">
+                <a class="dropdown-item dropdown-toggle" href="#" title="{{ subitem.description }}">
                     {% if subitem.icon is defined and subitem.icon.class is defined %}
                         <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
                     {% else %}
@@ -33,6 +33,7 @@
         {% endif %}
     {% endfor %}
 {% endmacro %}
+
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
@@ -52,7 +53,7 @@
                     {% else %}
                         <!-- Dropdown Menu -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" data-bs-display="dynamic" aria-expanded="false">
                                 {% if item.icon is defined and item.icon.class is defined %}
                                     <i class="{{ item.icon.class }}"></i> {{ item.name }}
                                 {% else %}
