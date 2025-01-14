@@ -6,16 +6,22 @@ document.addEventListener('DOMContentLoaded', () => {
     items.forEach(item => {
       let timeout;
 
-      // Öffnen beim Hovern
-      item.addEventListener('mouseenter', () => {
+      function onMouseEnter() {
         clearTimeout(timeout);
         openMenu(item, isTopLevel);
-      });
+      }
+
+      function onMouseLeave() {
+        timeout = setTimeout(() => {
+          closeMenu(item);
+        }, 500);
+      }
+
+      // Öffnen beim Hovern
+      item.addEventListener('mouseenter', onMouseEnter);
 
       // Verzögertes Schließen beim Verlassen
-      item.addEventListener('mouseleave', () => {
-        timeout = setTimeout(() => closeMenu(item), 500);
-      });
+      item.addEventListener('mouseleave', onMouseLeave);
 
       // Öffnen und Position anpassen beim Klicken
       item.addEventListener('click', (e) => {
