@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
       timeout = setTimeout(() => closeMenu(item), 500);
     });
 
-    // Offen lassen beim Klicken
+    // Öffnen und Position anpassen beim Klicken
     item.addEventListener('click', (e) => {
+      e.preventDefault(); // Verhindert die Standardaktion
       e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
       if (item.classList.contains('open')) {
         closeMenu(item);
@@ -41,8 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
       timeout = setTimeout(() => closeMenu(item), 500);
     });
 
-    // Offen lassen beim Klicken
+    // Öffnen und Position anpassen beim Klicken
     item.addEventListener('click', (e) => {
+      e.preventDefault(); // Verhindert die Standardaktion
       e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
       if (item.classList.contains('open')) {
         closeMenu(item);
@@ -97,29 +99,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isTopLevel) {
       // Top-Level-Menüs öffnen nur nach oben oder unten
       if (spaceBelow < rect.height && spaceAbove > rect.height) {
-        submenu.style.top = 'auto';
         submenu.style.bottom = '100%';
+        submenu.style.top = 'auto';
       } else {
-        submenu.style.top = '100%';
+        submenu.style.top = `${parentRect.height}px`;
         submenu.style.bottom = 'auto';
       }
     } else {
       // Submenüs öffnen in die Richtung mit mehr Platz
-      if (spaceRight < rect.width && spaceLeft > rect.width) {
-        submenu.style.left = 'auto';
-        submenu.style.right = '100%';
-      } else {
-        submenu.style.left = '100%';
-        submenu.style.right = 'auto';
-      }
+      const prefersRight = spaceRight >= spaceLeft;
+      submenu.style.left = prefersRight ? '100%' : 'auto';
+      submenu.style.right = prefersRight ? 'auto' : '100%';
 
-      if (spaceBelow < rect.height && spaceAbove > rect.height) {
-        submenu.style.top = 'auto';
-        submenu.style.bottom = '100%';
-      } else {
-        submenu.style.top = '0';
-        submenu.style.bottom = 'auto';
-      }
+      const prefersBelow = spaceBelow >= spaceAbove;
+      submenu.style.top = prefersBelow ? '0' : 'auto';
+      submenu.style.bottom = prefersBelow ? 'auto' : '100%';
     }
   }
 });
