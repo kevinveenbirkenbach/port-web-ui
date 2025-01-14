@@ -3,34 +3,13 @@
     display: none;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  /* Dropdown-Menü beim Hover anzeigen */
-  .nav-item.dropdown:hover > .dropdown-menu,
-  .dropdown-submenu:hover > .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /* Dropdown-Menü bei der Klasse "open" anzeigen */
-  .nav-item.dropdown.open > .dropdown-menu,
-  .dropdown-submenu.open > .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /* Positionierung von Submenüs */
-  .dropdown-submenu > .dropdown-menu {
+    width: max-content !important; /* Passt die Breite an das breiteste Item an */
+    box-sizing: border-box; /* Berücksichtigt Innenabstand und Rahmen */
+}
+
+/* Positionierung von Submenüs */
+.dropdown-submenu > .dropdown-menu {
     position: absolute;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
     top: 0;
-    left: 100%; /* Rechts ausklappen */
-  }
-  
-  .dropdown-submenu.open > .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-  }  
+}

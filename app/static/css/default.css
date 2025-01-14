@@ -23,13 +23,17 @@ a {
   flex: 1;
 }
 
+/* Subtle shadow effect */
+.navbar, .card, .dropdown-menu{
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
 /* Card styles */
 .navbar, .card {
   flex: 1; /* Ensures cards fill the height of their container */
   border-radius: 5px; /* Rounded corners */
   border: 1px solid #ccc; /* Optional border color */
   padding: 10px; /* Inner spacing */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow effect */
   color: #000000 !important;
   background-color: #f9f9f9;
 }
