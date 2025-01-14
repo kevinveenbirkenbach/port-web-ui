@@ -17,16 +17,27 @@ accounts:
       url: https://microblog.veen.world/@kevinveenbirkenbach
       
     - name: Pictures
-      description: View my photo gallery
       icon:
-          class: fa-solid fa-camera
-      url: https://picture.veen.world/kevinveenbirkenbach
+        class: fa-solid fa-images
+      subitems:
+      - name: Pixelfed  
+        description: View my photo gallery
+        icon:
+            class: fa-solid fa-camera
+        url: https://s.veen.world/pictures
+      - name: Instagram
+        description: Follow me on Instagram
+        icon:
+          class: fa-brands fa-instagram
+        url: https://www.instagram.com/kevinveenbirkenbach/
+        identifier: kevinveenbirkenbach
+        warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.
       
     - name: Videos
       description: Watch my videos
       icon:
           class: fa-solid fa-video
-      url: https://video.veen.world/a/kevinveenbirkenbach
+      url: https://s.veen.world/videos
       
     - name: Blog
       description: Read my blog
@@ -56,13 +67,6 @@ accounts:
       class: fa-brands fa-meta
     url: 
     subitems:
-    - name: Instagram
-      description: Follow me on Instagram
-      icon:
-        class: fa-brands fa-instagram
-      url: https://www.instagram.com/kevinveenbirkenbach/
-      identifier: kevinveenbirkenbach
-      warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.
     - name: Facebook
       description: Like my Facebook page
       icon:
