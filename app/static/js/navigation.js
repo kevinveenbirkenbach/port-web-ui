@@ -70,45 +70,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function adjustMenuPosition(submenu, parent, isTopLevel) {
+function adjustMenuPosition(submenu, parent, isTopLevel) {
     const rect = submenu.getBoundingClientRect();
     const parentRect = parent.getBoundingClientRect();
 
-    // Platzberechnung
     const spaceAbove = parentRect.top;
     const spaceBelow = window.innerHeight - parentRect.bottom;
     const spaceLeft = parentRect.left;
     const spaceRight = window.innerWidth - parentRect.right;
 
-    // Standardpositionierung
     submenu.style.top = '';
     submenu.style.bottom = '';
     submenu.style.left = '';
     submenu.style.right = '';
 
     if (isTopLevel) {
-      // Top-Level-Menüs öffnen nur nach oben oder unten
-      if (spaceBelow < rect.height && spaceAbove > rect.height) {
-        submenu.style.bottom = `${window.innerHeight - parentRect.bottom - parentRect.height}px`;
-        submenu.style.top = 'auto';
-      } else {
-        submenu.style.top = `${parentRect.height}px`;
-        submenu.style.bottom = 'auto';
-      }
+        // Top-Level-Menü
+        if (spaceBelow < spaceAbove) {
+            submenu.style.bottom = `${window.innerHeight - parentRect.bottom - parentRect.height}px`;
+            submenu.style.top = 'auto';
+        } else {
+            submenu.style.top = `${parentRect.height}px`;
+            submenu.style.bottom = 'auto';
+        }
     } else {
-      // Submenüs öffnen in die Richtung mit mehr Platz
-      const prefersRight = spaceRight >= spaceLeft;
-      submenu.style.left = prefersRight ? '100%' : 'auto';
-      submenu.style.right = prefersRight ? 'auto' : '100%';
+        // Submenü
+        const prefersRight = spaceRight >= spaceLeft;
+        submenu.style.left = prefersRight ? '100%' : 'auto';
+        submenu.style.right = prefersRight ? 'auto' : '100%';
 
-      // Öffnen nach oben, wenn unten kein Platz ist
-      if (spaceBelow < rect.height && spaceAbove > rect.height) {
-        submenu.style.top = 'auto';
-        submenu.style.bottom = `${parentRect.bottom - parentRect.top - rect.height}px`; // Höhe des Submenüs wird berücksichtigt
-      } else {
-        submenu.style.top = '0';
-        submenu.style.bottom = 'auto';
-      }
+        // Nach oben öffnen, wenn unten kein Platz ist
+        if (spaceBelow < spaceAbove) {
+            submenu.style.bottom = `0`;
+            submenu.style.top = `auto`;
+        } else {
+            submenu.style.top = `0`;
+            submenu.style.bottom = '${parentRect.height}px';
+        }
     }
-  }
+}
 });
