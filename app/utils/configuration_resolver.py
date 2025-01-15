@@ -42,6 +42,8 @@ class ConfigurationResolver:
         if isinstance(current_config, dict):
             for key, value in list(current_config.items()):
                 if key == "children":
+                    if value is None or not isinstance(value, list):
+                        raise ValueError(f"Expected 'children' to be a list, but got {type(value).__name__} instead.")
                     for item in value:
                         if "link" in item:
                             loaded_link = self._find_entry(root_config, item['link'].lower(), False)

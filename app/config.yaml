@@ -5,16 +5,38 @@ accounts:
   icon:
       class: fa-solid fa-users
   children:
-  - name: channels
+  - name: Channels
     description: My publication channels
     icon:
-        class: fas fa-newspaper
+      class: fas fa-newspaper
     children:
-    - name: Microblog
+    - name: Microblogs
       description: Read my microblogs
       icon:
+        class: fa-solid fa-pen-nib
+      children:
+      - name: Mastodon
+        description: Follow me on Mastodon
+        icon:
           class: fa-brands fa-mastodon
-      url: https://microblog.veen.world/@kevinveenbirkenbach
+        url: https://microblog.veen.world/@kevinveenbirkenbach
+        identifier: "@kevinveenbirkenbach@microblog.veen.world"
+      - name: Twitter
+        description: Follow me on Twitter
+        icon:
+          class: fa-brands fa-twitter
+        url: https://s.veen.world/twitter
+        identifier: kevinbirkenbach
+        warning: I don't use and don't recommend to use X/Twitter. Please use one of my alternatives.
+        alternatives:
+        - link: accounts.channels.microblogs.mastodon
+      - name: Bluesky
+        description: Follow me on Bluesky
+        info: Bluesky is not setup yet. Coming soon.
+        icon:
+          class: fa-brands fa-bluesky
+        alternatives: 
+        - link: accounts.channels.microblogs.mastodon
       
     - name: Pictures
       icon:
@@ -32,12 +54,28 @@ accounts:
         url: https://www.instagram.com/kevinveenbirkenbach/
         identifier: kevinveenbirkenbach
         warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.
-      
+        alternatives:
+        - link: accounts.channels.pictures.pixelfed
+    
     - name: Videos
-      description: Watch my videos
+      description: Follow my Video Channels
       icon:
           class: fa-solid fa-video
-      url: https://s.veen.world/videos
+      children:
+      - name: Peertube
+        description: Follow me on Peertube
+        icon:
+          class: fa-solid fa-video
+        url: https://s.veen.world/videos
+      - name: Youtube
+        description: Follow me on Youtube
+        icon:
+          class: fa-brands fa-youtube
+        url: https://s.veen.world/youtube
+        warning: I don't publish videos on Youtube. Please use one of the listed alternatives.
+        alternatives:
+        - link: accounts.channels.videos.peertube
+        
       
     - name: Blog
       description: Read my blog
