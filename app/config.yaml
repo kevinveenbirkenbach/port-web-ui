@@ -550,6 +550,11 @@ navigation:
             icon:
               class: fa-solid fa-scroll
             url: https://s.veen.world/certifications
+      - name: Skill Matrix
+        description: Checkout my skills
+        icon:
+          class: fa-solid fa-layer-group
+        url: https://s.veen.world/skillmatrix
       - link: accounts 
     - name: Imprint
       description: Check out the imprint information
