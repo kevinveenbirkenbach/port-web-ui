@@ -1,33 +1,33 @@
-<!-- Template for Subitems -->
-{% macro render_subitems(subitems) %}
-    {% for subitem in subitems %}
-        {% if subitem.subitems %}
+{% macro render_icon_and_name(item) %}
+    <i class="{{ item.icon.class if item.icon is defined and item.icon.class is defined else 'fa-solid fa-link' }}"></i>
+    {% if item.name is defined %}
+        {{ item.name }}
+    {% else %}
+        Unnamed Item: {{item}}
+    {% endif %}
+{% endmacro %}
+<!-- Template for children -->
+{% macro render_children(children) %}
+    {% for children in children %}
+        {% if children.children %}
             <li class="dropdown-submenu position-relative">
-                <a class="dropdown-item dropdown-toggle" href="#" title="{{ subitem.description }}">
-                    {% if subitem.icon is defined and subitem.icon.class is defined %}
-                        <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
-                    {% else %}
-                        <p>Missing icon in subitem: {{ subitem }}</p>
-                    {% endif %}
+                <a class="dropdown-item dropdown-toggle" href="#" title="{{ children.description }}">
+                    {{ render_icon_and_name(children) }}
                 </a>
                 <ul class="dropdown-menu">
-                    {{ render_subitems(subitem.subitems) }}
+                    {{ render_children(children.children) }}
                 </ul>
             </li>
-        {% elif subitem.identifier or subitem.warning or subitem.info %}
+        {% elif children.identifier or children.warning or children.info %}
             <li>
-                <a class="dropdown-item" onclick='openDynamicPopup({{ subitem|tojson|safe }})' data-bs-toggle="tooltip" title="{{ subitem.description }}">
-                    <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
+                <a class="dropdown-item" onclick='openDynamicPopup({{ children|tojson|safe }})' data-bs-toggle="tooltip" title="{{ children.description }}">
+                    {{ render_icon_and_name(children) }}
                 </a>
             </li>
         {% else %}
             <li>
-                <a class="dropdown-item" href="{{ subitem.url }}" target="{{ subitem.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ subitem.description }}">
-                    {% if subitem.icon is defined and subitem.icon.class is defined %}
-                        <i class="{{ subitem.icon.class }}"></i> {{ subitem.name }}
-                    {% else %}
-                        <p>Missing icon in subitem: {{ subitem }}</p>
-                    {% endif %}
+                <a class="dropdown-item" href="{{ children.url }}" target="{{ children.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ children.description }}">
+                     {{ render_icon_and_name(children) }}
                 </a>
             </li>
         {% endif %}
@@ -42,12 +42,12 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
             <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %}">
-                {% for item in navigation[menu_type] %}
+                {% for item in navigation[menu_type].children %}
                     {% if item.url %}
                         <!-- Single Item -->
                         <li class="nav-item">
                             <a class="nav-link" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
-                                <i class="{{ item.icon.class }}"></i> {{ item.name }}
+                                {{ render_icon_and_name(item) }}
                             </a>
                         </li>
                     {% else %}
@@ -55,13 +55,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ loop.index }}" role="button" data-bs-toggle="dropdown" data-bs-display="dynamic" aria-expanded="false">
                                 {% if item.icon is defined and item.icon.class is defined %}
-                                    <i class="{{ item.icon.class }}"></i> {{ item.name }}
+                                    {{ render_icon_and_name(item) }}
                                 {% else %}
                                     <p>Missing icon in item: {{ item }}</p>
                                 {% endif %}
                             </a>
                             <ul class="dropdown-menu">
-                                {{ render_subitems(item.subitems) }}
+                                {{ render_children(item.children) }}
                             </ul>
                         </li>
                     {% endif %}

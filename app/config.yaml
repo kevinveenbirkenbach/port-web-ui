@@ -4,12 +4,12 @@ accounts:
   description: My Online Accounts
   icon:
       class: fa-solid fa-users
-  subitems:
+  children:
   - name: Publications
     description: My Publications
     icon:
         class: fas fa-newspaper
-    subitems:
+    children:
     - name: Microblog
       description: Read my microblogs
       icon:
@@ -19,7 +19,7 @@ accounts:
     - name: Pictures
       icon:
         class: fa-solid fa-images
-      subitems:
+      children:
       - name: Pixelfed  
         description: View my photo gallery
         icon:
@@ -49,7 +49,7 @@ accounts:
       icon:
           class: fa-solid fa-laptop-code
       description: Check out my Code
-      subitems:
+      children:
       - name: Github
         description: View my GitHub profile
         icon:
@@ -66,7 +66,7 @@ accounts:
     icon:
       class: fa-brands fa-meta
     url: 
-    subitems:
+    children:
     - name: Facebook
       description: Like my Facebook page
       icon:
@@ -76,7 +76,7 @@ accounts:
   - name: Carreer Profiles
     icon:
       class: fa-solid fa-user-tie
-    subitems:
+    children:
     - name: XING
       description: Visit my XING profile
       icon:
@@ -94,7 +94,7 @@ accounts:
     icon:
       class: fa-solid fa-running
     url: 
-    subitems:
+    children:
     - name: Garmin
       description: My Garmin activities
       icon:
@@ -250,263 +250,266 @@ company:
     country: Germany
   imprint_url: https://s.veen.world/imprint
 navigation:
-  header:      
-  - name: Contact
-    description: Get in touch
-    icon:
-        class: fa-solid fa-envelope
-    subitems:
-    - name: Email
-      description: Send me an email
+  header:
+    children:
+    - link: accounts.publications.children
+    - name: Contact
+      description: Get in touch
       icon:
-        class: fa-solid fa-envelope
-      subitems:
+          class: fa-solid fa-envelope
+      children:
       - name: Email
         description: Send me an email
         icon:
           class: fa-solid fa-envelope
-        url: mailto:kevin@veen.world
-        identifier: kevin@veen.world
-        alternatives:
-          - link: navigation.header.contact.messenger.matrix
-      - name: Encrypted Email (PGP)
-        description: Download my PGP key
+        children:
+        - name: Email
+          description: Send me an email
+          icon:
+            class: fa-solid fa-envelope
+          url: mailto:kevin@veen.world
+          identifier: kevin@veen.world
+          alternatives:
+            - link: navigation.header.contact.messenger.matrix
+        - name: Encrypted Email (PGP)
+          description: Download my PGP key
+          icon:
+            class: fa-solid fa-key
+          url: https://s.veen.world/pgp
+          identifier: kevin@veen.world
+          info: |
+            #### Why Use PGP?
+            PGP ensures your email content stays private, protecting against surveillance, data breaches, and unauthorized access.
+
+            #### Protect Your Privacy
+            In an age of mass data collection, PGP empowers you to communicate securely and assert control over your information. For insights on protecting your digital rights, visit the [Electronic Frontier Foundation (EFF)](https://www.eff.org/).
+
+            #### Build Trust
+            Encrypting emails demonstrates a commitment to privacy and security, fostering trust in professional and personal communication.
+
+            #### Stand for Security
+            Using PGP is more than a tool—it's a statement about valuing freedom, privacy, and the security of digital communication. Explore the principles of secure communication with [privacy guides](https://privacyguides.org/).
+      - name: Mobile
+        description: Call me
         icon:
-          class: fa-solid fa-key
-        url: https://s.veen.world/pgp
-        identifier: kevin@veen.world
-        info: |
-          #### Why Use PGP?
-          PGP ensures your email content stays private, protecting against surveillance, data breaches, and unauthorized access.
-
-          #### Protect Your Privacy
-          In an age of mass data collection, PGP empowers you to communicate securely and assert control over your information. For insights on protecting your digital rights, visit the [Electronic Frontier Foundation (EFF)](https://www.eff.org/).
-
-          #### Build Trust
-          Encrypting emails demonstrates a commitment to privacy and security, fostering trust in professional and personal communication.
-
-          #### Stand for Security
-          Using PGP is more than a tool—it's a statement about valuing freedom, privacy, and the security of digital communication. Explore the principles of secure communication with [privacy guides](https://privacyguides.org/).
-    - name: Mobile
-      description: Call me
-      icon:
-        class: fa-solid fa-phone
-      url: "tel:+491781798023"
-      identifier: "+491781798023"
-      target: _top
-    - name: Messenger
-      description: Social and developer networks
-      icon:
-        class: fa-solid fa-comments
-      subitems: 
-      - name: Matrix
-        description: Chat with me on Matrix
-        icon:
-          class: fa-solid fa-cubes
-        identifier: "@kevinveenbirkenbach:veen.world"
-        info: |
-          #### Why Use Matrix?
-          Matrix is a secure, decentralized communication platform that ensures privacy and control over your data. Learn more about [Matrix](https://matrix.org/).
-
-          #### Privacy and Security
-          End-to-end encryption keeps your conversations private and secure.
-
-          #### Decentralized and Open
-          Matrix's federated network means you can host your own server or use any provider while staying connected.
-
-          #### A Movement for Digital Freedom
-          By using Matrix, you support open, transparent, and secure communication.
-      - name: Signal
-        description: Message me on Signal
-        icon:
-          class: fa-brands fa-signal-messenger
+          class: fa-solid fa-phone
+        url: "tel:+491781798023"
         identifier: "+491781798023"
-        warning: Signal is not hosted by me!
-        alternatives:
-          - link: navigation.header.contact.messenger.matrix
-      - name: Telegram
-        description: Message me on Telegram
+        target: _top
+      - name: Messenger
+        description: Social and developer networks
         icon:
-          class: fa-brands fa-telegram
-        target: _blank
-        url: https://t.me/kevinveenbirkenbach
-        identifier: kevinveenbirkenbach
-        warning: Telegram is not hosted by me!
-        alternatives:
-          - link: navigation.header.contact.messenger.matrix
-      - name: WhatsApp
-        description: Chat with me on WhatsApp
-        icon:
-          class: fa-brands fa-whatsapp
-        url: https://wa.me/491781798023
-        identifier: "+491781798023"
-        info: Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
-        alternatives:
-          - link: navigation.header.contact.messenger.matrix
-          - link: navigation.header.contact.messenger.signal
-          - link: navigation.header.contact.messenger.telegram
+          class: fa-solid fa-comments
+        children: 
+        - name: Matrix
+          description: Chat with me on Matrix
+          icon:
+            class: fa-solid fa-cubes
+          identifier: "@kevinveenbirkenbach:veen.world"
+          info: |
+            #### Why Use Matrix?
+            Matrix is a secure, decentralized communication platform that ensures privacy and control over your data. Learn more about [Matrix](https://matrix.org/).
 
+            #### Privacy and Security
+            End-to-end encryption keeps your conversations private and secure.
+
+            #### Decentralized and Open
+            Matrix's federated network means you can host your own server or use any provider while staying connected.
+
+            #### A Movement for Digital Freedom
+            By using Matrix, you support open, transparent, and secure communication.
+        - name: Signal
+          description: Message me on Signal
+          icon:
+            class: fa-brands fa-signal-messenger
+          identifier: "+491781798023"
+          warning: Signal is not hosted by me!
+          alternatives:
+            - link: navigation.header.contact.messenger.matrix
+        - name: Telegram
+          description: Message me on Telegram
+          icon:
+            class: fa-brands fa-telegram
+          target: _blank
+          url: https://t.me/kevinveenbirkenbach
+          identifier: kevinveenbirkenbach
+          warning: Telegram is not hosted by me!
+          alternatives:
+            - link: navigation.header.contact.messenger.matrix
+        - name: WhatsApp
+          description: Chat with me on WhatsApp
+          icon:
+            class: fa-brands fa-whatsapp
+          url: https://wa.me/491781798023
+          identifier: "+491781798023"
+          info: Consider using decentralized and privacy-respecting alternatives to maintain control over your data, improve security, and foster healthier online interactions.
+          alternatives:
+            - link: navigation.header.contact.messenger.matrix
+            - link: navigation.header.contact.messenger.signal
+            - link: navigation.header.contact.messenger.telegram
   footer:
-  - link: accounts
-  - name: Solution Hub
-    description: Curated collection of self hosted tools
-    icon:
-        class: fa-solid fa-network-wired
-    url: 
-    subitems:
-    - name: Community
-      description: Tools to manage the community
+    children:
+    - link: accounts
+    - name: Solution Hub
+      description: Curated collection of self hosted tools
       icon:
-          class: fa-solid fa-users
-      subitems:
-      - name: Forum
-        description: Join the discussion
+          class: fa-solid fa-network-wired
+      url: 
+      children:
+      - name: Community
+        description: Tools to manage the community
         icon:
-          class: fa-brands fa-discourse
-        url: https://forum.veen.world/
-      - name: Learning Platform
-        description: Learn with my academy
-        icon:
-          class: fa-solid fa-graduation-cap
-        url: https://academy.veen.world/
-      - name: Newsletter
-        description: Subscribe to my newsletter
-        icon:
-          class: fa-solid fa-envelope-open-text
-        url: https://newsletter.veen.world/subscription/form
-    - name: Project Management
-      description: Project Management Tools
-      icon:
-          class: fa-solid fa-chart-line
-      subitems:
-      - name: Open Project
-        description: Explore my projects
-        icon:
-          class: fa-solid fa-tasks
-        url: https://project.veen.world/
-        
-      - name: Taiga
-        description: View my Kanban board
-        icon:
-          class: bi bi-clipboard2-check-fill
-        url: https://kanban.veen.world/
-        
-    - name: Communication
-      icon:
-        class: fa-solid fa-comments
-      subitems:
-      - name: Elements
-        description: Chat with me
-        icon:
-          class: fa-solid fa-comment
-        url: https://element.veen.world/
-        
-      - name: Big Blue Button
-        description: Join live events
-        icon:
-          class: fa-solid fa-video
-        url: https://meet.veen.world/
-        
-      - name: Mailu
-        description: Send me a mail
-        icon:
-          class: fa-solid fa-envelope
-        url: https://mail.veen.world/
-    - name: Tools
-      icon:
-        class: fas fa-tools
-      subitems:
-      - name: Matomo
-        description: Analyze with Matomo
-        icon:
-          class: fa-solid fa-chart-simple
-        url: https://matomo.veen.world/
-        
-      - name: Baserow
-        description: Organize with Baserow
-        icon:
-          class: fa-solid fa-table
-        url: https://baserow.veen.world/    
-      - name: Yourls
-        description: Find my curated links
-        icon:
-          class: bi bi-link
-        url: https://s.veen.world/admin/
-        
-      - name: Nextcloud
-        description: Access my cloud storage
-        icon:
-          class: fa-solid fa-cloud
-        url: https://cloud.veen.world/
-        
-  - name: About
-    description: All information about me
-    icon:
-        class: fa-solid fa-user
-    subitems:
-    - name: Logbooks
-      description: Access my personal logbooks (diving, flying, sailing)
-      icon:
-          class: fa-solid fa-book
-      subitems:
-      - name: Skydiver
-        description: View my skydiving logs
-        icon:
-          class: fa-solid fa-parachute-box
-        url: https://s.veen.world/skydiverlog
-        
-      - name: Skipper
-        description: See my sailing records
-        icon:
-          class: fa-solid fa-sailboat
-        url: https://s.veen.world/meilenbuch
-        
-      - name: Diver
-        description: Check my diving logs
-        icon:
-          class: fa-solid fa-fish
-        url: https://s.veen.world/diverlog
-        
-      - name: Pilot
-        description: Review my flight logs
-        icon:
-          class: fa-solid fa-plane
-        url: https://s.veen.world/pilotlog
-        
-      - name: Nature
-        description: Explore my nature logs
-        icon:
-          class: fa-solid fa-tree
-        url: https://s.veen.world/naturejournal
-    - name: Vita
-      description: View my CV
-      icon:
-          class: fa-solid fa-file-lines
-      url: https://s.veen.world/lebenslauf
-    - name: Credentials
-      description: Access my certifications, degrees, and professional records
-      icon:
-        class: fa-solid fa-id-card
-      subitems:
-        - name: Degrees
-          description: View my academic degrees
+            class: fa-solid fa-users
+        children:
+        - name: Forum
+          description: Join the discussion
+          icon:
+            class: fa-brands fa-discourse
+          url: https://forum.veen.world/
+        - name: Learning Platform
+          description: Learn with my academy
           icon:
             class: fa-solid fa-graduation-cap
-          url: https://s.veen.world/degrees
-        - name: Certificates
-          description: View my training and professional development records
+          url: https://academy.veen.world/
+        - name: Newsletter
+          description: Subscribe to my newsletter
           icon:
-            class: fa-solid fa-certificate
-          url: https://s.veen.world/certificates
-        - name: Certifications
-          description: Browse all my certifications
+            class: fa-solid fa-envelope-open-text
+          url: https://newsletter.veen.world/subscription/form
+      - name: Project Management
+        description: Project Management Tools
+        icon:
+            class: fa-solid fa-chart-line
+        children:
+        - name: Open Project
+          description: Explore my projects
           icon:
-            class: fa-solid fa-scroll
-          url: https://s.veen.world/certifications
-    - link: accounts
-      
-  - name: Imprint
-    description: Check out the imprint information
-    icon:
-        class: fa-solid fa-scale-balanced
-    url: https://s.veen.world/imprint
+            class: fa-solid fa-tasks
+          url: https://project.veen.world/
+          
+        - name: Taiga
+          description: View my Kanban board
+          icon:
+            class: bi bi-clipboard2-check-fill
+          url: https://kanban.veen.world/
+          
+      - name: Communication
+        icon:
+          class: fa-solid fa-comments
+        children:
+        - name: Elements
+          description: Chat with me
+          icon:
+            class: fa-solid fa-comment
+          url: https://element.veen.world/
+          
+        - name: Big Blue Button
+          description: Join live events
+          icon:
+            class: fa-solid fa-video
+          url: https://meet.veen.world/
+          
+        - name: Mailu
+          description: Send me a mail
+          icon:
+            class: fa-solid fa-envelope
+          url: https://mail.veen.world/
+      - name: Tools
+        icon:
+          class: fas fa-tools
+        children:
+        - name: Matomo
+          description: Analyze with Matomo
+          icon:
+            class: fa-solid fa-chart-simple
+          url: https://matomo.veen.world/
+          
+        - name: Baserow
+          description: Organize with Baserow
+          icon:
+            class: fa-solid fa-table
+          url: https://baserow.veen.world/    
+        - name: Yourls
+          description: Find my curated links
+          icon:
+            class: bi bi-link
+          url: https://s.veen.world/admin/
+          
+        - name: Nextcloud
+          description: Access my cloud storage
+          icon:
+            class: fa-solid fa-cloud
+          url: https://cloud.veen.world/
+          
+    - name: About
+      description: All information about me
+      icon:
+          class: fa-solid fa-user
+      children:
+      - name: Logbooks
+        description: Access my personal logbooks (diving, flying, sailing)
+        icon:
+            class: fa-solid fa-book
+        children:
+        - name: Skydiver
+          description: View my skydiving logs
+          icon:
+            class: fa-solid fa-parachute-box
+          url: https://s.veen.world/skydiverlog
+          
+        - name: Skipper
+          description: See my sailing records
+          icon:
+            class: fa-solid fa-sailboat
+          url: https://s.veen.world/meilenbuch
+          
+        - name: Diver
+          description: Check my diving logs
+          icon:
+            class: fa-solid fa-fish
+          url: https://s.veen.world/diverlog
+          
+        - name: Pilot
+          description: Review my flight logs
+          icon:
+            class: fa-solid fa-plane
+          url: https://s.veen.world/pilotlog
+          
+        - name: Nature
+          description: Explore my nature logs
+          icon:
+            class: fa-solid fa-tree
+          url: https://s.veen.world/naturejournal
+      - name: Vita
+        description: View my CV
+        icon:
+            class: fa-solid fa-file-lines
+        url: https://s.veen.world/lebenslauf
+      - link: accounts
+      - name: Credentials
+        description: Access my certifications, degrees, and professional records
+        icon:
+          class: fa-solid fa-id-card
+        children:
+          - name: Degrees
+            description: View my academic degrees
+            icon:
+              class: fa-solid fa-graduation-cap
+            url: https://s.veen.world/degrees
+          - name: Certificates
+            description: View my training and professional development records
+            icon:
+              class: fa-solid fa-certificate
+            url: https://s.veen.world/certificates
+          - name: Certifications
+            description: Browse all my certifications
+            icon:
+              class: fa-solid fa-scroll
+            url: https://s.veen.world/certifications
+        
+    - name: Imprint
+      description: Check out the imprint information
+      icon:
+          class: fa-solid fa-scale-balanced
+      url: https://s.veen.world/imprint
+  
