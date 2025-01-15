@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Öffnen und Position anpassen beim Klicken
       item.addEventListener('click', (e) => {
-        e.preventDefault(); // Verhindert die Standardaktion
         e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
         if (item.classList.contains('open')) {
           closeMenu(item);
