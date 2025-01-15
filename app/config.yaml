@@ -34,6 +34,7 @@ accounts:
         description: Follow me on Bluesky (coming soon).
         icon:
           class: fa-brands fa-bluesky
+        info: Bluesky is coming soon.
         alternatives:
         - link: accounts.channels.microblogs.mastodon
 
@@ -476,7 +477,7 @@ navigation:
             class: fa-solid fa-cloud
           url: https://cloud.veen.world/
           
-    - name: About
+    - name: About Me
       description: All information about me
       icon:
           class: fa-solid fa-user
