@@ -1,174 +1,171 @@
 ---
 accounts:
   name: Online Accounts
-  description: My Online Accounts
+  description: Discover my online presence.
   icon:
       class: fa-solid fa-users
   children:
   - name: Channels
-    description: My publication channels
+    description: Platforms where I share content.
     icon:
       class: fas fa-newspaper
     children:
     - name: Microblogs
-      description: Read my microblogs
+      description: Stay updated with my microblog posts.
       icon:
         class: fa-solid fa-pen-nib
       children:
       - name: Mastodon
-        description: Follow me on Mastodon
+        description: Follow my updates on Mastodon.
         icon:
           class: fa-brands fa-mastodon
         url: https://microblog.veen.world/@kevinveenbirkenbach
         identifier: "@kevinveenbirkenbach@microblog.veen.world"
       - name: Twitter
-        description: Follow me on Twitter
+        description: Follow me on Twitter (limited use).
         icon:
           class: fa-brands fa-twitter
         url: https://s.veen.world/twitter
         identifier: kevinbirkenbach
-        warning: I don't use and don't recommend to use X/Twitter. Please use one of my alternatives.
+        warning: I rarely use X/Twitter and recommend alternative platforms like Mastodon.
         alternatives:
         - link: accounts.channels.microblogs.mastodon
       - name: Bluesky
-        description: Follow me on Bluesky
-        info: Bluesky is not setup yet. Coming soon.
+        description: Follow me on Bluesky (coming soon).
         icon:
           class: fa-brands fa-bluesky
-        alternatives: 
+        alternatives:
         - link: accounts.channels.microblogs.mastodon
-      
+
     - name: Pictures
+      description: View my photography.
       icon:
         class: fa-solid fa-images
       children:
-      - name: Pixelfed  
-        description: View my photo gallery
+      - name: Pixelfed
+        description: Explore my photo gallery on Pixelfed.
         icon:
             class: fa-solid fa-camera
         url: https://s.veen.world/pictures
       - name: Instagram
-        description: Follow me on Instagram
+        description: Follow me on Instagram.
         icon:
           class: fa-brands fa-instagram
         url: https://www.instagram.com/kevinveenbirkenbach/
         identifier: kevinveenbirkenbach
-        warning: Using software and platforms from the Meta corporation (e.g., Facebook, Instagram, WhatsApp) may compromise your data privacy and digital freedom due to centralized control, extensive data collection practices, and inconsistent moderation policies. These platforms often fail to adequately address harmful content, misinformation, and abuse.
+        warning: Platforms by Meta (e.g., Instagram, Facebook) may compromise your data privacy. Consider using decentralized alternatives.
         alternatives:
         - link: accounts.channels.pictures.pixelfed
-    
+
     - name: Videos
-      description: Follow my Video Channels
+      description: Watch my video content.
       icon:
           class: fa-solid fa-video
       children:
       - name: Peertube
-        description: Follow me on Peertube
+        description: Discover my videos on Peertube.
         icon:
           class: fa-solid fa-video
         url: https://s.veen.world/videos
-      - name: Youtube
-        description: Follow me on Youtube
+      - name: YouTube
+        description: Follow me on YouTube (inactive).
         icon:
           class: fa-brands fa-youtube
         url: https://s.veen.world/youtube
-        warning: I don't publish videos on Youtube. Please use one of the listed alternatives.
+        warning: I no longer publish videos on YouTube. Please visit my Peertube channel instead.
         alternatives:
         - link: accounts.channels.videos.peertube
-        
-      
+
     - name: Blog
-      description: Read my blog
+      description: Read my articles and stories.
       icon:
           class: fa-solid fa-blog
       url: https://blog.veen.world
-      
+
     - name: Code
+      description: Access my coding projects.
       icon:
           class: fa-solid fa-laptop-code
-      description: Check out my Code
       children:
-      - name: Github
-        description: View my GitHub profile
+      - name: GitHub
+        description: View my GitHub repositories.
         icon:
           class: bi bi-github
         url: https://github.com/kevinveenbirkenbach
-        
       - name: Gitea
-        description: Explore my code repositories
+        description: Explore my self-hosted repositories.
         icon:
           class: fa-solid fa-code
         url: https://git.veen.world/kevinveenbirkenbach
+
   - name: Social Media
-    description: Social and developer networks
+    description: Social and developer platforms.
     icon:
       class: fa-brands fa-meta
-    url: 
     children:
     - name: Facebook
-      description: Like my Facebook page
+      description: Visit my Facebook page.
       icon:
         class: fa-brands fa-facebook
       url: https://www.facebook.com/kevinveenbirkenbach
+
   - link: navigation.header.contact.messenger
-  - name: Carreer Profiles
+
+  - name: Career Profiles
+    description: Professional networking profiles.
     icon:
       class: fa-solid fa-user-tie
     children:
     - name: XING
-      description: Visit my XING profile
+      description: View my XING profile.
       icon:
         class: bi bi-building
       url: https://www.xing.com/profile/Kevin_VeenBirkenbach
-      
     - name: LinkedIn
-      description: Connect on LinkedIn
+      description: Connect with me on LinkedIn.
       icon:
         class: bi bi-linkedin
       url: https://www.linkedin.com/in/kevinveenbirkenbach
-      
+
   - name: Sports
-    description: My sport activities
+    description: My sports activities and logs.
     icon:
       class: fa-solid fa-running
-    url: 
     children:
     - name: Garmin
-      description: My Garmin activities
+      description: Explore my Garmin activity records.
       icon:
         class: fa-solid fa-person-running
       url: https://s.veen.world/garmin
-      
     - name: Eversports
-      description: My Eversports sessions
+      description: View my Eversports sessions.
       icon:
         class: fa-solid fa-dumbbell
       url: https://s.veen.world/eversports
-      
+
   - name: Duolingo
-    description: Learn with me on Duolingo
+    description: Join me in language learning.
     icon:
       class: fa-solid fa-language
     url: https://www.duolingo.com/profile/kevinbirkenbach
-    
+
   - name: Spotify
-    description: Listen to my playlists
+    description: Listen to my playlists.
     icon:
       class: fa-brands fa-spotify
     url: https://open.spotify.com/user/31vebfzbjf3p7oualis76qfpr5ty
-    
+
   - name: Patreon
-    description: Support me on Patreon
+    description: Support my work on Patreon.
     icon:
       class: fa-brands fa-patreon
     url: https://patreon.com/kevinveenbirkenbach
-    
+
   - name: Discourse
-    description: Follow me on Discourse
+    description: Join discussions on my forum.
     icon:
       class: fa-brands fa-discourse
     url: https://forum.veen.world/u/kevinveenbirkenbach
-    
 
 cards:
 - icon: 
