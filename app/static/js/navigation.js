@@ -70,6 +70,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+function isSmallScreen() {
+  return window.innerWidth < 992; // Bootstrap-Breakpoint für 'lg'
+}
+    
 function adjustMenuPosition(submenu, parent, isTopLevel) {
     const rect = submenu.getBoundingClientRect();
     const parentRect = parent.getBoundingClientRect();
@@ -85,8 +89,13 @@ function adjustMenuPosition(submenu, parent, isTopLevel) {
     submenu.style.right = '';
 
     if (isTopLevel) {
+      if (isSmallScreen && spaceBelow < spaceAbove) {
+        // Für kleine Bildschirme: Menü direkt über dem Eltern-Element öffnen
+        submenu.style.top = 'auto';
+        submenu.style.bottom = `${parentRect.height}px`; // Direkt über dem Eltern-Element
+      } 
         // Top-Level-Menü
-        if (spaceBelow < spaceAbove) {
+        else if (spaceBelow < spaceAbove) {
             submenu.style.bottom = `${window.innerHeight - parentRect.bottom - parentRect.height}px`;
             submenu.style.top = 'auto';
         } else {
