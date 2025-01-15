@@ -48,20 +48,16 @@ class ConfigurationResolver:
                             if isinstance(loaded_link, list):
                                 self._replace_in_list_by_list(value,item,loaded_link)
                             else:
-                                self._replace_element_in_list(value,item,loaded_link)             
+                                self._replace_element_in_list(value,item,loaded_link)  
+                        else:
+                            self._recursive_resolve(value, root_config)            
                 elif key == "link":
                     try:
-                        if self.__load_children(value):
-                            loaded = self._find_entry(root_config, value.lower(), False)
-                            self._replace_in_dict_by_dict(
-                                    current_config,key,loaded
-                                )
-                        else:
-                            loaded = self._find_entry(root_config, value.lower(), True)
-                            if isinstance(loaded, list) and len(loaded) > 2:
-                                loaded = self._find_entry(root_config, value.lower(), False)  
-                            current_config.clear()
-                            current_config.update(loaded)
+                        loaded = self._find_entry(root_config, value.lower(), True)
+                        if isinstance(loaded, list) and len(loaded) > 2:
+                            loaded = self._find_entry(root_config, value.lower(), False)  
+                        current_config.clear()
+                        current_config.update(loaded)
                     except Exception as e: 
                         raise ValueError(
                             f"Error resolving link '{value}': {str(e)}. "

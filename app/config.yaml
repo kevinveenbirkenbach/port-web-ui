@@ -1,12 +1,12 @@
 ---
 accounts:
-  name: Accounts
+  name: Online Accounts
   description: My Online Accounts
   icon:
       class: fa-solid fa-users
   children:
-  - name: Publications
-    description: My Publications
+  - name: channels
+    description: My publication channels
     icon:
         class: fas fa-newspaper
     children:
@@ -252,7 +252,7 @@ company:
 navigation:
   header:
     children:
-    - link: accounts.publications.children
+    - link: accounts.channels.children
     - name: Contact
       description: Get in touch
       icon:
@@ -485,7 +485,16 @@ navigation:
         icon:
             class: fa-solid fa-file-lines
         url: https://s.veen.world/lebenslauf
-      - link: accounts
+      - name: Languages
+        icon:
+          class: fa-solid fa-language
+        children:
+        - link: accounts.duolingo
+        - name: Languages Credentials
+          description: Check out which languages I speak
+          url: https://s.veen.world/languages
+          icon:
+            class: fa-solid fa-language
       - name: Credentials
         description: Access my certifications, degrees, and professional records
         icon:
@@ -506,7 +515,7 @@ navigation:
             icon:
               class: fa-solid fa-scroll
             url: https://s.veen.world/certifications
-        
+      - link: accounts 
     - name: Imprint
       description: Check out the imprint information
       icon:
