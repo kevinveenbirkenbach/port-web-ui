@@ -1,8 +1,5 @@
 function openDynamicPopup(subitem) {
-  // Schließe alle offenen Modals
   closeAllModals();
-
-  // Setze den Titel mit Icon, falls vorhanden
   const modalTitle = document.getElementById('dynamicModalLabel');
   if (subitem.icon && subitem.icon.class) {
     modalTitle.innerHTML = `<i class="${subitem.icon.class}"></i> ${subitem.name}`;
@@ -10,7 +7,6 @@ function openDynamicPopup(subitem) {
     modalTitle.innerText = subitem.name;
   }
 
-  // Setze den Identifier, falls vorhanden
   const identifierBox = document.getElementById('dynamicIdentifierBox');
   const modalContent = document.getElementById('dynamicModalContent');
   if (subitem.identifier) {
@@ -21,7 +17,6 @@ function openDynamicPopup(subitem) {
     modalContent.value = '';
   }
 
-  // Konfiguriere die Warnbox mit Markdown
   const warningBox = document.getElementById('dynamicModalWarning');
   if (subitem.warning) {
     warningBox.classList.remove('d-none');
@@ -30,7 +25,6 @@ function openDynamicPopup(subitem) {
     warningBox.classList.add('d-none');
   }
 
-  // Konfiguriere die Infobox mit Markdown
   const infoBox = document.getElementById('dynamicModalInfo');
   if (subitem.info) {
     infoBox.classList.remove('d-none');
@@ -39,7 +33,6 @@ function openDynamicPopup(subitem) {
     infoBox.classList.add('d-none');
   }
 
-  // Zeige die Beschreibung, falls keine URL vorhanden ist
   const descriptionText = document.getElementById('dynamicDescriptionText');
   if (!subitem.url && subitem.description) {
     descriptionText.classList.remove('d-none');
@@ -49,7 +42,6 @@ function openDynamicPopup(subitem) {
     descriptionText.innerText = '';
   }
 
-  // Konfiguriere den Link oder die Beschreibung
   const linkBox = document.getElementById('dynamicModalLink');
   const linkHref = document.getElementById('dynamicModalLinkHref');
   if (subitem.url) {
@@ -61,10 +53,9 @@ function openDynamicPopup(subitem) {
     linkHref.href = '#';
   }
 
-  // Konfiguriere die Alternativen
   const alternativesSection = document.getElementById('dynamicAlternativesSection');
   const alternativesList = document.getElementById('dynamicAlternativesList');
-  alternativesList.innerHTML = ''; // Clear existing alternatives
+  alternativesList.innerHTML = '';
   if (subitem.alternatives && subitem.alternatives.length > 0) {
     alternativesSection.classList.remove('d-none');
     subitem.alternatives.forEach(alt => {
@@ -83,7 +74,27 @@ function openDynamicPopup(subitem) {
     alternativesSection.classList.add('d-none');
   }
 
-  // Kopierfunktion für den Identifier
+  const childrenSection = document.createElement('div');
+  childrenSection.classList.add('mt-4');
+  childrenSection.innerHTML = `<h6>Options:</h6><ul class="list-group" id="dynamicChildrenList"></ul>`;
+
+  const childrenList = childrenSection.querySelector('#dynamicChildrenList');
+  if (subitem.children && subitem.children.length > 0) {
+    subitem.children.forEach(child => {
+      const listItem = document.createElement('li');
+      listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+      listItem.innerHTML = `
+        <span>
+          <i class="${child.icon.class}"></i> ${child.name}
+        </span>
+        <button class="btn btn-outline-secondary btn-sm">Open</button>
+      `;
+      listItem.querySelector('button').addEventListener('click', () => openDynamicPopup(child));
+      childrenList.appendChild(listItem);
+    });
+    document.querySelector('.modal-body').appendChild(childrenSection);
+  }
+
   const copyButton = document.getElementById('dynamicCopyButton');
   copyButton.onclick = () => {
     modalContent.select();
@@ -92,25 +103,20 @@ function openDynamicPopup(subitem) {
     });
   };
 
-  // Modal anzeigen
   const modal = new bootstrap.Modal(document.getElementById('dynamicModal'));
   modal.show();
 }
 
 function closeAllModals() {
-  const modals = document.querySelectorAll('.modal.show'); // Alle offenen Modals finden
+  const modals = document.querySelectorAll('.modal.show');
   modals.forEach(modal => {
       const modalInstance = bootstrap.Modal.getInstance(modal);
       if (modalInstance) {
-          modalInstance.hide(); // Modal ausblenden
+          modalInstance.hide();
       }
   });
-
-  // Entferne die "modal-backdrop"-Elemente
   const backdrops = document.querySelectorAll('.modal-backdrop');
   backdrops.forEach(backdrop => backdrop.remove());
-
-  // Entferne die Klasse, die den Hintergrund ausgraut
   document.body.classList.remove('modal-open');
   document.body.style.overflow = '';
   document.body.style.paddingRight = '';
