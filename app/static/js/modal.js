@@ -74,12 +74,11 @@ function openDynamicPopup(subitem) {
     alternativesSection.classList.add('d-none');
   }
 
-  const childrenSection = document.createElement('div');
-  childrenSection.classList.add('mt-4');
-  childrenSection.innerHTML = `<h6>Options:</h6><ul class="list-group" id="dynamicChildrenList"></ul>`;
-
-  const childrenList = childrenSection.querySelector('#dynamicChildrenList');
+  const childrenSection = document.getElementById('dynamicChildrenSection');
+  const childrenList = document.getElementById('dynamicChildrenList');
+  childrenList.innerHTML = '';
   if (subitem.children && subitem.children.length > 0) {
+    childrenSection.classList.remove('d-none');
     subitem.children.forEach(child => {
       const listItem = document.createElement('li');
       listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
@@ -93,6 +92,8 @@ function openDynamicPopup(subitem) {
       childrenList.appendChild(listItem);
     });
     document.querySelector('.modal-body').appendChild(childrenSection);
+  } else {
+    childrenSection.classList.add('d-none');
   }
 
   const copyButton = document.getElementById('dynamicCopyButton');
