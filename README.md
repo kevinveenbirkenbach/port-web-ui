@@ -132,8 +132,7 @@ In this example, `Featured Blog` will inherit all properties from the `Blog` ite
 
 ### Stop and Destroy
 ```bash
-docker stop portfolio
-docker rm portfolio
+docker stop portfolio; docker rm portfolio
 ```
 
 ### Build
