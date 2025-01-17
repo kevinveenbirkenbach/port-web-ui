@@ -55,7 +55,7 @@ class ConfigurationResolver:
                             self._recursive_resolve(value, root_config)            
                 elif key == "link":
                     try:
-                        loaded = self._find_entry(root_config, self._mapped_key(value), True)
+                        loaded = self._find_entry(root_config, self._mapped_key(value), False)
                         if isinstance(loaded, list) and len(loaded) > 2:
                             loaded = self._find_entry(root_config, self._mapped_key(value), False)  
                         current_config.clear()
@@ -114,6 +114,7 @@ class ConfigurationResolver:
                 key = next((k for k in current if self._mapped_key(k) == part), None)
                 # If no fitting key was found search in the children
                 if key is None:
+                    # The following line seems buggy; Why is children loaded allways and not just when children is set?
                     current = self._find_by_name(current["children"],part)
                     if not current:
                         raise KeyError(
