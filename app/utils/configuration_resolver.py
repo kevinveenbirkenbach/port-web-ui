@@ -46,7 +46,7 @@ class ConfigurationResolver:
                         raise ValueError(f"Expected 'children' to be a list, but got {type(value).__name__} instead.")
                     for item in value:
                         if "link" in item:
-                            loaded_link = self._find_entry(root_config, item['link'].lower(), False)
+                            loaded_link = self._find_entry(root_config, self._mapped_key(item['link']), False)
                             if isinstance(loaded_link, list):
                                 self._replace_in_list_by_list(value,item,loaded_link)
                             else:
@@ -55,15 +55,15 @@ class ConfigurationResolver:
                             self._recursive_resolve(value, root_config)            
                 elif key == "link":
                     try:
-                        loaded = self._find_entry(root_config, value.lower(), True)
+                        loaded = self._find_entry(root_config, self._mapped_key(value), True)
                         if isinstance(loaded, list) and len(loaded) > 2:
-                            loaded = self._find_entry(root_config, value.lower(), False)  
+                            loaded = self._find_entry(root_config, self._mapped_key(value), False)  
                         current_config.clear()
                         current_config.update(loaded)
                     except Exception as e: 
                         raise ValueError(
                             f"Error resolving link '{value}': {str(e)}. "
-                            f"Current path: {key}, Current config: {current_config}" + (f", Loaded: {loaded}" if 'loaded' in locals() or 'loaded' in globals() else "")
+                            f"Current part: {key}, Current config: {current_config}" + (f", Loaded: {loaded}" if 'loaded' in locals() or 'loaded' in globals() else "")
                         )
                 else:
                     self._recursive_resolve(value, root_config)
@@ -76,9 +76,12 @@ class ConfigurationResolver:
             current = current["children"]
         return current
 
+    def _mapped_key(self,name):
+        return name.replace(" ", "").lower()
+        
     def _find_by_name(self,current, part):
         return next(
-                    (item for item in current if isinstance(item, dict) and item.get("name", "").lower() == part),
+                    (item for item in current if isinstance(item, dict) and self._mapped_key(item.get("name", "")) == part),
                     None
                 )
 
@@ -108,7 +111,8 @@ class ConfigurationResolver:
                         )
             elif isinstance(current, dict):
                 # Case-insensitive dictionary lookup
-                key = next((k for k in current if k.lower() == part), None)
+                key = next((k for k in current if self._mapped_key(k) == part), None)
+                # If no fitting key was found search in the children
                 if key is None:
                     current = self._find_by_name(current["children"],part)
                     if not current:
