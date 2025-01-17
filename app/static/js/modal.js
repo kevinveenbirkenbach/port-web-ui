@@ -17,21 +17,18 @@ function openDynamicPopup(subitem) {
     modalContent.value = '';
   }
 
-  const warningBox = document.getElementById('dynamicModalWarning');
-  if (subitem.warning) {
-    warningBox.classList.remove('d-none');
-    document.getElementById('dynamicModalWarningText').innerHTML = marked.parse(subitem.warning);
-  } else {
-    warningBox.classList.add('d-none');
+  function toggleBox(boxId, textId, content) {
+    const box = document.getElementById(boxId);
+    if (content) {
+      box.classList.remove('d-none');
+      document.getElementById(textId).innerHTML = marked.parse(content);
+    } else {
+      box.classList.add('d-none');
+    }
   }
-
-  const infoBox = document.getElementById('dynamicModalInfo');
-  if (subitem.info) {
-    infoBox.classList.remove('d-none');
-    document.getElementById('dynamicModalInfoText').innerHTML = marked.parse(subitem.info);
-  } else {
-    infoBox.classList.add('d-none');
-  }
+  
+  toggleBox('dynamicModalWarning', 'dynamicModalWarningText', subitem.warning);
+  toggleBox('dynamicModalInfo', 'dynamicModalInfoText', subitem.info);
 
   const descriptionText = document.getElementById('dynamicDescriptionText');
   if (!subitem.url && subitem.description) {
