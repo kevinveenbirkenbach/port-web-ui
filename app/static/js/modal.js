@@ -52,49 +52,32 @@ function openDynamicPopup(subitem) {
     linkBox.classList.add('d-none');
     linkHref.href = '#';
   }
-
-  const alternativesSection = document.getElementById('dynamicAlternativesSection');
-  const alternativesList = document.getElementById('dynamicAlternativesList');
-  alternativesList.innerHTML = '';
-  if (subitem.alternatives && subitem.alternatives.length > 0) {
-    alternativesSection.classList.remove('d-none');
-    subitem.alternatives.forEach(alt => {
-      const listItem = document.createElement('li');
-      listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-      listItem.innerHTML = `
-        <span>
-          <i class="${alt.icon.class}"></i> ${alt.name}
-        </span>
-        <button class="btn btn-outline-secondary btn-sm">Open</button>
-      `;
-      listItem.querySelector('button').addEventListener('click', () => openDynamicPopup(alt));
-      alternativesList.appendChild(listItem);
-    });
-  } else {
-    alternativesSection.classList.add('d-none');
+  function populateSection(sectionId, listId, items, onClickHandler) {
+    const section = document.getElementById(sectionId);
+    const list = document.getElementById(listId);
+    list.innerHTML = '';
+  
+    if (items && items.length > 0) {
+      section.classList.remove('d-none');
+      items.forEach(item => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
+        listItem.innerHTML = `
+          <span>
+            <i class="${item.icon.class}"></i> ${item.name}
+          </span>
+          <button class="btn btn-outline-secondary btn-sm">Open</button>
+        `;
+        listItem.querySelector('button').addEventListener('click', () => onClickHandler(item));
+        list.appendChild(listItem);
+      });
+    } else {
+      section.classList.add('d-none');
+    }
   }
-
-  const childrenSection = document.getElementById('dynamicChildrenSection');
-  const childrenList = document.getElementById('dynamicChildrenList');
-  childrenList.innerHTML = '';
-  if (subitem.children && subitem.children.length > 0) {
-    childrenSection.classList.remove('d-none');
-    subitem.children.forEach(child => {
-      const listItem = document.createElement('li');
-      listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-      listItem.innerHTML = `
-        <span>
-          <i class="${child.icon.class}"></i> ${child.name}
-        </span>
-        <button class="btn btn-outline-secondary btn-sm">Open</button>
-      `;
-      listItem.querySelector('button').addEventListener('click', () => openDynamicPopup(child));
-      childrenList.appendChild(listItem);
-    });
-    document.querySelector('.modal-body').appendChild(childrenSection);
-  } else {
-    childrenSection.classList.add('d-none');
-  }
+  
+  populateSection('dynamicAlternativesSection', 'dynamicAlternativesList', subitem.alternatives, openDynamicPopup);
+  populateSection('dynamicChildrenSection', 'dynamicChildrenList', subitem.children, openDynamicPopup);  
 
   const copyButton = document.getElementById('dynamicCopyButton');
   copyButton.onclick = () => {
