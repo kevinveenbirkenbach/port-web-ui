@@ -1,4 +1,4 @@
-# Portfolio: Flask-based Portfolio 🚀
+# Portfolio CMS: Flask-based Portfolio Management🚀
 
 This software allows individuals and institutions to set up an easy portfolio/landingpage/homepage to showcase their projects and online presence. It is highly customizable via a YAML configuration file.
 
