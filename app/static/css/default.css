@@ -84,3 +84,15 @@ h3.card-title {
 h3.footer-title {
   font-size: 1.3em;
 }
+
+.card-img-top i{
+  font-size: 100px;
+}
+
+div#navbarNavheader li.nav-item{
+  margin-left: 6px;
+}
+
+div#navbarNavfooter li.nav-item{
+  margin-right: 6px;
+}
