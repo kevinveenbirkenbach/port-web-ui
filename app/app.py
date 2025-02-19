@@ -42,11 +42,12 @@ def reload_config_in_dev():
             card["icon"]["cache"] = cache_manager.cache_file(card["icon"]["source"])
     
     app.config["company"]["logo"]["cache"] = cache_manager.cache_file(app.config["company"]["logo"]["source"])
-    app.config["company"]["favicon"]["cache"] = cache_manager.cache_file(app.config["company"]["favicon"]["source"])
-
+    app.config["platform"]["favicon"]["cache"] = cache_manager.cache_file(app.config["platform"]["favicon"]["source"])
+    app.config["platform"]["logo"]["cache"] = cache_manager.cache_file(app.config["platform"]["logo"]["source"])
+    
 @app.route('/')
 def index():
-    return render_template("pages/index.html.j2", cards=app.config["cards"], company=app.config["company"], navigation=app.config["navigation"])
+    return render_template("pages/index.html.j2", cards=app.config["cards"], company=app.config["company"], navigation=app.config["navigation"], platform=app.config["platform"])
 
 if __name__ == "__main__":
     app.run(debug=(FLASK_ENV == "development"), host="0.0.0.0", port=5000)
