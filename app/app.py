@@ -37,7 +37,9 @@ def reload_config_in_dev():
         
     # Cache the icons
     for card in app.config["cards"]:
-        card["icon"]["cache"] = cache_manager.cache_file(card["icon"]["source"])
+        # Just download the logo if an source url is passed
+        if card["icon"].get("source"):
+            card["icon"]["cache"] = cache_manager.cache_file(card["icon"]["source"])
     
     app.config["company"]["logo"]["cache"] = cache_manager.cache_file(app.config["company"]["logo"]["source"])
     app.config["company"]["favicon"]["cache"] = cache_manager.cache_file(app.config["company"]["favicon"]["source"])
