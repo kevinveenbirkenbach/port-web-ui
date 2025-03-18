@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const links = document.querySelectorAll(".iframe-link");
     const mainElement = document.querySelector("main");
     const container = document.querySelector(".container");
+    const customScrollbar = document.getElementById("custom-scrollbar");
 
     links.forEach(link => {
         link.addEventListener("click", function (event) {
@@ -19,6 +20,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 container.classList.replace("container", "container-fluid");
             }
 
+            // Hide the custom scrollbar
+            if (customScrollbar) {
+                customScrollbar.style.display = "none";
+            }
+
             // Check if the iframe already exists
             let iframe = mainElement.querySelector("iframe");
 
@@ -28,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 iframe.width = "100%";
                 iframe.style.border = "none";
                 iframe.style.height = mainElement.style.height; // Apply fixed height
+                iframe.style.overflow = "auto"; // Enable scrollbar inside iframe
+                iframe.scrolling = "auto"; // Ensure scrollability
                 mainElement.innerHTML = ""; // Clear main content
                 mainElement.appendChild(iframe);
             }
