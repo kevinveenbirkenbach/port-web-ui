@@ -96,3 +96,7 @@ div#navbarNavheader li.nav-item{
 div#navbarNavfooter li.nav-item{
   margin-right: 6px;
 }
+
+main{
+  position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.3); overflow: visible;
+}

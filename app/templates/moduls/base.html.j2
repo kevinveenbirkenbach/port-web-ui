@@ -27,20 +27,16 @@
             </header>
             {% set menu_type = "header" %}
             {% include "moduls/navigation.html.j2"%}
-
-<main id="main" style="position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.3); overflow: visible;">
-  <div class="scroll-container">
-    <!-- Hier kommt dein Hauptinhalt -->
-    {% block content %}{% endblock %}
-  </div>
-</main>
-
-<!-- Custom scrollbar element fixiert am rechten Rand -->
-<div id="custom-scrollbar">
-  <div id="scroll-thumb"></div>
-</div>
-
-
+            <main id="main">
+            <div class="scroll-container">
+                <!-- Hier kommt dein Hauptinhalt -->
+                {% block content %}{% endblock %}
+            </div>
+            </main>
+            <!-- Custom scrollbar element fixiert am rechten Rand -->
+            <div id="custom-scrollbar">
+            <div id="scroll-thumb"></div>
+            </div>
             {% set menu_type = "footer" %}
             {% include "moduls/navigation.html.j2" %}
             <footer class="footer">
