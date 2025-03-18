@@ -46,7 +46,7 @@
                     {% if item.url %}
                         <!-- Single Item -->
                         <li class="nav-item">
-                            <a class="nav-link btn btn-light" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
+                            <a class="nav-link btn btn-light {% if item.iframe %}iframe-link{% endif %}" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
                                 {{ render_icon_and_name(item) }}
                             </a>
                         </li>

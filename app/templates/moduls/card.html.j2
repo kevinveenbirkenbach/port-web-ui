@@ -12,7 +12,7 @@
             <h3 class="card-title">{{ card.title }}</h3>
             <p class="card-text">{{ card.text }}</p>
             {% if card.url %}
-                <a href="{{ card.url }}" class="mt-auto btn btn-light stretched-link">
+                <a href="{{ card.url }}" class="mt-auto btn btn-light stretched-link {% if card.iframe %}iframe-link{% endif %}">
                     <i class="fa-solid fa-globe"></i> {{ card.link_text }}
                 </a>
             {% else %}

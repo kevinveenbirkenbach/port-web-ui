@@ -205,6 +205,7 @@ cards:
     ensuring agile principles are effectively implemented for sustainable success.
   url: https://www.agile-coach.world
   link_text: www.agile-coach.world
+  iframe: true
 - icon: 
     source: https://cloud.veen.world/s/logo_personal_coach_512x512/download
   title: Personal Coach
@@ -645,4 +646,5 @@ navigation:
       icon:
           class: fa-solid fa-scale-balanced
       url: https://s.veen.world/imprint
+      iframe: true
   

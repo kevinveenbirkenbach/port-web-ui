@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe Navigation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #iframe-container {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+        nav {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="https://www.example.com" class="iframe-link">Beispiel 1</a> |
+        <a href="https://www.wikipedia.org" class="iframe-link">Wikipedia</a> |
+        <a href="https://www.openstreetmap.org" class="iframe-link">OpenStreetMap</a>
+    </nav>
+
+    <main id="main">
+        <p>Hier wird der Inhalt durch ein Iframe ersetzt.</p>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const links = document.querySelectorAll(".iframe-link");
+            const main = document.getElementById("main");
+
+            links.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault(); // Verhindert das Standardverhalten
+
+                    const url = this.getAttribute("href");
+
+                    // Prüfe, ob das Iframe bereits existiert
+                    let iframe = document.getElementById("iframe-container");
+
+                    if (!iframe) {
+                        // Neues Iframe erstellen
+                        iframe = document.createElement("iframe");
+                        iframe.id = "iframe-container";
+                        iframe.width = "100%";
+                        iframe.height = "600px";
+                        iframe.style.border = "none";
+                        main.innerHTML = ""; // Inhalt von main löschen
+                        main.appendChild(iframe);
+                    }
+
+                    iframe.src = url; // Lade die URL in das Iframe
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
