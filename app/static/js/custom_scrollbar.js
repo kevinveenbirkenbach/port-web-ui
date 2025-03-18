@@ -1,12 +1,12 @@
 function adjustScrollContainerHeight() {
   const mainEl = document.getElementById('main');
   const scrollContainer = mainEl.querySelector('.scroll-container');
+  const scrollbarContainer = document.getElementById('custom-scrollbar');
   const container = mainEl.parentElement;
-  const scrollbarContainer = mainEl.parentElement.querySelector('#custom-scrollbar');
-  let siblingsHeight = 0;
   
+  let siblingsHeight = 0;
   Array.from(container.children).forEach(child => {
-    if(child !== mainEl && child !== scrollContainer && child !== scrollbarContainer) {
+    if(child !== mainEl && child !== scrollbarContainer) {
       const style = window.getComputedStyle(child);
       const height = child.offsetHeight;
       const marginTop = parseFloat(style.marginTop) || 0;
@@ -15,14 +15,20 @@ function adjustScrollContainerHeight() {
     }
   });
   
-  // Verfügbare Höhe berechnen: Fensterhöhe minus Höhe der Geschwister
+  // Berechne die verfügbare Höhe für den Scrollbereich
   const availableHeight = window.innerHeight - siblingsHeight;
-  
-  // Setze die max-Höhe für den Scroll-Container
   scrollContainer.style.maxHeight = availableHeight + 'px';
   scrollContainer.style.overflowY = 'auto';
   scrollContainer.style.overflowX = 'hidden';
+
+  // Hole die aktuelle Position und Höhe des Scrollbereichs
+  const scrollContainerRect = scrollContainer.getBoundingClientRect();
+
+  // Setze die Position (top) und die Höhe des benutzerdefinierten Scrollbar-Tracks
+  scrollbarContainer.style.top = scrollContainerRect.top + 'px';
+  scrollbarContainer.style.height = scrollContainerRect.height + 'px';
 }
+
 
 window.addEventListener('load', adjustScrollContainerHeight);
 window.addEventListener('resize', adjustScrollContainerHeight);

@@ -5,29 +5,27 @@
     /* Native Scrollbar ausblenden */
     scrollbar-width: none; /* Firefox */
   }
-  .scroll-container::-webkit-scrollbar {
+.scroll-container::-webkit-scrollbar {
     display: none; /* WebKit */
-  }
-  
-  /* Das benutzerdefinierte Scrollbar-Element fixiert am rechten Rand */
-  #custom-scrollbar {
+}
+
+#custom-scrollbar {
     position: fixed;
     top: 0;
     right: 0;
     width: 8px;
-    height: 100vh;
+    /* height: 100vh;  <-- diese Zeile entfernen oder anpassen */
     background: transparent;
-    /* pointer-events NICHT ausschalten, damit die Scrollbar bedienbar bleibt */
     transition: opacity 0.3s ease;
-    opacity: 1; /* dauerhaft sichtbar, wenn benötigt */
-  }
-  
-  /* Der Thumb der Scrollbar */
-  #scroll-thumb {
+    opacity: 1;
+}
+
+/* Der Thumb der Scrollbar */
+#scroll-thumb {
     position: absolute;
     top: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
-  }
+}
   
