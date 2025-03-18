@@ -18,3 +18,13 @@
 .dropdown-menu {
     transition: all 0.3s ease-in-out;
 }
+
+nav.navbar.menu-header {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+nav.navbar.menu-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
