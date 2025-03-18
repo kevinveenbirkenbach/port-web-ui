@@ -1,27 +1,19 @@
 function adjustScrollContainerHeight() {
-  // Elemente ermitteln
-  const headerEl = document.querySelector('header');
-  const navEl = document.querySelector('nav');
-  const footerEl = document.querySelector('footer');
   const mainEl = document.getElementById('main');
-  if (!mainEl) return;
   const scrollContainer = mainEl.querySelector('.scroll-container');
-  if (!scrollContainer) return;
-  
+  const container = mainEl.parentElement;
+  const scrollbarContainer = mainEl.parentElement.querySelector('#custom-scrollbar');
   let siblingsHeight = 0;
   
-  if (headerEl) {
-    const headerRect = headerEl.getBoundingClientRect();
-    siblingsHeight += headerRect.height;
-  }
-  if (navEl) {
-    const navRect = navEl.getBoundingClientRect();
-    siblingsHeight += navRect.height*2;
-  }
-  if (footerEl) {
-    const footerRect = footerEl.getBoundingClientRect();
-    siblingsHeight += footerRect.height;
-  }
+  Array.from(container.children).forEach(child => {
+    if(child !== mainEl && child !== scrollContainer && child !== scrollbarContainer) {
+      const style = window.getComputedStyle(child);
+      const height = child.offsetHeight;
+      const marginTop = parseFloat(style.marginTop) || 0;
+      const marginBottom = parseFloat(style.marginBottom) || 0;
+      siblingsHeight += height + marginTop + marginBottom;
+    }
+  });
   
   // Verfügbare Höhe berechnen: Fensterhöhe minus Höhe der Geschwister
   const availableHeight = window.innerHeight - siblingsHeight;
