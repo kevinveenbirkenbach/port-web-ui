@@ -1,10 +1,11 @@
-/* Den scroll-container so einstellen, dass er nur vertikal scrollt */
+/* Set the scroll container to only scroll vertically */
 .scroll-container {
     overflow-y: auto;
     overflow-x: hidden;
-    /* Native Scrollbar ausblenden */
+    /* Hide native scrollbar */
     scrollbar-width: none; /* Firefox */
-  }
+}
+
 .scroll-container::-webkit-scrollbar {
     display: none; /* WebKit */
 }
@@ -14,13 +15,13 @@
     top: 0;
     right: 0;
     width: 8px;
-    /* height: 100vh;  <-- diese Zeile entfernen oder anpassen */
+    /* height: 100vh;  <-- remove or adjust this line */
     background: transparent;
     transition: opacity 0.3s ease;
     opacity: 1;
 }
 
-/* Der Thumb der Scrollbar */
+/* The scrollbar thumb */
 #scroll-thumb {
     position: absolute;
     top: 0;
@@ -28,4 +29,3 @@
     background-color: rgba(0, 0, 0, 0.2);
     border-radius: 4px;
 }
-  

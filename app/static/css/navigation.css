@@ -1,20 +1,20 @@
-/* Top-Level Dropdown-Menü */
+/* Top-level dropdown menu */
 .nav-item .dropdown-menu {
-    position: absolute; /* Wichtig für Positionierung */
-    top: 100%; /* Standardmäßige Öffnung nach unten */
+    position: absolute; /* Important for positioning */
+    top: 100%; /* Default opening direction: downwards */
     left: 0;
-    z-index: 1050; /* Damit das Menü über anderen Elementen liegt */
+    z-index: 1050; /* Ensures the menu appears above other elements */
 }
 
-/* Submenu-Position */
+/* Submenu position */
 .dropdown-submenu > .dropdown-menu {
     position: absolute;
     top: 0;
-    left: 100%; /* Öffnen nach rechts */
+    left: 100%; /* Opens to the right */
     z-index: 1050;
 }
 
-/* Sicherstellen, dass der Übergang smooth ist */
+/* Ensure a smooth transition */
 .dropdown-menu {
     transition: all 0.3s ease-in-out;
 }
@@ -22,7 +22,7 @@
 nav.navbar.menu-header {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-  }
+}
   
 nav.navbar.menu-footer {
     border-top-left-radius: 0;

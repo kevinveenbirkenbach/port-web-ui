@@ -15,25 +15,24 @@ function adjustScrollContainerHeight() {
     }
   });
   
-  // Berechne die verfügbare Höhe für den Scrollbereich
+  // Calculate the available height for the scroll area
   const availableHeight = window.innerHeight - siblingsHeight;
   scrollContainer.style.maxHeight = availableHeight + 'px';
   scrollContainer.style.overflowY = 'auto';
   scrollContainer.style.overflowX = 'hidden';
 
-  // Hole die aktuelle Position und Höhe des Scrollbereichs
+  // Get the current position and height of the scroll container
   const scrollContainerRect = scrollContainer.getBoundingClientRect();
 
-  // Setze die Position (top) und die Höhe des benutzerdefinierten Scrollbar-Tracks
+  // Set the position (top) and height of the custom scrollbar track
   scrollbarContainer.style.top = scrollContainerRect.top + 'px';
   scrollbarContainer.style.height = scrollContainerRect.height + 'px';
 }
 
-
 window.addEventListener('load', adjustScrollContainerHeight);
 window.addEventListener('resize', adjustScrollContainerHeight);
 
-// 2. Aktualisiert den Thumb (Größe und Position) der benutzerdefinierten Scrollbar
+// 2. Updates the thumb (size and position) of the custom scrollbar
 function updateCustomScrollbar() {
   const scrollContainer = document.querySelector('.scroll-container');
   const thumb = document.getElementById('scroll-thumb');
@@ -44,22 +43,22 @@ function updateCustomScrollbar() {
   const containerHeight = scrollContainer.clientHeight;
   const scrollTop = scrollContainer.scrollTop;
   
-  // Berechne die Thumb-Höhe (mindestens 20px)
+  // Calculate the thumb height (minimum 20px)
   let thumbHeight = (containerHeight / contentHeight) * containerHeight;
   thumbHeight = Math.max(thumbHeight, 20);
   thumb.style.height = thumbHeight + 'px';
   
-  // Berechne die Position des Thumbs
+  // Calculate the thumb position
   const maxScrollTop = contentHeight - containerHeight;
   const maxThumbTop = containerHeight - thumbHeight;
   const thumbTop = maxScrollTop ? (scrollTop / maxScrollTop) * maxThumbTop : 0;
   thumb.style.top = thumbTop + 'px';
   
-  // Zeige die Scrollbar, falls der Inhalt überläuft, sonst ggf. ausblenden
+  // Show the scrollbar if content overflows, otherwise hide it
   customScrollbar.style.opacity = contentHeight > containerHeight ? '1' : '0';
 }
 
-// Aktualisiere den Thumb bei Scrollen des Containers
+// Update the thumb when the container is scrolled
 const scrollContainer = document.querySelector('.scroll-container');
 if (scrollContainer) {
   scrollContainer.addEventListener('scroll', updateCustomScrollbar);
@@ -67,7 +66,7 @@ if (scrollContainer) {
 window.addEventListener('resize', updateCustomScrollbar);
 window.addEventListener('load', updateCustomScrollbar);
 
-// 3. Interaktivität: Ermögliche Drag & Drop des Scroll-Thumbs
+// 3. Interactivity: Enable drag & drop for the scroll thumb
 let isDragging = false;
 let dragStartY = 0;
 let scrollStartY = 0;
@@ -93,11 +92,11 @@ document.addEventListener('mousemove', function(e) {
   const maxThumbTop = containerHeight - thumbHeight;
   
   const deltaY = e.clientY - dragStartY;
-  // Berechne neuen Thumb-Top-Wert
+  // Calculate the new thumb top position
   let newThumbTop = (scrollStartY / maxScrollTop) * maxThumbTop + deltaY;
   newThumbTop = Math.max(0, Math.min(newThumbTop, maxThumbTop));
   
-  // Berechne den neuen Scrollwert anhand der Thumb-Position
+  // Calculate the new scroll position based on the thumb position
   const newScrollTop = (newThumbTop / maxThumbTop) * maxScrollTop;
   scrollContainer.scrollTop = newScrollTop;
 });

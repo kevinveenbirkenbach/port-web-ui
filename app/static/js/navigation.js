@@ -17,15 +17,15 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 500);
       }
 
-      // Öffnen beim Hovern
+      // Open on hover
       item.addEventListener('mouseenter', onMouseEnter);
 
-      // Verzögertes Schließen beim Verlassen
+      // Delayed close on mouse leave
       item.addEventListener('mouseleave', onMouseLeave);
 
-      // Öffnen und Position anpassen beim Klicken
+      // Open and adjust position on click
       item.addEventListener('click', (e) => {
-        e.stopPropagation(); // Verhindert das Schließen von Menüs bei Klick
+        e.stopPropagation(); // Prevents menus from closing when clicking inside
         if (item.classList.contains('open')) {
           closeMenu(item);
         } else {
@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   addAllMenuEventListeners();
 
-  // Globale Klick-Listener, um Menüs zu schließen, wenn außerhalb geklickt wird
+  // Global click listener to close menus when clicking outside
   document.addEventListener('click', () => {
     [...menuItems, ...subMenuItems].forEach(item => closeMenu(item));
   });
@@ -70,11 +70,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-function isSmallScreen() {
-  return window.innerWidth < 992; // Bootstrap-Breakpoint für 'lg'
-}
+  function isSmallScreen() {
+    return window.innerWidth < 992; // Bootstrap breakpoint for 'lg'
+  }
     
-function adjustMenuPosition(submenu, parent, isTopLevel) {
+  function adjustMenuPosition(submenu, parent, isTopLevel) {
     const rect = submenu.getBoundingClientRect();
     const parentRect = parent.getBoundingClientRect();
 
@@ -89,33 +89,33 @@ function adjustMenuPosition(submenu, parent, isTopLevel) {
     submenu.style.right = '';
 
     if (isTopLevel) {
-      if (isSmallScreen && spaceBelow < spaceAbove) {
-        // Für kleine Bildschirme: Menü direkt über dem Eltern-Element öffnen
+      if (isSmallScreen() && spaceBelow < spaceAbove) {
+        // For small screens: Open menu directly above the parent element
         submenu.style.top = 'auto';
-        submenu.style.bottom = `${parentRect.height}px`; // Direkt über dem Eltern-Element
+        submenu.style.bottom = `${parentRect.height}px`; // Directly above the parent element
       } 
-        // Top-Level-Menü
-        else if (spaceBelow < spaceAbove) {
-            submenu.style.bottom = `${window.innerHeight - parentRect.bottom - parentRect.height}px`;
-            submenu.style.top = 'auto';
-        } else {
-            submenu.style.top = `${parentRect.height}px`;
-            submenu.style.bottom = 'auto';
-        }
+      // Top-level menu
+      else if (spaceBelow < spaceAbove) {
+        submenu.style.bottom = `${window.innerHeight - parentRect.bottom - parentRect.height}px`;
+        submenu.style.top = 'auto';
+      } else {
+        submenu.style.top = `${parentRect.height}px`;
+        submenu.style.bottom = 'auto';
+      }
     } else {
-        // Submenü
-        const prefersRight = spaceRight >= spaceLeft;
-        submenu.style.left = prefersRight ? '100%' : 'auto';
-        submenu.style.right = prefersRight ? 'auto' : '100%';
+      // Submenu
+      const prefersRight = spaceRight >= spaceLeft;
+      submenu.style.left = prefersRight ? '100%' : 'auto';
+      submenu.style.right = prefersRight ? 'auto' : '100%';
 
-        // Nach oben öffnen, wenn unten kein Platz ist
-        if (spaceBelow < spaceAbove) {
-            submenu.style.bottom = `0`;
-            submenu.style.top = `auto`;
-        } else {
-            submenu.style.top = `0`;
-            submenu.style.bottom = '${parentRect.height}px';
-        }
+      // Open upwards if there's no space below
+      if (spaceBelow < spaceAbove) {
+        submenu.style.bottom = `0`;
+        submenu.style.top = `auto`;
+      } else {
+        submenu.style.top = `0`;
+        submenu.style.bottom = `${parentRect.height}px`;
+      }
     }
-}
+  }
 });

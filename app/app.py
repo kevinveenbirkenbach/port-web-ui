@@ -15,7 +15,6 @@ cache_manager.clear_cache()
 
 def load_config(app):
     """Load and resolve the configuration."""
-    # Lade die Konfigurationsdatei
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
 
@@ -28,7 +27,7 @@ def load_config(app):
 app = Flask(__name__)
 load_config(app)
 
-# Hole die Umgebungsvariable FLASK_ENV oder setze einen Standardwert
+# Get the environment variable FLASK_ENV or set a default value
 FLASK_ENV = os.getenv("FLASK_ENV", "production")
     
 @app.before_request

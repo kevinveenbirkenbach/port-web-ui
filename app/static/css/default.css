@@ -24,7 +24,7 @@ a {
 }
 
 /* Subtle shadow effect */
-.navbar, .card, .dropdown-menu{
+.navbar, .card, .dropdown-menu {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
@@ -85,26 +85,26 @@ h3.footer-title {
   font-size: 1.3em;
 }
 
-.card-img-top i{
+.card-img-top i {
   font-size: 100px;
 }
 
-div#navbarNavheader li.nav-item{
+div#navbarNavheader li.nav-item {
   margin-left: 6px;
 }
 
-div#navbarNavfooter li.nav-item{
+div#navbarNavfooter li.nav-item {
   margin-right: 6px;
 }
 
 main {
   position: relative;
   box-shadow: 
-    /* Innerer Schatten */
-    inset 10px 0 10px -10px rgba(0, 0, 0, 0.3),  /* linker innerer Schatten */
-    inset -10px 0 10px -10px rgba(0, 0, 0, 0.3), /* rechter innerer Schatten */
-    /* Äußerer Schatten */
-    10px 0 10px -10px rgba(0, 0, 0, 0.3),  /* rechter äußerer Schatten */
-    -10px 0 10px -10px rgba(0, 0, 0, 0.3); /* linker äußerer Schatten */
+    /* Inner shadow */
+    inset 10px 0 10px -10px rgba(0, 0, 0, 0.3),  /* Left inner shadow */
+    inset -10px 0 10px -10px rgba(0, 0, 0, 0.3), /* Right inner shadow */
+    /* Outer shadow */
+    10px 0 10px -10px rgba(0, 0, 0, 0.3),  /* Right outer shadow */
+    -10px 0 10px -10px rgba(0, 0, 0, 0.3); /* Left outer shadow */
   overflow: visible;
 }

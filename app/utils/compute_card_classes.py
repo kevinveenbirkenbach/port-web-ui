@@ -13,7 +13,7 @@ def compute_card_classes(cards):
     elif num_cards % 2 == 0:
         lg_classes = ["col-lg-6"] * num_cards
     else:
-        # Für komplexe Fälle (z. B. 5, 7, 11) – Stelle sicher, dass mindestens 3 pro Zeile erscheinen
+        # For complex cases (e.g., 5, 7, 11) – Ensure at least 3 per row
         for i in range(num_cards):
             if num_cards % 4 == 3:
                 if i < 3:
@@ -32,7 +32,7 @@ def compute_card_classes(cards):
                     lg_classes.append("col-lg-6")
                 else:
                     lg_classes.append("col-lg-4")
-    # md-Klassen: Wenn die Anzahl der Karten gerade ist oder wenn nicht die letzte Karte, ansonsten "col-md-12"
+    # md classes: If the number of cards is even or if not the last card, otherwise "col-md-12"
     md_classes = []
     for i in range(num_cards):
         if num_cards % 2 == 0 or i < num_cards - 1:

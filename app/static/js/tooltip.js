@@ -1,4 +1,4 @@
-// Initialisiert alle Tooltips auf der Seite
+// Initializes all tooltips on the page
 document.addEventListener('DOMContentLoaded', function () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
     tooltipTriggerList.forEach(function (tooltipTriggerEl) {

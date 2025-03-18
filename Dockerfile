@@ -1,18 +1,18 @@
-# Basis-Image für Python
+# Base image for Python
 FROM python:slim
 
-# Arbeitsverzeichnis festlegen
+# Set the working directory
 WORKDIR /app
 
-# Abhängigkeiten kopieren und installieren
+# Copy and install dependencies
 COPY app/requirements.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Anwendungscode kopieren
+# Copy application code
 COPY app/ .
 
-# Port freigeben
+# Expose port
 EXPOSE 5000
 
-# Startbefehl
+# Start command
 CMD ["python", "app.py"]
