@@ -2,7 +2,53 @@
 
 {% block content %}
 <div class="row">
+    {% set num_cards = cards | length %}
+    {% set lg_classes = [] %}
+    
+    {# Compute `lg` column widths: Ensure at least 3 per row unless fewer than 3 exist #}
+    {% if num_cards < 3 %}
+        {% if num_cards == 2 %}
+            {% set lg_classes = ["col-lg-6", "col-lg-6"] %}
+        {% else %}
+            {% set lg_classes = ["col-lg-12"] %}
+        {% endif %}
+    {% elif num_cards % 4 == 0 %}
+        {% set lg_classes = ["col-lg-3"] * num_cards %}
+    {% elif num_cards % 3 == 0 %}
+        {% set lg_classes = ["col-lg-4"] * num_cards %}
+    {% elif num_cards % 2 == 0 %}
+        {% set lg_classes = ["col-lg-6"] * num_cards %}
+    {% else %}
+        {# Distribute for complex cases (e.g., 5, 7, 11) while ensuring at least 3 per row #}
+        {% for i in range(num_cards) %}
+            {% if num_cards % 4 == 3 %}
+                {% if i < 3 %}
+                    {% set _ = lg_classes.append("col-lg-4") %}
+                {% else %}
+                    {% set _ = lg_classes.append("col-lg-3") %}
+                {% endif %}
+            {% elif num_cards % 4 == 1 %}
+                {% if i < 2 %}
+                    {% set _ = lg_classes.append("col-lg-6") %}
+                {% elif i < 5 %}
+                    {% set _ = lg_classes.append("col-lg-4") %}
+                {% else %}
+                    {% set _ = lg_classes.append("col-lg-3") %}
+                {% endif %}
+            {% elif num_cards % 3 == 2 %}
+                {% if i < 2 %}
+                    {% set _ = lg_classes.append("col-lg-6") %}
+                {% else %}
+                    {% set _ = lg_classes.append("col-lg-4") %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+
     {% for card in cards %}
+        {% set index = loop.index0 %}  {# Index starts at 0 #}
+        {% set lg_class = lg_classes[index] %}
+        {% set md_class = "col-md-6" if num_cards % 2 == 0 or index < num_cards - 1 else "col-md-12" %}
         {% include "moduls/card.html.j2" %}
     {% endfor %}
 </div>

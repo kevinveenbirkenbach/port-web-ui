@@ -1,11 +1,11 @@
 ---
 accounts:
-  name: Online Accounts
+  name: Online Presence
   description: Discover my online presence.
   icon:
       class: fa-solid fa-users
   children:
-  - name: Channels
+  - name: Publishing Channels
     description: Platforms where I share content.
     icon:
       class: fas fa-newspaper
@@ -29,14 +29,14 @@ accounts:
         identifier: kevinbirkenbach
         warning: I rarely use X/Twitter and recommend alternative platforms like Mastodon.
         alternatives:
-        - link: accounts.channels.microblogs.mastodon
+        - link: accounts.publishingchannels.microblogs.mastodon
       - name: Bluesky
         description: Follow me on Bluesky (coming soon).
         icon:
           class: fa-brands fa-bluesky
         info: Bluesky is coming soon.
         alternatives:
-        - link: accounts.channels.microblogs.mastodon
+        - link: accounts.publishingchannels.microblogs.mastodon
 
     - name: Pictures
       description: View my photography.
@@ -56,7 +56,7 @@ accounts:
         identifier: kevinveenbirkenbach
         warning: Platforms by Meta (e.g., Instagram, Facebook) may compromise your data privacy. Consider using decentralized alternatives.
         alternatives:
-        - link: accounts.channels.pictures.pixelfed
+        - link: accounts.publishingchannels.pictures.pixelfed
 
     - name: Videos
       description: Watch my video content.
@@ -75,7 +75,7 @@ accounts:
         url: https://s.veen.world/youtube
         warning: I no longer publish videos on YouTube. Please visit my Peertube channel instead.
         alternatives:
-        - link: accounts.channels.videos.peertube
+        - link: accounts.publishingchannels.videos.peertube
 
     - name: Blog
       description: Read my articles and stories.
@@ -99,17 +99,25 @@ accounts:
           class: fa-solid fa-code
         url: https://git.veen.world/kevinveenbirkenbach
 
-  - name: Social Media
+  - name: Social Networks
     description: Social and developer platforms.
     icon:
-      class: fa-brands fa-meta
+      class: fa fa-users
     children:
     - name: Facebook
+      warning: I recommend to don't use Facebook and connect instead with me via the Fediverse. Check out the listed alternatives.
       description: Visit my Facebook page.
       icon:
         class: fa-brands fa-facebook
       url: https://www.facebook.com/kevinveenbirkenbach
-
+      alternatives:
+      - link: accounts.socialnetworks.friendica
+    - name: Friendica
+      description: Visit my friendica profile
+      icon:
+        class: fas fa-network-wired
+      url: https://s.veen.world/friendica
+      identifier: "kevinveenbirkenbach@friendica.veen.world"
   - link: navigation.header.contact.messenger
 
   - name: Career Profiles
@@ -121,13 +129,27 @@ accounts:
       description: View my XING profile.
       icon:
         class: bi bi-building
-      url: https://www.xing.com/profile/Kevin_VeenBirkenbach
+      url: https://s.veen.world/xing
     - name: LinkedIn
       description: Connect with me on LinkedIn.
       icon:
         class: bi bi-linkedin
-      url: https://www.linkedin.com/in/kevinveenbirkenbach
-
+      url: https://s.veen.world/linkedin
+    - name: upwork.com
+      description: Check out my profile on upwork
+      icon:
+        class: fas fa-users
+      url: https://s.veen.world/upwork
+    - name: freelancermap.de
+      description: Check out my profile on freelancermap.de
+      icon:
+        class: fas fa-people-arrows
+      url: https://s.veen.world/freelancermap
+    - name: malt
+      description: Check out my profile on malt
+      icon:
+        class: fas fa-sun
+      url: https://s.veen.world/malt
   - name: Sports
     description: My sports activities and logs.
     icon:
@@ -167,6 +189,12 @@ accounts:
     icon:
       class: fa-brands fa-discourse
     url: https://forum.veen.world/u/kevinveenbirkenbach
+
+  - name: Nextcloud
+    description: Share data with me via nextcloud
+    icon:
+      class: fa fa-cloud
+    url: https://s.veen.world/cloud
 
 cards:
 - icon: 
@@ -236,59 +264,66 @@ cards:
     and embrace positive life changes.
   url: https://www.hypno.veen.world
   link_text: www.hypno.veen.world
-- icon: 
-    source: https://cloud.veen.world/s/logo_skydiver_512x512/download
-  title: Aerospace Consultant
-  text: As an Aerospace Consultant with aviation credentials, including a Sport Pilot
-    License for Parachutes, and a Restricted Radiotelephony and Operator's Certificate
-    I deliver expert consulting services. Currently training for my Private Pilot
-    License, I specialize in guiding clients through aviation regulations, safety
-    standards, and operational efficiency.
-  url: 
-  link_text: Website under construction
-- icon: 
-    source: https://cloud.veen.world/s/logo_hunter_512x512/download
-  title: Wildlife Expert
-  text: As a certified hunter and wildlife coach, I offer educational programs, nature
-    walks, survival trainings, and photo expeditions, merging ecological knowledge
-    with nature respect. My goal is to foster sustainable conservation and enhance
-    appreciation for the natural world through responsible practices.
-  url: 
-  link_text: Website under construction
-- icon: 
-    source: https://cloud.veen.world/s/logo_diver_512x512/download
-  title: Master Diver
-  text: As a certified master diver with trainings in various specialties, I offer
-    diving instruction, underwater photography, and guided dive tours. My experience
-    ensures safe and enriching underwater adventures, highlighting marine conservation
-    and the wonders of aquatic ecosystems.
-  url: 
-  link_text: Website under construction
-- icon: 
-    source: https://cloud.veen.world/s/logo_massage_therapist_512x512/download
-  title: Massage Therapist
-  text: Certified in Tantra Massage, I offer unique full-body rituals to awaken senses
-    and harmonize body and mind. My sessions, a blend of ancient Tantra and modern
-    relaxation, focus on energy flow, personal growth, and spiritual awakening.
-  url: 
-  link_text: Website under construction
-company:
-  titel: Kevin Veen-Birkenbach
+#- icon: 
+#    source: https://cloud.veen.world/s/logo_skydiver_512x512/download
+#  title: Aerospace Consultant
+#  text: As an Aerospace Consultant with aviation credentials, including a Sport Pilot
+#    License for Parachutes, and a Restricted Radiotelephony and Operator's Certificate
+#    I deliver expert consulting services. Currently training for my Private Pilot
+#    License, I specialize in guiding clients through aviation regulations, safety
+#    standards, and operational efficiency.
+#  url: 
+#  link_text: Website under construction
+#- icon: 
+#    source: https://cloud.veen.world/s/logo_hunter_512x512/download
+#  title: Wildlife Expert
+#  text: As a certified hunter and wildlife coach, I offer educational programs, nature
+#    walks, survival trainings, and photo expeditions, merging ecological knowledge
+#    with nature respect. My goal is to foster sustainable conservation and enhance
+#    appreciation for the natural world through responsible practices.
+#  url: 
+#  link_text: Website under construction
+#- icon: 
+#    source: https://cloud.veen.world/s/logo_diver_512x512/download
+#  title: Master Diver
+#  text: As a certified master diver with trainings in various specialties, I offer
+#    diving instruction, underwater photography, and guided dive tours. My experience
+#    ensures safe and enriching underwater adventures, highlighting marine conservation
+#    and the wonders of aquatic ecosystems.
+#  url: 
+#  link_text: Website under construction
+#- icon: 
+#    source: https://cloud.veen.world/s/logo_massage_therapist_512x512/download
+#  title: Massage Therapist
+#  text: Certified in Tantra Massage, I offer unique full-body rituals to awaken senses
+#    and harmonize body and mind. My sessions, a blend of ancient Tantra and modern
+#    relaxation, focus on energy flow, personal growth, and spiritual awakening.
+#  url: 
+#  link_text: Website under construction
+platform:
+  titel:    Kevin Veen-Birkenbach
   subtitel: Consulting and Coaching Solutions
   logo:
     source: https://cloud.veen.world/s/logo_face_512x512/download
   favicon:
     source: https://cloud.veen.world/s/veen_world_favicon/download
+company:
+  titel:    Kevin Veen-Birkenbach
+  subtitel: Consulting and Coaching Solutions
+  logo:
+    source: https://cloud.veen.world/s/logo_cymais_512x512/download
   address:
-    street: Afrikanische Straße 43
-    postal_code: DE-13351
-    city: Berlin
-    country: Germany
-  imprint_url: https://s.veen.world/imprint
+      street:       Afrikanische Straße 43
+      postal_code:  DE-13351
+      city:         Berlin
+      country:      Germany
+  imprint: https://veen.world/
+
 navigation:
   header:
     children:
-    - link: accounts.channels.children
+    - link: accounts.publishingchannels.children
+    - link: accounts.socialnetworks
     - name: Contact
       description: Get in touch
       icon:
@@ -428,6 +463,12 @@ navigation:
           icon:
             class: bi bi-clipboard2-check-fill
           url: https://kanban.veen.world/
+        
+        - name: Snipe IT
+          description: Manage my inventory
+          icon:
+            class: fas fa-box-open
+          url: https://inventory.veen.world/
           
       - name: Communication
         icon:
@@ -450,16 +491,34 @@ navigation:
           icon:
             class: fa-solid fa-envelope
           url: https://mail.veen.world/
-      - name: Tools
+      - name: Administration
         icon:
-          class: fas fa-tools
+          class: fas fa-building
         children:
         - name: Matomo
           description: Analyze with Matomo
           icon:
             class: fa-solid fa-chart-simple
           url: https://matomo.veen.world/
-          
+        - name: phpMyAdmin
+          description: Administrate MySQL and MariaDB databases
+          icon:
+            class: fas fa-database
+          url: https://phpmyadmin.veen.world/
+        - name: Keycloak
+          description: Manage User via Keycloak
+          icon:
+            class: fas fa-user-shield
+          url: https://auth.veen.world/admin
+        - name: LDAP
+          description: Manage LDAP
+          icon:
+            class: fas fa-key
+          url: https://ldap.veen.world/
+      - name: Tools
+        icon:
+          class: fas fa-tools
+        children:
         - name: Baserow
           description: Organize with Baserow
           icon:
@@ -476,7 +535,6 @@ navigation:
           icon:
             class: fa-solid fa-cloud
           url: https://cloud.veen.world/
-          
     - name: About Me
       description: All information about me
       icon:
@@ -557,6 +615,31 @@ navigation:
           class: fa-solid fa-layer-group
         url: https://s.veen.world/skillmatrix
       - link: accounts 
+    - name: Support Me
+      description: "Discover all the ways you can support my work."
+      icon:
+        class: fa-solid fa-hands-helping
+      children:
+        - name: Buy me a Coffee
+          description: "Support my work with a coffee – every cup helps!"
+          icon:
+            class: fa-solid fa-mug-hot
+          url: https://s.veen.world/buymeacoffee
+        - name: Patreon
+          description: "Become a member and support me monthly with exclusive content."
+          icon:
+            class: fa-brands fa-patreon
+          url: https://s.veen.world/patreon
+        - name: PayPal
+          description: "Donate to my open source projects with a one-time or monthly PayPal contribution."
+          icon:
+            class: fa-brands fa-paypal
+          url: https://s.veen.world/paypaldonate
+        - name: GitHub Sponsors
+          description: "Directly support my projects through GitHub Sponsors."
+          icon:
+            class: fa-brands fa-github
+          url: https://s.veen.world/githubsponsors
     - name: Imprint
       description: Check out the imprint information
       icon:
