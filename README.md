@@ -40,7 +40,7 @@ Access the application locally at [http://127.0.0.1:5000](http://127.0.0.1:5000)
    docker-compose up --build
    ```
 
-4. **Access your portfolio:** Open your browser and navigate to `http://localhost:5000`.
+4. **Access your portfolio:** Open your browser and navigate to [http://localhost:5000](http://localhost:5000).
 
 ## Configuration Guide 🔧
 

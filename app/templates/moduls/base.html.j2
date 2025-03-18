@@ -14,7 +14,8 @@
         <script src="https://kit.fontawesome.com/56f96da298.js" crossorigin="anonymous"></script>
         <!-- Markdown -->
         <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-        <link rel="stylesheet" href="static/css/default.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_scrollbar.css') }}">
     </head>
     <body>
         <div class="container">
@@ -26,7 +27,20 @@
             </header>
             {% set menu_type = "header" %}
             {% include "moduls/navigation.html.j2"%}
-            {% block content %}{% endblock %}
+
+<main id="main" style="position: relative; box-shadow: 0 0 20px rgba(0,0,0,0.3); overflow: visible;">
+  <div class="scroll-container">
+    <!-- Hier kommt dein Hauptinhalt -->
+    {% block content %}{% endblock %}
+  </div>
+</main>
+
+<!-- Custom scrollbar element fixiert am rechten Rand -->
+<div id="custom-scrollbar">
+  <div id="scroll-thumb"></div>
+</div>
+
+
             {% set menu_type = "footer" %}
             {% include "moduls/navigation.html.j2" %}
             <footer class="footer">
@@ -43,5 +57,6 @@
         <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
         <script src="{{ url_for('static', filename='js/navigation.js') }}"></script>
         <script src="{{ url_for('static', filename='js/tooltip.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/custom_scrollbar.js') }}"></script>
     </body>
 </html>
