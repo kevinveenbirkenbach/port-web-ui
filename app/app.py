@@ -5,6 +5,7 @@ import hashlib
 import yaml
 from utils.configuration_resolver import ConfigurationResolver
 from utils.cache_manager import CacheManager
+from utils.compute_card_classes import compute_card_classes
 
 # Initialize the CacheManager
 cache_manager = CacheManager()
@@ -47,7 +48,17 @@ def reload_config_in_dev():
     
 @app.route('/')
 def index():
-    return render_template("pages/index.html.j2", cards=app.config["cards"], company=app.config["company"], navigation=app.config["navigation"], platform=app.config["platform"])
+    cards = app.config["cards"]
+    lg_classes, md_classes = compute_card_classes(cards)
+    return render_template(
+        "pages/index.html.j2",
+        cards=cards,
+        company=app.config["company"],
+        navigation=app.config["navigation"],
+        platform=app.config["platform"],
+        lg_classes=lg_classes,
+        md_classes=md_classes
+    )
 
 if __name__ == "__main__":
     app.run(debug=(FLASK_ENV == "development"), host="0.0.0.0", port=5000)
