@@ -45,6 +45,16 @@ function openDynamicPopup(subitem) {
     linkBox.classList.remove('d-none');
     linkHref.href = subitem.url;
     linkHref.innerText = subitem.description || "Open Link";
+    if (subitem.iframe) {
+      linkHref.classList.add('iframe');
+      // Attach an event listener that prevents the default behavior and
+      // opens the URL in an iframe when clicked.
+      linkHref.addEventListener('click', function(event) {
+        event.preventDefault();
+        openIframe(subitem.url);
+        closeAllModals()
+      });
+    }
   } else {
     linkBox.classList.add('d-none');
     linkHref.href = '#';
