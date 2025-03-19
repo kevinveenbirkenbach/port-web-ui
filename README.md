@@ -1,20 +1,22 @@
-# Portfolio CMS: Flask-based Portfolio Management🚀
-[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-blue?logo=github)](https://github.com/sponsors/kevinveenbirkenbach) [![Patreon](https://img.shields.io/badge/Support-Patreon-orange?logo=patreon)](https://www.patreon.com/c/kevinveenbirkenbach) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20Coffee-Funding-yellow?logo=buymeacoffee)](https://buymeacoffee.com/kevinveenbirkenbach) [![PayPal](https://img.shields.io/badge/Donate-PayPal-blue?logo=paypal)](https://s.veen.world/paypaldonate)
+```markdown
+# Portfolio CMS: Flask-based Portfolio Management 🚀
 
+[![GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-blue?logo=github)](https://github.com/sponsors/kevinveenbirkenbach) [![Patreon](https://img.shields.io/badge/Support-Patreon-orange?logo=patreon)](https://www.patreon.com/c/kevinveenbirkenbach) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20Coffee-Funding-yellow?logo=buymeacoffee)](https://buymeacoffee.com/kevinveenbirkenbach) [![PayPal](https://img.shields.io/badge/Donate-PayPal-blue?logo=paypal)](https://s.veen.world/paypaldonate)
 
 This software allows individuals and institutions to set up an easy portfolio/landingpage/homepage to showcase their projects and online presence. It is highly customizable via a YAML configuration file.
 
 ## Features ✨
 
-- **Dynamic Navigation**: Easily create dropdown menus and nested links.
-- **Customizable Cards**: Showcase your skills, projects, or services.
-- **Cache Management**: Optimize your assets with automatic caching.
-- **Responsive Design**: Beautiful on any device with Bootstrap.
-- **Easy Configuration**: Update content using a YAML file.
+- **Dynamic Navigation:** Easily create dropdown menus and nested links.
+- **Customizable Cards:** Showcase your skills, projects, or services.
+- **Cache Management:** Optimize your assets with automatic caching.
+- **Responsive Design:** Beautiful on any device with Bootstrap.
+- **Easy Configuration:** Update content using a YAML file.
+- **Command Line Interface:** Manage Docker containers with the `portfolio` CLI.
 
 ## Access 🌐
 
-### Locale
+### Local Access
 Access the application locally at [http://127.0.0.1:5000](http://127.0.0.1:5000).
 
 ## Getting Started 🏁
@@ -25,6 +27,8 @@ Access the application locally at [http://127.0.0.1:5000](http://127.0.0.1:5000)
 - Basic knowledge of Python and YAML for configuration.
 
 ### Installation 🛠️
+
+#### Installation via git clone
 
 1. **Clone the repository:**
    ```bash
@@ -40,9 +44,40 @@ Access the application locally at [http://127.0.0.1:5000](http://127.0.0.1:5000)
    docker-compose up --build
    ```
 
-4. **Access your portfolio:** Open your browser and navigate to [http://localhost:5000](http://localhost:5000).
+4. **Access your portfolio:**  
+   Open your browser and navigate to [http://localhost:5000](http://localhost:5000).
 
-## Configuration Guide 🔧
+### Installation via Kevin's Package Manager
+
+You can install the `portfolio` CLI using [Kevin's package manager](https://github.com/kevinveenbirkenbach/package-manager). Simply run:
+
+```bash
+pkgmgr install portfolio
+```
+
+This will install the CLI tool, making it available system-wide.
+
+### Available Commands
+
+After installation, you can access the help information for the CLI by running:
+
+```bash
+portfolio --help
+```
+
+This command displays detailed instructions on how to use the following commands:
+
+- **build:** Build the Docker image for the portfolio application.
+- **up:** Start the application using docker-compose (with build).
+- **down:** Stop and remove the Docker container.
+- **run-dev:** Run the container in development mode with hot-reloading.
+- **run-prod:** Run the container in production mode.
+- **logs:** Display the logs of the running container.
+- **dev:** Start the application in development mode using docker-compose.
+- **prod:** Start the application in production mode using docker-compose.
+- **cleanup:** Remove all stopped Docker containers to clean up your Docker environment.
+
+## YAML Configuration Guide 🔧
 
 The portfolio is powered by a YAML configuration file (`config.yaml`). This file allows you to define the structure and content of your site, including cards, navigation, and company details.
 
@@ -95,77 +130,11 @@ company:
 
 ### Understanding the `children` Key 🔍
 
-The `children` key allows hierarchical nesting of elements. Each child can itself have children, enabling the creation of multi-level navigation menus or grouped content. Example:
-
-```yaml
-children:
-  - name: Parent Item
-    description: Parent description.
-    icon:
-      class: fa-solid fa-folder
-    children:
-      - name: Child Item
-        description: Child description.
-        icon:
-          class: fa-solid fa-file
-        url: https://example.com
-```
-
-This structure will render a parent menu or section containing nested child elements. Each child can be further customized with icons, descriptions, and links.
+The `children` key allows hierarchical nesting of elements. Each child can itself have children, enabling the creation of multi-level navigation menus or grouped content.
 
 ### Understanding the `link` Key 🔗
 
-The `link` key allows you to reference another part of the YAML configuration by its path. This is useful for avoiding duplication and maintaining consistency. Example:
-
-```yaml
-children:
-  - name: Blog
-    description: My blog posts.
-    icon:
-      class: fa-solid fa-blog
-    url: https://example.com/blog
-  - name: Featured Blog
-    link: accounts.children[0].children[0]  # References the "Blog" item above
-```
-
-In this example, `Featured Blog` will inherit all properties from the `Blog` item, including its name, description, and URL. This feature ensures that any updates to the `Blog` item are automatically reflected in all linked entries.
-
-## Administrate Docker 🐳
-
-### Stop and Destroy
-```bash
-docker stop portfolio; docker rm portfolio
-```
-
-### Build
-```bash
-docker build -t application-portfolio .
-```
-
-### Run
-
-#### Run Development Environment
-```bash
-docker run -d -p 5000:5000 --name portfolio -v $(pwd)/app/:/app -e FLASK_APP=app.py -e FLASK_ENV=development application-portfolio
-```
-
-#### Run Production Environment
-```bash
-docker run -d -p 5000:5000 --name portfolio application-portfolio
-```
-
-### Debug
-```bash
-docker logs -f portfolio
-```
-
-## Development Mode 🧑‍💻
-
-To run the app in development mode with hot-reloading:
-
-```bash
-FLASK_ENV=development docker-compose up
-```
+The `link` key allows you to reference another part of the YAML configuration by its path, which helps avoid duplication and maintain consistency.
 
 ## Deployment 🚢
 
@@ -175,10 +144,10 @@ For production deployment, ensure to:
 - Secure your site with SSL/TLS.
 - Use a production-ready database if required.
 
-## Author ✍️
-
-This software was created by [Kevin Veen-Birkenbach](https://www.veen.world/).
-
 ## License 📜
 
 This project is licensed under the GNU Affero General Public License Version 3. See the [LICENSE](./LICENSE) file for details.
+
+## Author ✍️
+
+This software was created by [Kevin Veen-Birkenbach](https://www.veen.world/).
