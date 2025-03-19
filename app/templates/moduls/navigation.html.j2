@@ -26,7 +26,7 @@
             </li>
         {% else %}
             <li>
-                <a class="dropdown-item" href="{{ children.url }}" target="{{ children.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ children.description }}">
+                <a class="dropdown-item {% if children.iframe %}iframe-link{% endif %}" href="{{ children.url }}" target="{{ children.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ children.description }}">
                      {{ render_icon_and_name(children) }}
                 </a>
             </li>
