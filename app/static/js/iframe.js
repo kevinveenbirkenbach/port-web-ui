@@ -58,6 +58,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Add click event listener to header h1 to restore the original main content and style
     const headerH1 = document.querySelector("header h1");
     if (headerH1) {
+        // Change the cursor to pointer to indicate clickability
+        headerH1.style.cursor = "pointer";
+
         headerH1.addEventListener("click", function () {
             // Restore the original content of the main element (removing the iframe)
             mainElement.innerHTML = originalContent;
@@ -78,7 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (customScrollbar) {
                 customScrollbar.style.display = "";
             }
-            adjustScrollContainerHeight()
         });
     }
 
