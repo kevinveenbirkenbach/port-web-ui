@@ -176,6 +176,27 @@ def cleanup(args):
     """
     command = ["docker", "container", "prune", "-f"]
     run_command(command, args.dry_run)
+    
+def delete_portfolio_container(dry_run=False):
+    """
+    Force remove the portfolio container if it exists.
+    """
+    print("Checking if 'portfolio' container exists to delete...")
+    command = ["docker", "rm", "-f", "portfolio"]
+    run_command(command, dry_run)
+
+def browse(args):
+    """
+    Open http://localhost:5000 in Chromium browser.
+
+    Command:
+      chromium http://localhost:5000
+
+    This command launches the Chromium browser to view the running application.
+    """
+    command = ["chromium", "http://localhost:5000"]
+    run_command(command, args.dry_run)
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -187,12 +208,24 @@ def main():
         help="Print the commands without executing them."
     )
     
+    parser.add_argument(
+        "--delete",
+        action="store_true",
+        help="Delete the existing 'portfolio' container before running the command."
+    )
+    
     subparsers = parser.add_subparsers(
         title="Commands",
         description="Available commands to manage the application",
         dest="command"
     )
-    
+
+    # Browse command
+    parser_browse = subparsers.add_parser(
+        "browse", help="Open http://localhost:5000 in Chromium browser."
+    )
+    parser_browse.set_defaults(func=browse)
+
     # Build command
     parser_build = subparsers.add_parser(
         "build", help="Build the Docker image."
@@ -252,6 +285,9 @@ def main():
     if args.command is None:
         parser.print_help()
         sys.exit(1)
+
+    if args.delete:
+        delete_portfolio_container(args.dry_run)
     
     # Execute the chosen subcommand function
     args.func(args)
