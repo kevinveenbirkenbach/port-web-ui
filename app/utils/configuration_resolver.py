@@ -114,8 +114,14 @@ class ConfigurationResolver:
                 key = next((k for k in current if self._mapped_key(k) == part), None)
                 # If no fitting key was found search in the children
                 if key is None:
+                    if "children" not in current:
+                        raise KeyError(
+                        f"No 'children' found in current dictionary. Path so far: {' > '.join(parts[:parts.index(part)+1])}. "
+                        f"Current dictionary: {current}"
+                    )
                     # The following line seems buggy; Why is children loaded allways and not just when children is set?
                     current = self._find_by_name(current["children"],part)
+                    
                     if not current:
                         raise KeyError(
                             f"Key '{part}' not found in dictionary. Path so far: {' > '.join(parts[:parts.index(part)+1])}. "
