@@ -42,8 +42,11 @@ function exitFullscreen() {
  * Toggle between enter and exit fullscreen.
  */
 function toggleFullscreen() {
-  if (document.fullscreenElement) exitFullscreen();
-  else                            enterFullscreen();
+  const params = new URLSearchParams(window.location.search);
+  const isFull = params.get('fullscreen') === '1';
+
+  if (isFull) exitFullscreen();
+  else        enterFullscreen();
 }
 
 /**

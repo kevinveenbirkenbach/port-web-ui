@@ -139,5 +139,20 @@ window.addEventListener('popstate', function(event) {
     }
 });
 
+/**
+ * Opens the current iframe URL in a new browser tab.
+ */
+function openIframeInNewTab() {
+  const params = new URLSearchParams(window.location.search);
+  const iframeUrl = params.get('iframe');
+  if (iframeUrl) {
+    window.open(iframeUrl, '_blank');
+  } else {
+    alert('No iframe is currently open.');
+  }
+}
+// expose globally so your template’s onclick can find it
+window.openIframeInNewTab = openIframeInNewTab;
+
 // Adjust iframe height on window resize
 window.addEventListener('resize', syncIframeHeight);

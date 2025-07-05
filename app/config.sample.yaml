@@ -647,4 +647,36 @@ navigation:
           class: fa-solid fa-scale-balanced
       url: https://s.veen.world/imprint
       iframe: true
-  
+    - name: Settings
+      description: Application settings
+      icon:
+        class: fa-solid fa-cog
+      children:
+        - name: Toggle Fullscreen
+          description: Enter or exit fullscreen mode
+          icon:
+            class: fa-solid fa-expand-arrows-alt
+          onclick: "toggleFullscreen()"
+        - name: Toggle Full Width
+          description: Switch between normal and full-width layout
+          icon:
+            class: fa-solid fa-arrows-left-right
+          onclick: "setFullWidth(!initFullWidthFromUrl())"
+        - name: Open in new tab
+          description: Open the currently embedded iframe URL in a fresh browser tab
+          icon:
+            class: fa-solid fa-up-right-from-square
+          onclick: openIframeInNewTab()
+        - name: Print
+          description: Print the current view
+          icon:
+            class: fa-solid fa-print
+          onclick: window.print()
+        - name: Zoom +
+          icon:
+            class: fa-solid fa-search-plus
+          onclick: zoomPage(1.1)
+        - name: Zoom –
+          icon:
+            class: fa-solid fa-search-minus
+          onclick: zoomPage(0.9)

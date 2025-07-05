@@ -8,30 +8,43 @@
 {% endmacro %}
 <!-- Template for children -->
 {% macro render_children(children) %}
-    {% for children in children %}
-        {% if children.children %}
-            <li class="dropdown-submenu position-relative">
-                <a class="dropdown-item dropdown-toggle" title="{{ children.description }}">
-                    {{ render_icon_and_name(children) }}
-                </a>
-                <ul class="dropdown-menu">
-                    {{ render_children(children.children) }}
-                </ul>
-            </li>
-        {% elif children.identifier or children.warning or children.info %}
-            <li>
-                <a class="dropdown-item" onclick='openDynamicPopup({{ children|tojson|safe }})' data-bs-toggle="tooltip" title="{{ children.description }}">
-                    {{ render_icon_and_name(children) }}
-                </a>
-            </li>
-        {% else %}
-            <li>
-                <a class="dropdown-item {% if children.iframe %}iframe-link{% endif %}" href="{{ children.url }}" target="{{ children.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ children.description }}">
-                     {{ render_icon_and_name(children) }}
-                </a>
-            </li>
-        {% endif %}
-    {% endfor %}
+  {% for child in children %}
+    {% if child.children %}
+      <li class="dropdown-submenu position-relative">
+        <a class="dropdown-item dropdown-toggle" title="{{ child.description }}">
+          {{ render_icon_and_name(child) }}
+        </a>
+        <ul class="dropdown-menu">
+          {{ render_children(child.children) }}
+        </ul>
+      </li>
+
+    {% elif child.identifier or child.warning or child.info %}
+      <li>
+        <a class="dropdown-item"
+           onclick='openDynamicPopup({{ child|tojson|safe }})'
+           data-bs-toggle="tooltip"
+           title="{{ child.description }}">
+          {{ render_icon_and_name(child) }}
+        </a>
+      </li>
+
+    {% else %}
+      <li>
+        <a class="dropdown-item {% if child.iframe %}iframe-link{% endif %}"
+           {% if child.onclick %}
+             onclick="{{ child.onclick }}"
+           {% else %}
+             href="{{ child.url }}"
+           {% endif %}
+           target="{{ child.target|default('_blank') }}"
+           data-bs-toggle="tooltip"
+           title="{{ child.description }}">
+          {{ render_icon_and_name(child) }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
 {% endmacro %}
 
 <!-- Navigation Bar -->
@@ -42,15 +55,22 @@
     <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
         <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %} btn-group">
             {% for item in navigation[menu_type].children %}
-                {% if item.url %}
-                    <!-- Single Item -->
+                {% if item.url or item.onclick %}
                     <li class="nav-item">
-                        <a class="nav-link btn btn-light {% if item.iframe %}iframe-link{% endif %}" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
-                            {{ render_icon_and_name(item) }}
-                        </a>
+                    <a class="nav-link btn btn-light {% if item.iframe %}iframe-link{% endif %}"
+                        {% if item.onclick %}
+                        onclick="{{ item.onclick }}"
+                        {% else %}
+                        href="{{ item.url }}"
+                        {% endif %}
+                        target="{{ item.target|default('_blank') }}"
+                        data-bs-toggle="tooltip"
+                        title="{{ item.description }}">
+                        {{ render_icon_and_name(item) }}
+                    </a>
                     </li>
-                {% else %}
-                    <!-- Dropdown Menu -->
+                {% else %}        
+                <!-- Dropdown Menu -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle btn btn-light" id="navbarDropdown{{ loop.index }}" role="button" data-bs-display="dynamic" aria-expanded="false">
                             {% if item.icon is defined and item.icon.class is defined %}
