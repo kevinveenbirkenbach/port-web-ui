@@ -4,6 +4,12 @@ import yaml
 from utils.configuration_resolver import ConfigurationResolver
 from utils.cache_manager import CacheManager
 from utils.compute_card_classes import compute_card_classes
+import logging
+logging.basicConfig(level=logging.DEBUG)
+FLASK_ENV = os.getenv("FLASK_ENV", "production")
+FLASK_PORT = int(os.getenv("PORT", 5000))
+print(f"🔧 Starting app on port {FLASK_PORT}, FLASK_ENV={FLASK_ENV}")
+
 
 # Initialize the CacheManager
 cache_manager = CacheManager()
@@ -30,9 +36,6 @@ def cache_icons_and_logos(app):
     app.config["company"]["logo"]["cache"] = cache_manager.cache_file(app.config["company"]["logo"]["source"])
     app.config["platform"]["favicon"]["cache"] = cache_manager.cache_file(app.config["platform"]["favicon"]["source"])
     app.config["platform"]["logo"]["cache"] = cache_manager.cache_file(app.config["platform"]["logo"]["source"])
-
-# Get the environment variable FLASK_ENV or set a default value
-FLASK_ENV = os.getenv("FLASK_ENV", "production")
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -64,5 +67,4 @@ def index():
     )
 
 if __name__ == "__main__":
-    port = int(os.getenv("PORT", 5000))
-    app.run(debug=(FLASK_ENV == "development"), host="0.0.0.0", port=port)
+    app.run(debug=(FLASK_ENV == "development"), host="0.0.0.0", port=FLASK_PORT)
