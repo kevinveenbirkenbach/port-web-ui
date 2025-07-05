@@ -100,14 +100,6 @@ document.addEventListener("DOMContentLoaded", function () {
         headerH1.addEventListener("click", restoreOriginal);
     }
 
-    // Responsive resize: adjust iframe height when window resizes
-    window.addEventListener("resize", function () {
-        const iframe = mainElement.querySelector("iframe");
-        if (iframe) {
-            iframe.style.height = mainElement.style.height;
-        }
-    });
-
     // Wait until all resources are loaded before doing the initial iframe check
     window.addEventListener("load", function () {
         const initialParams = new URLSearchParams(window.location.search);
