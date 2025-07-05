@@ -17,13 +17,21 @@
         <link rel="stylesheet" href="{{ url_for('static', filename='css/default.css') }}">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/custom_scrollbar.css') }}">
     </head>
-    <body>
+    <body
+      {% if apod_bg %}
+        style="
+          background-image: url('{{ apod_bg }}');
+          background-size: cover;
+          background-position: center;
+          background-attachment: fixed;
+        "
+      {% endif %}
+    >
         <div class="container">
             <header class="header">
               <img src="{{platform.logo.cache}}" alt="logo"/>
               <h1>{{platform.titel}}</h1>
               <h2>{{platform.subtitel}}</h2>
-              <br />
             </header>
             {% set menu_type = "header" %}
             {% include "moduls/navigation.html.j2"%}

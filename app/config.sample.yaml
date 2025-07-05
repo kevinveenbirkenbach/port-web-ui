@@ -1,5 +1,6 @@
 ---
 accounts:
+  nasa_api_key: YOUR_REAL_KEY_HERE
   name: Online Presence
   description: Discover my online presence.
   icon:

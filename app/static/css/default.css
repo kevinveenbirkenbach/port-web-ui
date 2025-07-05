@@ -70,7 +70,6 @@ h3.card-title {
 
 /* Footer styles */
 .footer {
-  margin-top: 12px;
   text-align: center;
   font-size: 0.7em;
 }
@@ -97,7 +96,7 @@ div#navbarNavfooter li.nav-item {
   margin-right: 6px;
 }
 
-main {
+main, footer, header, nav {
   position: relative;
   box-shadow: 
     /* Inner shadow */
@@ -107,4 +106,29 @@ main {
     10px 0 10px -10px rgba(0, 0, 0, 0.3),  /* Right outer shadow */
     -10px 0 10px -10px rgba(0, 0, 0, 0.3); /* Left outer shadow */
   overflow: visible;
+}
+
+header{
+  padding: 12px;
+}
+
+header,
+footer {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: 0;
+  z-index: 1030;
+  background-color: var(--bs-light);
+}
+
+/* at the end of default.css */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.75);
+  pointer-events: none;
+  z-index: -1;
 }

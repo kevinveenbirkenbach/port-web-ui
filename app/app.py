@@ -1,6 +1,7 @@
 import os
 from flask import Flask, render_template
 import yaml
+import requests
 from utils.configuration_resolver import ConfigurationResolver
 from utils.cache_manager import CacheManager
 from utils.compute_card_classes import compute_card_classes
@@ -21,6 +22,9 @@ def load_config(app):
     """Load and resolve the configuration from config.yaml."""
     with open("config.yaml", "r") as f:
         config = yaml.safe_load(f)
+
+    if config.get("nasa_api_key"):
+        app.config["NASA_API_KEY"] = config["nasa_api_key"]
 
     resolver = ConfigurationResolver(config)
     resolver.resolve_links()
@@ -56,6 +60,20 @@ def index():
     """Render the main index page."""
     cards = app.config["cards"]
     lg_classes, md_classes = compute_card_classes(cards)
+    # fetch NASA APOD URL only if key present
+    apod_bg = None
+    api_key = app.config.get("NASA_API_KEY")
+    if api_key:
+        resp = requests.get(
+            "https://api.nasa.gov/planetary/apod",
+            params={"api_key": api_key}
+        )
+        if resp.ok:
+            data = resp.json()
+            # only use if it's an image
+            if data.get("media_type") == "image":
+                apod_bg = data.get("url")
+
     return render_template(
         "pages/index.html.j2",
         cards=cards,
@@ -63,7 +81,8 @@ def index():
         navigation=app.config["navigation"],
         platform=app.config["platform"],
         lg_classes=lg_classes,
-        md_classes=md_classes
+        md_classes=md_classes,
+        apod_bg=apod_bg
     )
 
 if __name__ == "__main__":
