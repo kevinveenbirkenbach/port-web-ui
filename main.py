@@ -22,6 +22,7 @@ import argparse
 import subprocess
 import sys
 import os
+PORT = int(os.getenv("PORT", 5000))
 
 def run_command(command, dry_run=False):
     """Utility function to run a shell command."""
@@ -94,7 +95,7 @@ def run_dev(args):
     volume_mapping = f"{current_dir}/app/:/app"
     command = [
         "docker", "run", "-d",
-        "-p", "5000:5000",
+        "-p", f"{PORT}:{PORT}",
         "--name", "portfolio",
         "-v", volume_mapping,
         "-e", "FLASK_APP=app.py",
@@ -115,7 +116,7 @@ def run_prod(args):
     """
     command = [
         "docker", "run", "-d",
-        "-p", "5000:5000",
+        "-p", "{PORT}:{PORT}",
         "--name", "portfolio",
         "application-portfolio"
     ]

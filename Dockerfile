@@ -11,8 +11,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application code
 COPY app/ .
 
-# Expose port
-EXPOSE 5000
+# Set default port environment variable
+ENV PORT=5000
 
-# Start command
-CMD ["python", "app.py"]
+# Expose port (optional for documentation)
+EXPOSE ${PORT}
+
+# Start command using shell to allow env substitution
+CMD ["sh", "-c", "exec python app.py --port=${PORT}"]
