@@ -36,37 +36,35 @@
 
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light menu-{{menu_type}}">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav{{menu_type}}" aria-controls="navbarNav{{menu_type}}" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
-            <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %} btn-group">
-                {% for item in navigation[menu_type].children %}
-                    {% if item.url %}
-                        <!-- Single Item -->
-                        <li class="nav-item">
-                            <a class="nav-link btn btn-light {% if item.iframe %}iframe-link{% endif %}" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav{{menu_type}}" aria-controls="navbarNav{{menu_type}}" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
+        <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %} btn-group">
+            {% for item in navigation[menu_type].children %}
+                {% if item.url %}
+                    <!-- Single Item -->
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-light {% if item.iframe %}iframe-link{% endif %}" href="{{ item.url }}" target="{{ item.target|default('_blank') }}" data-bs-toggle="tooltip" title="{{ item.description }}">
+                            {{ render_icon_and_name(item) }}
+                        </a>
+                    </li>
+                {% else %}
+                    <!-- Dropdown Menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle btn btn-light" id="navbarDropdown{{ loop.index }}" role="button" data-bs-display="dynamic" aria-expanded="false">
+                            {% if item.icon is defined and item.icon.class is defined %}
                                 {{ render_icon_and_name(item) }}
-                            </a>
-                        </li>
-                    {% else %}
-                        <!-- Dropdown Menu -->
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle btn btn-light" id="navbarDropdown{{ loop.index }}" role="button" data-bs-display="dynamic" aria-expanded="false">
-                                {% if item.icon is defined and item.icon.class is defined %}
-                                    {{ render_icon_and_name(item) }}
-                                {% else %}
-                                    <p>Missing icon in item: {{ item }}</p>
-                                {% endif %}
-                            </a>
-                            <ul class="dropdown-menu">
-                                {{ render_children(item.children) }}
-                            </ul>
-                        </li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        </div>
+                            {% else %}
+                                <p>Missing icon in item: {{ item }}</p>
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu">
+                            {{ render_children(item.children) }}
+                        </ul>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
     </div>
 </nav>

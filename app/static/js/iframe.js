@@ -106,6 +106,7 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener("click", function(event) {
             event.preventDefault();  // prevent full page navigation
             openIframe(this.href);
+            updateUrlFullWidth(true);
         });
     });
 
