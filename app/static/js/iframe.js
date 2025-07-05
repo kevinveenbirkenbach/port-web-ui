@@ -36,6 +36,11 @@ function openIframe(url) {
 
     // Set the URL of the iframe
     iframe.src = url;
+
+    // Update the browser URL without reloading the page
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.set('iframe', url);
+    window.history.pushState({ iframe: url }, '', newUrl.toString());
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -88,6 +93,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (typeof adjustScrollContainerHeight === "function") {
                 adjustScrollContainerHeight();
             }
+
+            // Also update the URL to remove the iframe param
+            const newUrl = new URL(window.location);
+            newUrl.searchParams.delete("iframe");
+            window.history.pushState({}, '', newUrl.toString());
         });
     }
 
@@ -98,4 +108,25 @@ document.addEventListener("DOMContentLoaded", function () {
             iframe.style.height = mainElement.style.height;
         }
     });
+
+    // On initial load: check if URL has iframe parameter
+    const initialParams = new URLSearchParams(window.location.search);
+    const iframeUrl = initialParams.get('iframe');
+    if (iframeUrl) {
+        openIframe(iframeUrl);
+    }
+});
+
+// Handle browser back/forward navigation
+window.addEventListener('popstate', function(event) {
+    const url = new URL(window.location);
+    const iframeUrl = url.searchParams.get('iframe');
+
+    if (iframeUrl) {
+        openIframe(iframeUrl);
+    } else {
+        // Simulate click on H1 to restore original state
+        const headerH1 = document.querySelector("header h1");
+        if (headerH1) headerH1.click();
+    }
 });
