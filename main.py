@@ -125,7 +125,7 @@ def run_prod(args):
     """
     command = [
         "docker", "run", "-d",
-        "-p", "{PORT}:{PORT}",
+        "-p", "{PORT}:5000",
         "--name", "portfolio",
         "application-portfolio"
     ]
