@@ -58,6 +58,9 @@ function exitFullscreen() {
   if (typeof updateCustomScrollbar === 'function') {
     try { updateCustomScrollbar(); } catch (e) { console.warn('updateCustomScrollbar failed:', e); }
   }
+  if (typeof syncIframeHeight === 'function') {
+    try { syncIframeHeight(); } catch (e) { console.warn('syncIframeHeight failed:', e); }
+  }
   // Remove URL parameter
   const url = new URL(window.location);
   url.searchParams.delete('fullscreen');

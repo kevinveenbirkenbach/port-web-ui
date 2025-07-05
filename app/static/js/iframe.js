@@ -1,52 +1,82 @@
 // Global variables to store elements and original state
-let mainElement, originalContent, originalMainStyle, container, customScrollbar;
+let mainElement, originalContent, originalMainStyle, container, customScrollbar, scrollbarContainer;
 
-// Function to open a URL in an iframe using global variables
+// Synchronize the height of the iframe to match the scroll-container or main element
+function syncIframeHeight() {
+    const iframe = mainElement.querySelector("iframe");
+    if (iframe) {
+        console.log("Setting iframe height based on scroll-container inline styles...");
+        if (scrollbarContainer) {
+            // Prefer inline height, otherwise inline max-height
+            const inlineHeight = scrollbarContainer.style.height;
+            const inlineMax = scrollbarContainer.style.maxHeight;
+            const target = inlineHeight || inlineMax;
+            if (target) {
+                console.log("Using scroll-container inline style:", target);
+                iframe.style.height = target;
+            } else {
+                console.warn("No inline height or max-height set on scroll-container. Using main element height instead.");
+                iframe.style.height = mainElement.style.height;
+            }
+        } else {
+            console.log("No scroll-container found. Using main element height:", mainElement.style.height);
+            iframe.style.height = mainElement.style.height;
+        }
+    } else {
+        console.log("No iframe to resize.");
+    }
+}
+
+// Function to open a URL in an iframe
 function openIframe(url) {
-    // Set a fixed height for the main element if not already set
-    if (!mainElement.style.height) {
-        mainElement.style.height = `${mainElement.clientHeight}px`;
+    // Hide the container (and its scroll-container) so the iframe can appear in its place
+    if (scrollbarContainer) {
+        scrollbarContainer.style.display = 'none';
     }
 
-    // Replace the container class with container-fluid if not already applied
-    if (container && !container.classList.contains("container-fluid")) {
-        container.classList.replace("container", "container-fluid");
-    }
-
-    // Hide the custom scrollbar
+    // Hide any custom scrollbar element if present
     if (customScrollbar) {
-        customScrollbar.style.display = "none";
+        customScrollbar.style.display = 'none';
     }
 
-    // Check if an iframe already exists in the main element
+    // Create or retrieve the iframe in the main element
     let iframe = mainElement.querySelector("iframe");
     if (!iframe) {
-        // Create a new iframe element
         iframe = document.createElement("iframe");
         iframe.width = "100%";
         iframe.style.border = "none";
-        iframe.style.height = mainElement.style.height; // Apply fixed height
-        iframe.style.overflow = "auto"; // Enable internal scrollbar
-        iframe.scrolling = "auto"; // Ensure scrollability
-
-        // Clear the main content before appending the iframe
-        mainElement.innerHTML = "";
+        iframe.style.overflow = "auto";  // Enable internal scrolling
+        iframe.scrolling = "auto";
         mainElement.appendChild(iframe);
+        syncIframeHeight();
     }
 
-    // Set the URL of the iframe
+    // Set the iframe's source URL
     iframe.src = url;
 
-    // Update the browser URL without reloading the page
+    // Push the new URL state without reloading the page
     const newUrl = new URL(window.location);
     newUrl.searchParams.set('iframe', url);
-    window.history.pushState({ iframe: url }, '', newUrl.toString());
+    window.history.pushState({ iframe: url }, '', newUrl);
 }
 
-// Function to restore the original main content and style
+// Function to restore the original content and show the container again
 function restoreOriginal() {
-    // Restore the original content of the main element (removing the iframe)
-    mainElement.innerHTML = originalContent;
+    // Remove the iframe from the DOM
+    const iframe = mainElement.querySelector("iframe");
+    if (iframe) {
+        iframe.remove();
+    }
+
+    // Show the original container
+    if (scrollbarContainer) {
+        scrollbarContainer.style.display = '';
+    }
+
+    // Restore any custom scrollbar
+    if (customScrollbar) {
+        customScrollbar.style.display = '';
+    }
 
     // Restore the original inline style of the main element
     if (originalMainStyle !== null) {
@@ -55,55 +85,41 @@ function restoreOriginal() {
         mainElement.removeAttribute("style");
     }
 
-    // Revert the container class back to "container" if needed
-    if (container && container.classList.contains("container-fluid")) {
-        container.classList.replace("container-fluid", "container");
-    }
-
-    // Show the custom scrollbar again
-    if (customScrollbar) {
-        customScrollbar.style.display = "";
-    }
-
-    // Adjust scroll container height if that function exists
-    if (typeof adjustScrollContainerHeight === "function") {
-        adjustScrollContainerHeight();
-    }
-
-    // Update the URL to remove the iframe param
+    // Update the URL to remove the iframe parameter
     const newUrl = new URL(window.location);
     newUrl.searchParams.delete("iframe");
-    window.history.pushState({}, '', newUrl.toString());
+    window.history.pushState({}, '', newUrl);
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    // Initialize global variables
+// Initialize event listeners after DOM content is loaded
+document.addEventListener("DOMContentLoaded", function() {
+    // Cache references to elements and original state
     mainElement = document.querySelector("main");
     originalContent = mainElement.innerHTML;
-    originalMainStyle = mainElement.getAttribute("style"); // might be null if no inline style exists
-
+    originalMainStyle = mainElement.getAttribute("style");  // may be null
     container = document.querySelector(".container");
     customScrollbar = document.getElementById("custom-scrollbar");
+    scrollbarContainer = container.querySelector(".scroll-container")
 
-    // Set up click handlers for iframe links
+    // Attach click handlers to links that should open in an iframe
     document.querySelectorAll(".iframe-link").forEach(link => {
-        link.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent default link behavior
+        link.addEventListener("click", function(event) {
+            event.preventDefault();  // prevent full page navigation
             openIframe(this.href);
         });
     });
 
-    // Set up click handler on header h1 to restore original state
+    // Clicking the header's H1 will restore the original view
     const headerH1 = document.querySelector("header h1");
     if (headerH1) {
         headerH1.style.cursor = "pointer";
         headerH1.addEventListener("click", restoreOriginal);
     }
 
-    // Wait until all resources are loaded before doing the initial iframe check
-    window.addEventListener("load", function () {
-        const initialParams = new URLSearchParams(window.location.search);
-        const iframeUrl = initialParams.get('iframe');
+    // On full page load, check URL parameters to auto-open an iframe
+    window.addEventListener("load", function() {
+        const params = new URLSearchParams(window.location.search);
+        const iframeUrl = params.get('iframe');
         if (iframeUrl) {
             openIframe(iframeUrl);
         }
@@ -111,14 +127,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Handle browser back/forward navigation
-window.addEventListener('popstate', function (event) {
-    const url = new URL(window.location);
-    const iframeUrl = url.searchParams.get('iframe');
+window.addEventListener('popstate', function(event) {
+    const params = new URLSearchParams(window.location.search);
+    const iframeUrl = params.get('iframe');
 
     if (iframeUrl) {
         openIframe(iframeUrl);
     } else {
-        const headerH1 = document.querySelector("header h1");
-        if (headerH1) headerH1.click();
+        restoreOriginal();
     }
 });
+
+// Adjust iframe height on window resize
+window.addEventListener('resize', syncIframeHeight);
