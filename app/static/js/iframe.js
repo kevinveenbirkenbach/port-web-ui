@@ -43,6 +43,39 @@ function openIframe(url) {
     window.history.pushState({ iframe: url }, '', newUrl.toString());
 }
 
+// Function to restore the original main content and style
+function restoreOriginal() {
+    // Restore the original content of the main element (removing the iframe)
+    mainElement.innerHTML = originalContent;
+
+    // Restore the original inline style of the main element
+    if (originalMainStyle !== null) {
+        mainElement.setAttribute("style", originalMainStyle);
+    } else {
+        mainElement.removeAttribute("style");
+    }
+
+    // Revert the container class back to "container" if needed
+    if (container && container.classList.contains("container-fluid")) {
+        container.classList.replace("container-fluid", "container");
+    }
+
+    // Show the custom scrollbar again
+    if (customScrollbar) {
+        customScrollbar.style.display = "";
+    }
+
+    // Adjust scroll container height if that function exists
+    if (typeof adjustScrollContainerHeight === "function") {
+        adjustScrollContainerHeight();
+    }
+
+    // Update the URL to remove the iframe param
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.delete("iframe");
+    window.history.pushState({}, '', newUrl.toString());
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     // Initialize global variables
     mainElement = document.querySelector("main");
@@ -52,56 +85,22 @@ document.addEventListener("DOMContentLoaded", function () {
     container = document.querySelector(".container");
     customScrollbar = document.getElementById("custom-scrollbar");
 
-    // Get all links that should open in an iframe
-    const links = document.querySelectorAll(".iframe-link");
-
-    // Add click event listener to each iframe link
-    links.forEach(link => {
+    // Set up click handlers for iframe links
+    document.querySelectorAll(".iframe-link").forEach(link => {
         link.addEventListener("click", function (event) {
             event.preventDefault(); // Prevent default link behavior
-            const url = this.getAttribute("href");
-            openIframe(url);
+            openIframe(this.href);
         });
     });
 
-    // Add click event listener to header h1 to restore the original main content and style
+    // Set up click handler on header h1 to restore original state
     const headerH1 = document.querySelector("header h1");
     if (headerH1) {
         headerH1.style.cursor = "pointer";
-        headerH1.addEventListener("click", function () {
-            // Restore the original content of the main element (removing the iframe)
-            mainElement.innerHTML = originalContent;
-
-            // Restore the original inline style of the main element
-            if (originalMainStyle !== null) {
-                mainElement.setAttribute("style", originalMainStyle);
-            } else {
-                mainElement.removeAttribute("style");
-            }
-
-            // Optionally revert the container class back to "container" if needed
-            if (container && container.classList.contains("container-fluid")) {
-                container.classList.replace("container-fluid", "container");
-            }
-
-            // Optionally show the custom scrollbar again
-            if (customScrollbar) {
-                customScrollbar.style.display = "";
-            }
-
-            // Adjust scroll container height if that function exists
-            if (typeof adjustScrollContainerHeight === "function") {
-                adjustScrollContainerHeight();
-            }
-
-            // Also update the URL to remove the iframe param
-            const newUrl = new URL(window.location);
-            newUrl.searchParams.delete("iframe");
-            window.history.pushState({}, '', newUrl.toString());
-        });
+        headerH1.addEventListener("click", restoreOriginal);
     }
 
-    // Adjust iframe height on window resize (optional, to keep it responsive)
+    // Responsive resize: adjust iframe height when window resizes
     window.addEventListener("resize", function () {
         const iframe = mainElement.querySelector("iframe");
         if (iframe) {
@@ -109,23 +108,24 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // On initial load: check if URL has iframe parameter
-    const initialParams = new URLSearchParams(window.location.search);
-    const iframeUrl = initialParams.get('iframe');
-    if (iframeUrl) {
-        openIframe(iframeUrl);
-    }
+    // Wait until all resources are loaded before doing the initial iframe check
+    window.addEventListener("load", function () {
+        const initialParams = new URLSearchParams(window.location.search);
+        const iframeUrl = initialParams.get('iframe');
+        if (iframeUrl) {
+            openIframe(iframeUrl);
+        }
+    });
 });
 
 // Handle browser back/forward navigation
-window.addEventListener('popstate', function(event) {
+window.addEventListener('popstate', function (event) {
     const url = new URL(window.location);
     const iframeUrl = url.searchParams.get('iframe');
 
     if (iframeUrl) {
         openIframe(iframeUrl);
     } else {
-        // Simulate click on H1 to restore original state
         const headerH1 = document.querySelector("header h1");
         if (headerH1) headerH1.click();
     }
