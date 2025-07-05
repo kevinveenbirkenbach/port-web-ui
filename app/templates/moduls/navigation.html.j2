@@ -53,6 +53,19 @@
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
+        {% if menu_type == "header" %}
+        <a class="navbar-brand d-flex align-items-center d-none" id="navbar_logo" href="/">
+            <img 
+                src="{{ platform.logo.cache }}" 
+                alt="{{ platform.titel }}" 
+                class="d-inline-block align-text-top"
+                style="height:2rem">
+            <div class="ms-2 d-flex flex-column">
+                <span class="fs-4 fw-bold mb-0">{{ platform.titel }}</span>
+                {# <small class="fs-7 text-muted">{{ platform.subtitel }}</small> #}
+            </div>
+            {% endif %}
+        </a>
         <ul class="navbar-nav {% if menu_type == 'header' %}ms-auto{% endif %} btn-group">
             {% for item in navigation[menu_type].children %}
                 {% if item.url or item.onclick %}

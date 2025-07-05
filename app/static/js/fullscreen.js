@@ -19,6 +19,9 @@ function enterFullscreen() {
   setFullWidth(true);
   updateUrlFullscreen(true);
 
+  const logo = document.getElementById('navbar_logo');
+  if (logo) logo.classList.remove('d-none');
+
   if (typeof adjustScrollContainerHeight === 'function') adjustScrollContainerHeight();
   if (typeof updateCustomScrollbar      === 'function') updateCustomScrollbar();
 }
@@ -32,6 +35,9 @@ function exitFullscreen() {
           .forEach(function(el){ el.style.display = ''; });
   setFullWidth(false);
   updateUrlFullscreen(false);
+
+  const logo = document.getElementById('navbar_logo');
+  if (logo) logo.classList.add('d-none');
 
   if (typeof adjustScrollContainerHeight === 'function') adjustScrollContainerHeight();
   if (typeof updateCustomScrollbar      === 'function') updateCustomScrollbar();
