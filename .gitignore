@@ -1,3 +1,4 @@
 app/config.yaml
 *__pycache__*
 app/static/cache/*
+.env
