@@ -22,6 +22,16 @@ import argparse
 import subprocess
 import sys
 import os
+from dotenv import load_dotenv
+from pathlib import Path
+
+# Always load .env from the script's directory
+dotenv_path = Path(__file__).resolve().parent / ".env"
+
+if dotenv_path.exists():
+    load_dotenv(dotenv_path)
+else:
+    print(f"⚠️  Warning: No .env file found at {dotenv_path}")
 PORT = int(os.getenv("PORT", 5000))
 
 def run_command(command, dry_run=False):
@@ -195,7 +205,7 @@ def browse(args):
 
     This command launches the Chromium browser to view the running application.
     """
-    command = ["chromium", "http://localhost:5000"]
+    command = ["chromium", f"http://localhost:{PORT}"]
     run_command(command, args.dry_run)
 
 
@@ -223,7 +233,7 @@ def main():
 
     # Browse command
     parser_browse = subparsers.add_parser(
-        "browse", help="Open http://localhost:5000 in Chromium browser."
+        "browse", help="Open application in Chromium browser."
     )
     parser_browse.set_defaults(func=browse)
 
