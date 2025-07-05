@@ -33,14 +33,14 @@ else:
     print(f"⚠️  Warning: No .env file found at {dotenv_path}")
 PORT = int(os.getenv("PORT", 5000))
 
-def run_command(command, dry_run=False):
+def run_command(command, dry_run=False, env=None):
     """Utility function to run a shell command."""
     print(f"Executing: {' '.join(command)}")
     if dry_run:
         print("Dry run enabled: command not executed.")
         return
     try:
-        subprocess.check_call(command)
+        subprocess.check_call(command, env=env)
     except subprocess.CalledProcessError as e:
         print(f"Error: Command failed with exit code {e.returncode}")
         sys.exit(e.returncode)
@@ -147,18 +147,12 @@ def logs(args):
 def dev(args):
     """
     Run the application in development mode using docker-compose.
-    
-    Command:
-      FLASK_ENV=development docker-compose up -d
-      
-    This command sets the FLASK_ENV environment variable to 'development'
-    and starts the application using docker-compose, enabling hot-reloading.
     """
     env = os.environ.copy()
     env["FLASK_ENV"] = "development"
     command = ["docker-compose", "up", "-d"]
-    print("Setting FLASK_ENV=development")
-    run_command(command, args.dry_run)
+    print("▶️ Starting in development mode (FLASK_ENV=development)")
+    run_command(command, args.dry_run, env=env)
 
 def prod(args):
     """
