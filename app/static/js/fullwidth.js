@@ -5,7 +5,6 @@
 function setFullWidth(enabled) {
   var el = document.querySelector('.container, .container-fluid');
   if (!el) return;
-  console.log(el)
   if (enabled) {
     el.classList.replace('container', 'container-fluid');
     updateUrlFullWidth(true)

@@ -5,25 +5,19 @@ let mainElement, originalContent, originalMainStyle, container, customScrollbar,
 function syncIframeHeight() {
     const iframe = mainElement.querySelector("iframe");
     if (iframe) {
-        console.log("Setting iframe height based on scroll-container inline styles...");
         if (scrollbarContainer) {
             // Prefer inline height, otherwise inline max-height
             const inlineHeight = scrollbarContainer.style.height;
             const inlineMax = scrollbarContainer.style.maxHeight;
             const target = inlineHeight || inlineMax;
             if (target) {
-                console.log("Using scroll-container inline style:", target);
                 iframe.style.height = target;
             } else {
-                console.warn("No inline height or max-height set on scroll-container. Using main element height instead.");
                 iframe.style.height = mainElement.style.height;
             }
         } else {
-            console.log("No scroll-container found. Using main element height:", mainElement.style.height);
             iframe.style.height = mainElement.style.height;
         }
-    } else {
-        console.log("No iframe to resize.");
     }
 }
 
