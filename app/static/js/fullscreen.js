@@ -10,47 +10,58 @@ function updateUrlFullscreen(enabled) {
 }
 
 /**
- * Enter fullscreen: hide header/footer, enable full width, recalc scroll,
- * set both URL params, update button.
+ * Starts a requestAnimationFrame loop that calls your recalc methods,
+ * and stops automatically when the header’s max-height transition ends.
  */
-function enterFullscreen() {
-  // hide header/footer
-  document.querySelectorAll('header, footer').forEach(el => el.style.display = 'none');
+function recalcWhileCollapsing() {
+  const header = document.querySelector('header');
+  if (!header) return;
 
-  // go full-width
+  // 1) Start the RAF loop
+  let rafId;
+  const step = () => {
+    adjustScrollContainerHeight();
+    updateCustomScrollbar();
+    rafId = requestAnimationFrame(step);
+  };
+  step();
+
+  // 2) Listen for the end of the max-height transition
+  function onEnd(e) {
+    if (e.propertyName === 'max-height') {
+      cancelAnimationFrame(rafId);
+      header.removeEventListener('transitionend', onEnd);
+    }
+  }
+  header.addEventListener('transitionend', onEnd);
+}
+
+function enterFullscreen() {
+  document.body.classList.add('fullscreen');
   setFullWidth(true);
   updateUrlFullscreen(true);
 
-  // fade in logo
+  // fade in logo… (unchanged)
   const logo = document.getElementById('navbar_logo');
   if (logo) {
     logo.classList.remove('d-none');
-    // next frame → trigger transition
-    requestAnimationFrame(() => {
-      logo.style.opacity = '1';
-    });
+    requestAnimationFrame(() => logo.style.opacity = '1');
   }
 
-  // recalc scrollbars
-  if (typeof adjustScrollContainerHeight === 'function') adjustScrollContainerHeight();
-  if (typeof updateCustomScrollbar === 'function') updateCustomScrollbar();
+  // now recalc in lock-step with the CSS collapse animation
+  recalcWhileCollapsing();
 }
 
-
-/**
- * Exit fullscreen: show header/footer, disable full width, recalc scroll,
- * clear both URL params, update button.
- */
 function exitFullscreen() {
-  // show header/footer
-  document.querySelectorAll('header, footer').forEach(el => el.style.display = '');
+  document.body.classList.remove('fullscreen');
+  setFullWidth(false);
+  updateUrlFullscreen(false);
 
-  // fade out logo
+  // fade out logo… (unchanged)
   const logo = document.getElementById('navbar_logo');
   if (logo) {
     logo.style.opacity = '0';
     logo.addEventListener('transitionend', function handler(e) {
-      // only once, and only for opacity
       if (e.propertyName === 'opacity') {
         logo.classList.add('d-none');
         logo.removeEventListener('transitionend', handler);
@@ -58,16 +69,9 @@ function exitFullscreen() {
     });
   }
 
-  // reset width
-  setFullWidth(false);
-  updateUrlFullscreen(false);
-
-  // recalc scrollbars
-  if (typeof adjustScrollContainerHeight === 'function') adjustScrollContainerHeight();
-  if (typeof updateCustomScrollbar === 'function') updateCustomScrollbar();
-  if (typeof syncIframeHeight === 'function') syncIframeHeight();
+  // recalc while header/footer expand back
+  recalcWhileCollapsing();
 }
-
 
 /**
  * Toggle between enter and exit fullscreen.

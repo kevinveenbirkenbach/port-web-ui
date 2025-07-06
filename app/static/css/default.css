@@ -157,3 +157,23 @@ iframe{
   opacity: 0;
   transition: opacity var(--anim-duration) ease-in-out;
 }
+
+/* 1. Make sure headers and footers can collapse */
+header,
+footer {
+  overflow: hidden;
+  /* choose a max-height that’s >= your tallest header/footer */
+  max-height: 200px;
+  padding: 1rem;
+  transition:
+    max-height var(--anim-duration) ease-in-out,
+    padding var(--anim-duration) ease-in-out;
+}
+
+/* 2. In fullscreen mode, collapse them */
+body.fullscreen header,
+body.fullscreen footer {
+  max-height: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
