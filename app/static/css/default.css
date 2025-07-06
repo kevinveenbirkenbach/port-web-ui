@@ -140,10 +140,20 @@ iframe{
   max-width: 100% !important;
 }
 
+:root {
+  --anim-duration: 3s;          /* Basis-Dauer */
+}
+
 .container,
 .container-fluid {
   transition: 
-    max-width 1s ease-in-out,
-    padding-left 1s ease-in-out,
-    padding-right 1s ease-in-out;
+    max-width var(--anim-duration) ease-in-out,
+    padding-left var(--anim-duration) ease-in-out,
+    padding-right var(--anim-duration) ease-in-out;
+}
+
+#navbar_logo {
+  /* start invisible but in the layout (d-none will actually hide it) */
+  opacity: 0;
+  transition: opacity var(--anim-duration) ease-in-out;
 }

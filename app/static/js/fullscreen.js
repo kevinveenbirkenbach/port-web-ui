@@ -14,35 +14,60 @@ function updateUrlFullscreen(enabled) {
  * set both URL params, update button.
  */
 function enterFullscreen() {
-  document.querySelectorAll('header, footer')
-          .forEach(function(el){ el.style.display = 'none'; });
+  // hide header/footer
+  document.querySelectorAll('header, footer').forEach(el => el.style.display = 'none');
+
+  // go full-width
   setFullWidth(true);
   updateUrlFullscreen(true);
 
+  // fade in logo
   const logo = document.getElementById('navbar_logo');
-  if (logo) logo.classList.remove('d-none');
+  if (logo) {
+    logo.classList.remove('d-none');
+    // next frame → trigger transition
+    requestAnimationFrame(() => {
+      logo.style.opacity = '1';
+    });
+  }
 
+  // recalc scrollbars
   if (typeof adjustScrollContainerHeight === 'function') adjustScrollContainerHeight();
-  if (typeof updateCustomScrollbar      === 'function') updateCustomScrollbar();
+  if (typeof updateCustomScrollbar === 'function') updateCustomScrollbar();
 }
+
 
 /**
  * Exit fullscreen: show header/footer, disable full width, recalc scroll,
  * clear both URL params, update button.
  */
 function exitFullscreen() {
-  document.querySelectorAll('header, footer')
-          .forEach(function(el){ el.style.display = ''; });
+  // show header/footer
+  document.querySelectorAll('header, footer').forEach(el => el.style.display = '');
+
+  // fade out logo
+  const logo = document.getElementById('navbar_logo');
+  if (logo) {
+    logo.style.opacity = '0';
+    logo.addEventListener('transitionend', function handler(e) {
+      // only once, and only for opacity
+      if (e.propertyName === 'opacity') {
+        logo.classList.add('d-none');
+        logo.removeEventListener('transitionend', handler);
+      }
+    });
+  }
+
+  // reset width
   setFullWidth(false);
   updateUrlFullscreen(false);
 
-  const logo = document.getElementById('navbar_logo');
-  if (logo) logo.classList.add('d-none');
-
+  // recalc scrollbars
   if (typeof adjustScrollContainerHeight === 'function') adjustScrollContainerHeight();
-  if (typeof updateCustomScrollbar      === 'function') updateCustomScrollbar();
-  if (typeof syncIframeHeight           === 'function') syncIframeHeight();
+  if (typeof updateCustomScrollbar === 'function') updateCustomScrollbar();
+  if (typeof syncIframeHeight === 'function') syncIframeHeight();
 }
+
 
 /**
  * Toggle between enter and exit fullscreen.
