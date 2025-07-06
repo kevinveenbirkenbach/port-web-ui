@@ -23,6 +23,7 @@ function syncIframeHeight() {
 
 // Function to open a URL in an iframe
 function openIframe(url) {
+    enterFullscreen()
     // Hide the container (and its scroll-container) so the iframe can appear in its place
     if (scrollbarContainer) {
         scrollbarContainer.style.display = 'none';
