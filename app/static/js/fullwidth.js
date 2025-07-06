@@ -7,12 +7,13 @@ function setFullWidth(enabled) {
   if (!el) return;
   if (enabled) {
     el.classList.replace('container', 'container-fluid');
-    updateUrlFullWidth(true)
+    updateUrlFullWidth(true);
   } else {
     el.classList.replace('container-fluid', 'container');
-    updateUrlFullWidth(false)
+    updateUrlFullWidth(false);
   }
 }
+
 
 /**
  * Reads the URL parameter `fullwidth` and applies full width if it's set.

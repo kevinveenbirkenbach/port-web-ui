@@ -135,3 +135,15 @@ body::before {
 iframe{
   margin-bottom: -10px;
 }
+
+.container-fluid {
+  max-width: 100% !important;
+}
+
+.container,
+.container-fluid {
+  transition: 
+    max-width 1s ease-in-out,
+    padding-left 1s ease-in-out,
+    padding-right 1s ease-in-out;
+}
