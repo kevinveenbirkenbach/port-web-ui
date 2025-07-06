@@ -17,7 +17,7 @@ function adjustScrollContainerHeight() {
   
   // Calculate the available height for the scroll area
   const availableHeight = window.innerHeight - siblingsHeight;
-  scrollContainer.style.maxHeight = availableHeight + 'px';
+  scrollContainer.style.height = availableHeight + 'px';
   scrollContainer.style.overflowY = 'auto';
   scrollContainer.style.overflowX = 'hidden';
 
