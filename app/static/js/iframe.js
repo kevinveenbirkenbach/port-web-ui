@@ -105,12 +105,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 
-    // Clicking the header's H1 will restore the original view
-    const headerH1 = document.querySelector("header h1");
-    if (headerH1) {
-        headerH1.style.cursor = "pointer";
-        headerH1.addEventListener("click", restoreOriginal);
-    }
+    document.querySelectorAll(".js-restore").forEach(el => {
+        el.style.cursor = "pointer";
+        el.addEventListener("click", restoreOriginal);
+    });
+
 
     // On full page load, check URL parameters to auto-open an iframe
     window.addEventListener("load", function() {
