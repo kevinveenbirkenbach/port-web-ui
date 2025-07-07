@@ -96,11 +96,8 @@ h3.footer-title {
   font-size: 1.3em;
 }
 
-.card-img-top i {
+.card-img-top i, .card-img-top object{
   font-size: 100px;
-}
-
-svg {
   fill: currentColor;
 }
 

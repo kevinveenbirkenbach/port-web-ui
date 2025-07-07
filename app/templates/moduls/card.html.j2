@@ -1,35 +1,43 @@
 <div class="card-column {{ lg_class }} {{ md_class }} col-12">
-    <div class="card h-100 d-flex flex-column">
-        <div class="card-body d-flex flex-column">
-            <div class="card-img-top">
-                {% if card.icon.cache %}
-                    {% if card.icon.cache.endswith('.svg') %}
-                        <svg type="image/svg+xml" data="{{ card.icon.cache }}" style="width:100px; height:auto;">
-                            {% if card.icon.class %}
-                                <i class="{{ card.icon.class }}"></i>
-                            {% endif %}
-                        </svg>
-                    {% else %}
-                        <img src="{{ card.icon.cache }}" alt="{{ card.title }}" style="width:100px; height:auto;"
-                             onerror="this.style.display='none'; var icon=this.nextElementSibling; if(icon) icon.style.display='inline-block';">
-                        {% if card.icon.class %}
-                            <i class="{{ card.icon.class }}" style="display:none;"></i>
-                        {% endif %}
-                    {% endif %}
-                {% elif card.icon.class %}
-                    <i class="{{ card.icon.class }}"></i>
-                {% endif %}
-            </div>
-            <hr />
-            <h3 class="card-title">{{ card.title }}</h3>
-            <p class="card-text">{{ card.text }}</p>
-            {% if card.url %}
-                <a href="{{ card.url }}" class="mt-auto btn btn-light stretched-link {% if card.iframe %}iframe-link{% endif %}">
-                    <i class="fa-solid fa-globe"></i> {{ card.link_text }}
-                </a>
-            {% else %}
-                <i class="fa-solid fa-hourglass"></i> {{ card.link_text }}
+  <div class="card h-100 d-flex flex-column">
+    <div class="card-body d-flex flex-column">
+      <div class="card-img-top">
+        {% if card.icon.cache %}
+          {% if card.icon.cache.endswith('.svg') %}
+            <object
+              type="image/svg+xml"
+              data="{{ url_for('static', filename=card.icon.cache) }}"
+              style="width:100px; height:auto;">
+              {% if card.icon.class %}
+                <i class="{{ card.icon.class }}"></i>
+              {% endif %}
+            </object>
+          {% else %}
+            <img
+              src="{{ url_for('static', filename=card.icon.cache) }}"
+              alt="{{ card.title }}"
+              style="width:100px; height:auto;"
+              onerror="this.style.display='none'; this.nextElementSibling?.style.display='inline-block';">
+            {% if card.icon.class %}
+              <i class="{{ card.icon.class }}" style="display:none;"></i>
             {% endif %}
-        </div>
+          {% endif %}
+        {% elif card.icon.class %}
+          <i class="{{ card.icon.class }}"></i>
+        {% endif %}
+      </div>
+      <hr />
+      <h3 class="card-title">{{ card.title }}</h3>
+      <p class="card-text">{{ card.text }}</p>
+      {% if card.url %}
+        <a
+          href="{{ card.url }}"
+          class="mt-auto btn btn-light stretched-link {% if card.iframe %}iframe-link{% endif %}">
+          <i class="fa-solid fa-globe"></i> {{ card.link_text }}
+        </a>
+      {% else %}
+        <i class="fa-solid fa-hourglass"></i> {{ card.link_text }}
+      {% endif %}
     </div>
+  </div>
 </div>

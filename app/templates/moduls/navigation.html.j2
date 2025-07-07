@@ -56,7 +56,7 @@
         {% if menu_type == "header" %}
         <a class="navbar-brand d-flex align-items-center d-none" id="navbar_logo" href="/">
             <img 
-                src="{{ platform.logo.cache }}" 
+                src="{{ url_for('static', filename=platform.logo.cache) }}" 
                 alt="{{ platform.titel }}" 
                 class="d-inline-block align-text-top"
                 style="height:2rem">
