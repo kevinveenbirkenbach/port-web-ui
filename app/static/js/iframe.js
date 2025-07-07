@@ -52,6 +52,7 @@ function openIframe(url) {
             .attr('src', url)
             .fadeIn(1500, function() {
                 syncIframeHeight();
+                observeIframeNavigation();
             });
 
         // URL-State pushen
@@ -156,3 +157,27 @@ window.openIframeInNewTab = openIframeInNewTab;
 
 // Adjust iframe height on window resize
 window.addEventListener('resize', syncIframeHeight);
+
+/**
+ * Observe iframe location changes (Same-Origin only).
+ */
+function observeIframeNavigation() {
+  const iframe = mainElement.querySelector("iframe");
+  if (!iframe || !iframe.contentWindow) return;
+
+  let lastUrl = iframe.contentWindow.location.href;
+
+  setInterval(() => {
+    try {
+      const currentUrl = iframe.contentWindow.location.href;
+      if (currentUrl !== lastUrl) {
+        lastUrl = currentUrl;
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set('iframe', currentUrl);
+        window.history.replaceState({}, '', newUrl);
+      }
+    } catch (e) {
+      // Cross-origin – ignore
+    }
+  }, 500);
+}
