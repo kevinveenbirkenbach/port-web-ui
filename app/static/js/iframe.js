@@ -21,70 +21,76 @@ function syncIframeHeight() {
     }
 }
 
-// Function to open a URL in an iframe
+// Function to open a URL in an iframe (jQuery version mit 1500 ms Fade)
 function openIframe(url) {
-    enterFullscreen()
-    // Hide the container (and its scroll-container) so the iframe can appear in its place
-    if (scrollbarContainer) {
-        scrollbarContainer.style.display = 'none';
-    }
+    enterFullscreen();
 
-    // Hide any custom scrollbar element if present
-    if (customScrollbar) {
-        customScrollbar.style.display = 'none';
-    }
+    var $container    = scrollbarContainer    ? $(scrollbarContainer)    : null;
+    var $customScroll = customScrollbar       ? $(customScrollbar)       : null;
+    var $main         = $(mainElement);
 
-    // Create or retrieve the iframe in the main element
-    let iframe = mainElement.querySelector("iframe");
-    if (!iframe) {
-        iframe = document.createElement("iframe");
-        iframe.width = "100%";
-        iframe.style.border = "none";
-        iframe.style.overflow = "auto";  // Enable internal scrolling
-        iframe.scrolling = "auto";
-        mainElement.appendChild(iframe);
-        syncIframeHeight();
-    }
+    // Original-Content ausblenden mit 1500 ms
+    var promises = [];
+    if ($container)    promises.push($container.fadeOut(1500).promise());
+    if ($customScroll) promises.push($customScroll.fadeOut(1500).promise());
 
-    // Set the iframe's source URL
-    iframe.src = url;
+    $.when.apply($, promises).done(function() {
+        // Iframe anlegen, falls noch nicht vorhanden
+        var $iframe = $main.find('iframe');
+        if ($iframe.length === 0) {
+            originalMainStyle = $main.attr('style') || null;
+            $iframe = $('<iframe>', {
+                width: '100%',
+                frameborder: 0,
+                scrolling: 'auto'
+            }).css({ overflow: 'auto', display: 'none' });
+            $main.append($iframe);
+        }
 
-    // Push the new URL state without reloading the page
-    const newUrl = new URL(window.location);
-    newUrl.searchParams.set('iframe', url);
-    window.history.pushState({ iframe: url }, '', newUrl);
+        // Quelle setzen und mit 1500 ms einblenden
+        $iframe
+            .attr('src', url)
+            .fadeIn(1500, function() {
+                syncIframeHeight();
+            });
+
+        // URL-State pushen
+        var newUrl = new URL(window.location);
+        newUrl.searchParams.set('iframe', url);
+        window.history.pushState({ iframe: url }, '', newUrl);
+    });
 }
 
-// Function to restore the original content and show the container again
+// Function to restore the original content (jQuery version mit 1500 ms Fade)
 function restoreOriginal() {
-    // Remove the iframe from the DOM
-    const iframe = mainElement.querySelector("iframe");
-    if (iframe) {
-        iframe.remove();
-    }
+    var $main   = $(mainElement);
+    var $iframe = $main.find('iframe');
+    var $container    = scrollbarContainer    ? $(scrollbarContainer)    : null;
+    var $customScroll = customScrollbar       ? $(customScrollbar)       : null;
 
-    // Show the original container
-    if (scrollbarContainer) {
-        scrollbarContainer.style.display = '';
-    }
+    if ($iframe.length) {
+        // Iframe mit 1500 ms ausblenden, dann entfernen und Original einblenden
+        $iframe.fadeOut(1500, function() {
+            $iframe.remove();
 
-    // Restore any custom scrollbar
-    if (customScrollbar) {
-        customScrollbar.style.display = '';
-    }
+            if ($container)    $container.fadeIn(1500);
+            if ($customScroll) $customScroll.fadeIn(1500);
 
-    // Restore the original inline style of the main element
-    if (originalMainStyle !== null) {
-        mainElement.setAttribute("style", originalMainStyle);
-    } else {
-        mainElement.removeAttribute("style");
-    }
+            // Inline-Style des main-Elements zurücksetzen
+            if (originalMainStyle !== null) {
+                $main.attr('style', originalMainStyle);
+            } else {
+                $main.removeAttr('style');
+            }
 
-    // Update the URL to remove the iframe parameter
-    const newUrl = new URL(window.location);
-    newUrl.searchParams.delete("iframe");
-    window.history.pushState({}, '', newUrl);
+            // URL-Parameter entfernen
+            var newUrl = new URL(window.location);
+            newUrl.searchParams.delete('iframe');
+            window.history.pushState({}, '', newUrl);
+        });
+    }
 }
+
 
 // Initialize event listeners after DOM content is loaded
 document.addEventListener("DOMContentLoaded", function() {
