@@ -2,10 +2,15 @@
     <div class="card h-100 d-flex flex-column">
         <div class="card-body d-flex flex-column">
             <div class="card-img-top">
-                {% if card.icon.class %}
+                {# Prioritize image, fallback to icon via onerror #}
+                {% if card.icon.cache %}
+                    <img src="{{ card.icon.cache }}" alt="{{ card.title }}" style="width:100px; height:auto;"
+                         onerror="this.style.display='none'; var icon=this.nextElementSibling; if(icon) icon.style.display='inline-block';">
+                    {% if card.icon.class %}
+                        <i class="{{ card.icon.class }}" style="display:none;"></i>
+                    {% endif %}
+                {% elif card.icon.class %}
                     <i class="{{ card.icon.class }}"></i>
-                {% else %}
-                    <img src="{{ card.icon.cache }}" alt="{{ card.title }}" style="width: 100px; height: auto;">
                 {% endif %}
             </div>
             <hr />
