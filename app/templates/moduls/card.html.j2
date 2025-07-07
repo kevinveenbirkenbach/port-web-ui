@@ -2,25 +2,16 @@
   <div class="card h-100 d-flex flex-column">
     <div class="card-body d-flex flex-column">
       <div class="card-img-top">
-        {% if card.icon.cache %}
-          {% if card.icon.cache.endswith('.svg') %}
-            <object
-              type="image/svg+xml"
-              data="{{ url_for('static', filename=card.icon.cache) }}"
-              style="width:100px; height:auto;">
-              {% if card.icon.class %}
-                <i class="{{ card.icon.class }}"></i>
-              {% endif %}
-            </object>
-          {% else %}
-            <img
-              src="{{ url_for('static', filename=card.icon.cache) }}"
-              alt="{{ card.title }}"
-              style="width:100px; height:auto;"
-              onerror="this.style.display='none'; this.nextElementSibling?.style.display='inline-block';">
-            {% if card.icon.class %}
-              <i class="{{ card.icon.class }}" style="display:none;"></i>
-            {% endif %}
+        {% if card.icon.cache and card.icon.cache.endswith('.svg') %}
+          {{ include_svg(card.icon.cache) }}
+        {% elif card.icon.cache %}
+          <img
+            src="{{ url_for('static', filename=card.icon.cache) }}"
+            alt="{{ card.title }}"
+            style="width:100px; height:auto;"
+            onerror="this.style.display='none'; this.nextElementSibling?.style.display='inline-block';">
+          {% if card.icon.class %}
+            <i class="{{ card.icon.class }}" style="display:none;"></i>
           {% endif %}
         {% elif card.icon.class %}
           <i class="{{ card.icon.class }}"></i>

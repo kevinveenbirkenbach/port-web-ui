@@ -11,6 +11,8 @@ FLASK_ENV = os.getenv("FLASK_ENV", "production")
 FLASK_PORT = int(os.getenv("PORT", 5000))
 print(f"🔧 Starting app on port {FLASK_PORT}, FLASK_ENV={FLASK_ENV}")
 
+from flask import Flask, render_template, current_app
+from markupsafe import Markup
 
 # Initialize the CacheManager
 cache_manager = CacheManager()
@@ -47,6 +49,18 @@ app = Flask(__name__)
 # Load configuration and cache assets on startup
 load_config(app)
 cache_icons_and_logos(app)
+
+@app.context_processor
+def utility_processor():
+    def include_svg(path):
+        full_path = os.path.join(current_app.root_path, 'static', path)
+        try:
+            with open(full_path, 'r', encoding='utf-8') as f:
+                svg = f.read()
+            return Markup(svg)
+        except IOError:
+            return Markup(f'<!-- SVG not found: {path} -->')
+    return dict(include_svg=include_svg)
 
 @app.before_request
 def reload_config_in_dev():

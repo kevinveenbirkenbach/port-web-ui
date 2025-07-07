@@ -96,9 +96,11 @@ h3.footer-title {
   font-size: 1.3em;
 }
 
-.card-img-top i, .card-img-top object{
+.card-img-top i, .card-img-top svg{
   font-size: 100px;
   fill: currentColor;
+  width: 100px;
+  height: auto;
 }
 
 div#navbarNavheader li.nav-item {
