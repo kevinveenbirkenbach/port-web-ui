@@ -1,33 +1,20 @@
 import os
 import hashlib
 import requests
+import mimetypes
 
 class CacheManager:
-    """
-    A class to manage caching of files, including creating temporary directories
-    and caching files locally with hashed filenames.
-    """
-
     def __init__(self, cache_dir="static/cache"):
-        """
-        Initialize the CacheManager with a cache directory.
-
-        :param cache_dir: The directory where cached files will be stored.
-        """
         self.cache_dir = cache_dir
         self._ensure_cache_dir_exists()
 
     def _ensure_cache_dir_exists(self):
-        """
-        Ensure the cache directory exists. If it doesn't, create it.
-        """
+        """Ensure the cache directory exists on disk."""
         if not os.path.exists(self.cache_dir):
             os.makedirs(self.cache_dir)
 
     def clear_cache(self):
-        """
-        Clear all files in the cache directory.
-        """
+        """Remove all files from the cache directory."""
         if os.path.exists(self.cache_dir):
             for filename in os.listdir(self.cache_dir):
                 file_path = os.path.join(self.cache_dir, filename)
@@ -36,31 +23,39 @@ class CacheManager:
 
     def cache_file(self, file_url):
         """
-        Download a file and store it locally in the cache directory with a hashed filename.
-
-        :param file_url: The URL of the file to cache.
-        :return: The local path of the cached file.
+        Download a file from `file_url` and store it in the cache.
+        If any HTTP error occurs, return "Undefined" instead of raising.
         """
-        # Generate a hashed filename based on the URL
+        # Compute a short hash suffix for the URL
         hash_object = hashlib.blake2s(file_url.encode('utf-8'), digest_size=8)
         hash_suffix = hash_object.hexdigest()
 
-        # Determine the base name for the file
-        splitted_file_url = file_url.split("/")
-        base_name = splitted_file_url[-2] if splitted_file_url[-1] == "download" else splitted_file_url[-1]
+        # Derive a base filename: drop trailing 'download' if present
+        url_parts = file_url.rstrip("/").split("/")
+        base_name = url_parts[-2] if url_parts[-1] == "download" else url_parts[-1]
 
-        # Construct the full path for the cached file
-        filename = f"{base_name}_{hash_suffix}.png"
+        try:
+            # Attempt to download the file (streaming)
+            response = requests.get(file_url, stream=True)
+            response.raise_for_status()
+        except requests.RequestException:
+            # On any network/HTTP error, skip caching and return "Undefined"
+            return "Undefined"
+
+        # Determine file extension from Content-Type header
+        content_type = response.headers.get('Content-Type', '')
+        extension = mimetypes.guess_extension(content_type.split(";")[0].strip())
+        if extension is None:
+            extension = '.png'  # default extension
+
+        # Build final filename and full path
+        filename = f"{base_name}_{hash_suffix}{extension}"
         full_path = os.path.join(self.cache_dir, filename)
 
-        # If the file already exists, return the cached path
-        if os.path.exists(full_path):
-            return full_path
+        # Write the file to cache if not already present
+        if not os.path.exists(full_path):
+            with open(full_path, "wb") as out_file:
+                for chunk in response.iter_content(chunk_size=1024):
+                    out_file.write(chunk)
 
-        # Download the file and save it locally
-        response = requests.get(file_url, stream=True)
-        if response.status_code == 200:
-            with open(full_path, "wb") as file:
-                for chunk in response.iter_content(1024):
-                    file.write(chunk)
         return full_path
