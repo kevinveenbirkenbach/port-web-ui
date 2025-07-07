@@ -44,8 +44,8 @@ a {
 }
 
 .card:hover {
-  background-color: var(--bs-secondary) !important;
-  color:            var(--bs-white) !important;
+  /* invert everything inside the card */
+  filter: invert(0.8) hue-rotate(144deg);
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
