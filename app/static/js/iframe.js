@@ -2,6 +2,16 @@
 let mainElement, originalContent, originalMainStyle, container, customScrollbar, scrollbarContainer;
 let currentIframeUrl = null;
 
+// === Auto-open iframe if URL parameter is present ===
+window.addEventListener('DOMContentLoaded', () => {
+  const paramUrl = new URLSearchParams(window.location.search).get('iframe');
+  if (paramUrl) {
+    currentIframeUrl = paramUrl;
+    enterFullscreen();
+    openIframe(paramUrl);
+  }
+});
+
 // Synchronize the height of the iframe to match the scroll-container or main element
 function syncIframeHeight() {
     const iframe = mainElement.querySelector("iframe");
@@ -24,8 +34,6 @@ function syncIframeHeight() {
 
 // Function to open a URL in an iframe (jQuery version mit 1500 ms Fade)
 function openIframe(url) {
-    enterFullscreen();
-
     var $container    = scrollbarContainer    ? $(scrollbarContainer)    : null;
     var $customScroll = customScrollbar       ? $(customScrollbar)       : null;
     var $main         = $(mainElement);
@@ -36,7 +44,9 @@ function openIframe(url) {
     if ($customScroll) promises.push($customScroll.fadeOut(1500).promise());
 
     $.when.apply($, promises).done(function() {
-        // Iframe anlegen, falls noch nicht vorhanden
+        // now that scroll areas are hidden, go fullscreen
+        enterFullscreen();
+        // create iframe if it doesn’t exist yet
         var $iframe = $main.find('iframe');
         if ($iframe.length === 0) {
             originalMainStyle = $main.attr('style') || null;
@@ -63,36 +73,31 @@ function openIframe(url) {
     });
 }
 
-// Function to restore the original content (jQuery version mit 1500 ms Fade)
+/**
+ * Restore the original <main> content and exit fullscreen.
+ */
 function restoreOriginal() {
-    var $main   = $(mainElement);
-    var $iframe = $main.find('iframe');
-    var $container    = scrollbarContainer    ? $(scrollbarContainer)    : null;
-    var $customScroll = customScrollbar       ? $(customScrollbar)       : null;
+  // Exit fullscreen (collapse header/footer and run recalcs)
+  exitFullscreen();
 
-    if ($iframe.length) {
-        // Iframe mit 1500 ms ausblenden, dann entfernen und Original einblenden
-        $iframe.fadeOut(1500, function() {
-            $iframe.remove();
+  // Replace <main> innerHTML with the snapshot we took on load
+  mainElement.innerHTML = originalContent;
 
-            if ($container)    $container.fadeIn(1500);
-            if ($customScroll) $customScroll.fadeIn(1500);
+  // Reset any inline styles on mainElement
+  if (originalMainStyle !== null) {
+    mainElement.setAttribute('style', originalMainStyle);
+  } else {
+    mainElement.removeAttribute('style');
+  }
 
-            // Inline-Style des main-Elements zurücksetzen
-            if (originalMainStyle !== null) {
-                $main.attr('style', originalMainStyle);
-            } else {
-                $main.removeAttr('style');
-            }
+  // Re-run height adjustments for scroll container & thumb
+  adjustScrollContainerHeight();
+  updateCustomScrollbar();
 
-            // URL-Parameter entfernen
-            var newUrl = new URL(window.location);
-            newUrl.searchParams.delete('iframe');
-            window.history.pushState({}, '', newUrl);
-        });
-    }
+  // Clear iframe state and URL param
+  currentIframeUrl = null;
+  history.replaceState(null, '', window.location.pathname);
 }
-
 
 // Initialize event listeners after DOM content is loaded
 document.addEventListener("DOMContentLoaded", function() {
@@ -109,14 +114,18 @@ document.addEventListener("DOMContentLoaded", function() {
         el.addEventListener("click", restoreOriginal);
     });
 
-    // === Close iframe & exit fullscreen on any .js-restore click ===
-    document.body.addEventListener('click', e => {
-    if (e.target.closest('.js-restore')) {
-        restoreOriginal();
+    // === Close iframe & exit fullscreen when any .js-restore is clicked ===
+    document.querySelectorAll('.js-restore').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => {
+        // first collapse header/footer and recalc container
         exitFullscreen();
+        // then fade out and remove the iframe, fade content back
+        restoreOriginal();
+        // clear stored URL and reset browser address
         currentIframeUrl = null;
         history.replaceState(null, '', window.location.pathname);
-    }
+      });
     });
 
 });
@@ -163,12 +172,18 @@ function observeIframeNavigation() {
   }, 500);
 }
 
-// Remember and open via central toggle
+// Remember, open iframe, enter fullscreen, AND set the URL param immediately
 document.querySelectorAll(".iframe-link").forEach(link => {
   link.addEventListener("click", function(event) {
     event.preventDefault();
     currentIframeUrl = this.href;
+
     enterFullscreen();
     openIframe(currentIframeUrl);
+
+    // Update the browser URL right away
+    const newUrl = new URL(window.location);
+    newUrl.searchParams.set('iframe', currentIframeUrl);
+    window.history.replaceState({ iframe: currentIframeUrl }, '', newUrl);
   });
 });

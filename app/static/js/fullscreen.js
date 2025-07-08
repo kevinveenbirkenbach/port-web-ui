@@ -44,8 +44,8 @@ function enterFullscreen() {
   // fade in logo… (unchanged)
   const logo = document.getElementById('navbar_logo');
   if (logo) {
-    logo.classList.remove('d-none');
-    requestAnimationFrame(() => logo.style.opacity = '1');
+    // hide the navbar‐logo restore link in fullscreen
+    logo.classList.add('d-none');
   }
 
   // now recalc in lock-step with the CSS collapse animation
@@ -57,16 +57,10 @@ function exitFullscreen() {
   setFullWidth(false);
   updateUrlFullscreen(false);
 
-  // fade out logo… (unchanged)
   const logo = document.getElementById('navbar_logo');
   if (logo) {
-    logo.style.opacity = '0';
-    logo.addEventListener('transitionend', function handler(e) {
-      if (e.propertyName === 'opacity') {
-        logo.classList.add('d-none');
-        logo.removeEventListener('transitionend', handler);
-      }
-    });
+    // show the navbar‐logo restore link again
+    logo.classList.remove('d-none');
   }
 
   // recalc while header/footer expand back
