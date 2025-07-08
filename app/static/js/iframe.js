@@ -1,5 +1,6 @@
 // Global variables to store elements and original state
 let mainElement, originalContent, originalMainStyle, container, customScrollbar, scrollbarContainer;
+let currentIframeUrl = null;
 
 // Synchronize the height of the iframe to match the scroll-container or main element
 function syncIframeHeight() {
@@ -103,41 +104,21 @@ document.addEventListener("DOMContentLoaded", function() {
     customScrollbar = document.getElementById("custom-scrollbar");
     scrollbarContainer = container.querySelector(".scroll-container")
 
-    // Attach click handlers to links that should open in an iframe
-    document.querySelectorAll(".iframe-link").forEach(link => {
-        link.addEventListener("click", function(event) {
-            event.preventDefault();  // prevent full page navigation
-            openIframe(this.href);
-            updateUrlFullWidth(true);
-        });
-    });
-
     document.querySelectorAll(".js-restore").forEach(el => {
         el.style.cursor = "pointer";
         el.addEventListener("click", restoreOriginal);
     });
 
-
-    // On full page load, check URL parameters to auto-open an iframe
-    window.addEventListener("load", function() {
-        const params = new URLSearchParams(window.location.search);
-        const iframeUrl = params.get('iframe');
-        if (iframeUrl) {
-            openIframe(iframeUrl);
-        }
-    });
-});
-
-// Handle browser back/forward navigation
-window.addEventListener('popstate', function(event) {
-    const params = new URLSearchParams(window.location.search);
-    const iframeUrl = params.get('iframe');
-
-    if (iframeUrl) {
-        openIframe(iframeUrl);
-    } else {
+    // === Close iframe & exit fullscreen on any .js-restore click ===
+    document.body.addEventListener('click', e => {
+    if (e.target.closest('.js-restore')) {
         restoreOriginal();
+        exitFullscreen();
+        currentIframeUrl = null;
+        history.replaceState(null, '', window.location.pathname);
     }
+    });
+
 });
 
 /**
@@ -181,3 +162,13 @@ function observeIframeNavigation() {
     }
   }, 500);
 }
+
+// Remember and open via central toggle
+document.querySelectorAll(".iframe-link").forEach(link => {
+  link.addEventListener("click", function(event) {
+    event.preventDefault();
+    currentIframeUrl = this.href;
+    enterFullscreen();
+    openIframe(currentIframeUrl);
+  });
+});
