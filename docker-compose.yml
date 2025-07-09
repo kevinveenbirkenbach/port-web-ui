@@ -5,14 +5,11 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: application-portfolio
     container_name: portfolio
     ports:
       - "${PORT:-5000}:${PORT:-5000}"
+    env_file:
+      - .env
     volumes:
       - ./app:/app
-      - ./.env:/app./.env
-    environment:
-      - PORT=${PORT:-5000}
-      - FLASK_ENV=${FLASK_ENV:-production}
     restart: unless-stopped

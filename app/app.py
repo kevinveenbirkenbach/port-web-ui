@@ -33,15 +33,29 @@ def load_config(app):
     app.config.update(resolver.get_config())
 
 def cache_icons_and_logos(app):
-    """Cache all icons and logos to local files."""
+    """Cache all icons and logos to local files, mit Fallback auf source."""
     for card in app.config["cards"]:
         icon = card.get("icon", {})
         if icon.get("source"):
-            icon["cache"] = cache_manager.cache_file(icon["source"])
+            cached = cache_manager.cache_file(icon["source"])
+            # Fallback: wenn cache_file None liefert, nutze weiterhin source
+            icon["cache"] = cached or icon["source"]
 
-    app.config["company"]["logo"]["cache"] = cache_manager.cache_file(app.config["company"]["logo"]["source"])
-    app.config["platform"]["favicon"]["cache"] = cache_manager.cache_file(app.config["platform"]["favicon"]["source"])
-    app.config["platform"]["logo"]["cache"] = cache_manager.cache_file(app.config["platform"]["logo"]["source"])
+    # Company-Logo
+    company_logo = app.config["company"]["logo"]
+    cached = cache_manager.cache_file(company_logo["source"])
+    company_logo["cache"] = cached or company_logo["source"]
+
+    # Platform Favicon
+    favicon = app.config["platform"]["favicon"]
+    cached = cache_manager.cache_file(favicon["source"])
+    favicon["cache"] = cached or favicon["source"]
+
+    # Platform Logo
+    platform_logo = app.config["platform"]["logo"]
+    cached = cache_manager.cache_file(platform_logo["source"])
+    platform_logo["cache"] = cached or platform_logo["source"]
+
 
 # Initialize Flask app
 app = Flask(__name__)
