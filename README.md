@@ -65,17 +65,17 @@ A lightweight, Docker-powered portfolio/landing-page generator—fully customiza
 ### 📦 Installation via Kevin’s Package Manager
 
 ```bash
-pkgmgr install portfolio
+pkgmgr install portui
 ```
 
-Once installed, the `portfolio` CLI is available system-wide.
+Once installed, the `portui` CLI is available system-wide.
 
 ---
 
 ## 🖥️ CLI Commands
 
 ```bash
-portfolio --help
+portui --help
 ```
 
 * `build` Build the Docker image
