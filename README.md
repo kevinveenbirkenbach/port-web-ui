@@ -50,7 +50,7 @@ A lightweight, Docker-powered portfolio/landing-page generator—fully customiza
    ```bash
    git clone <repository_url>
    cd <repository_directory>
-````
+  ```
 
 2. **Configure**
    Copy `config.sample.yaml` → `config.yaml` & customize.
