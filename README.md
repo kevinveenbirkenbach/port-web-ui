@@ -1,4 +1,4 @@
-# PortWebUI 🖥️✨
+# PortUI 🖥️✨
 
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-blue?logo=github)](https://github.com/sponsors/kevinveenbirkenbach)  
 [![Patreon](https://img.shields.io/badge/Support-Patreon-orange?logo=patreon)](https://www.patreon.com/c/kevinveenbirkenbach)  
@@ -7,7 +7,7 @@
 
 A lightweight, Docker-powered portfolio/landing-page generator—fully customizable via YAML! Showcase your projects, skills, and online presence in minutes.  
 
-> 🚀 You can also pair PortWebUI with JavaScript for sleek, web-based desktop-style interfaces.  
+> 🚀 You can also pair PortUI with JavaScript for sleek, web-based desktop-style interfaces.  
 > 💻 Example in action: [CyMaIS.Cloud](https://cymais.cloud/) (demo)  
 > 🌐 Another live example: [veen.world](https://www.veen.world/) (Kevin’s personal site)
 
