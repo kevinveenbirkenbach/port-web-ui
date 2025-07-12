@@ -1,8 +1,10 @@
-# Portfolio CMS: Flask-based Portfolio Management 🚀
+# PortWebUI 🖥️
 
 [![GitHub Sponsors](https://img.shields.io/badge/Sponsor-GitHub%20Sponsors-blue?logo=github)](https://github.com/sponsors/kevinveenbirkenbach) [![Patreon](https://img.shields.io/badge/Support-Patreon-orange?logo=patreon)](https://www.patreon.com/c/kevinveenbirkenbach) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20me%20a%20Coffee-Funding-yellow?logo=buymeacoffee)](https://buymeacoffee.com/kevinveenbirkenbach) [![PayPal](https://img.shields.io/badge/Donate-PayPal-blue?logo=paypal)](https://s.veen.world/paypaldonate)
 
 This software allows individuals and institutions to set up an easy portfolio/landingpage/homepage to showcase their projects and online presence. It is highly customizable via a YAML configuration file.
+
+🚀 Combine it with JavaScript to build sleek, web-based desktop interfaces! 💻 Check out CyMaIS.Cloud as an example ☁️✨
 
 ## Features ✨
 
