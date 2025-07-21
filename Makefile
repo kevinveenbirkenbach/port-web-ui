@@ -75,8 +75,8 @@ browse:
 	# Open the application in the browser at http://localhost:$(PORT)
 	chromium http://localhost:$(PORT)
 
-# Cypress tests\ nCYPRESS_DIR := app
-.PHONY: test
-test: down prod
-	# Run end-to-end tests with Cypress.
+npm-install:
+	cd app && npm install
+
+test: npm-install
 	cd app && npx cypress run --spec "cypress/e2e/**/*.spec.js"
