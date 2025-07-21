@@ -54,7 +54,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav{{menu_type}}">
         {% if menu_type == "header" %}
-        <a class="navbar-brand d-flex align-items-center d-none js-restore" id="navbar_logo" href="#">
+        <a class="navbar-brand align-items-center js-restore" id="navbar_logo" href="#">
             <img 
                 src="{{ url_for('static', filename=platform.logo.cache) }}" 
                 alt="{{ platform.titel }}" 

@@ -41,14 +41,11 @@ function enterFullscreen() {
   setFullWidth(true);
   updateUrlFullscreen(true);
 
-  // fade in logo… (unchanged)
+  // Nur jetzt sichtbar machen
   const logo = document.getElementById('navbar_logo');
   if (logo) {
-    // hide the navbar‐logo restore link in fullscreen
-    logo.classList.add('d-none');
+    logo.classList.add('visible');
   }
-
-  // now recalc in lock-step with the CSS collapse animation
   recalcWhileCollapsing();
 }
 
@@ -57,13 +54,11 @@ function exitFullscreen() {
   setFullWidth(false);
   updateUrlFullscreen(false);
 
+  // Jetzt wieder verstecken
   const logo = document.getElementById('navbar_logo');
   if (logo) {
-    // show the navbar‐logo restore link again
-    logo.classList.remove('d-none');
+    logo.classList.remove('visible');
   }
-
-  // recalc while header/footer expand back
   recalcWhileCollapsing();
 }
 

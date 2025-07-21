@@ -173,6 +173,11 @@ iframe{
   transition: opacity var(--anim-duration) ease-in-out;
 }
 
+#navbar_logo.visible {
+  opacity: 1 !important;
+}
+
+
 /* 1. Make sure headers and footers can collapse */
 header,
 footer {
